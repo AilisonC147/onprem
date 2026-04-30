@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>自治体・官公庁向けオンプレミスAI | GBase On-Premises</title>
-    <meta name="description" content="GBase On-Premisesは庁内データを外部に出さずに全職員がAIを活用できる、完全オンプレミス型エンタープライズRAG。LGWAN対応、Sparticle独自の日本語特化80B LLM搭載。宮崎県庁・大阪府との連携実績。">
+    <meta name="description" content="GBase On-Premisesは庁内データを外部に出さずに全職員がAIを活用できる、完全オンプレミス型エンタープライズRAG。LGWAN対応、出典明示で住民への説明責任も担保。宮崎県庁・大阪府との連携実績。">
+    <meta name="robots" content="index,follow">
     <meta property="og:title" content="GBase On-Premises - 自治体・官公庁向けオンプレミスAIソリューション">
-    <meta property="og:description" content="データを庁外に出さず、全職員がAIを活用。Sparticle-GBase-JP-80B搭載の完全オンプレミスAI。宮崎県庁との連携協定、大阪府AIコンソーシアム参画実績。">
+    <meta property="og:description" content="データを庁外に出さず、全職員がAIを活用。完全オンプレミスRAGで出典明示・ハルシネーション抑制。宮崎県庁との連携協定、大阪府AIコンソーシアム参画実績。">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://onprem.gbase.ai/solutions/government">
-    <meta property="og:image" content="https://onprem.gbase.ai/solutions/government/images/hero-government.jpg">
+    <meta property="og:url" content="https://ailisonc147.github.io/onprem/government-solution.html">
+    <meta property="og:image" content="https://ailisonc147.github.io/onprem/images/hero-government.jpg">
     <meta name="twitter:card" content="summary_large_image">
 
-    <link rel="canonical" href="https://onprem.gbase.ai/solutions/government">
+    <link rel="canonical" href="https://ailisonc147.github.io/onprem/government-solution.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -25,8 +26,8 @@
       "name": "GBase On-Premises",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "On-Premises (Linux)",
-      "description": "GBase On-Premisesは自治体・官公庁向けの完全オンプレミス型エンタープライズRAG。Sparticle独自の日本語特化LLM Sparticle-GBase-JP-80Bを搭載し、LGWAN環境でも全職員のAI活用を実現。",
-      "url": "https://onprem.gbase.ai/solutions/government",
+      "description": "GBase On-Premisesは自治体・官公庁向けの完全オンプレミス型エンタープライズRAG。LGWAN環境でも全職員のAI活用を実現し、出典明示で住民への説明責任を担保。",
+      "url": "https://ailisonc147.github.io/onprem/government-solution.html",
       "offers": {
         "@type": "Offer",
         "priceCurrency": "JPY",
@@ -34,10 +35,10 @@
       },
       "featureList": [
         "完全オンプレミス・LGWAN対応",
-        "Sparticle-GBase-JP-80B 日本語特化LLM",
         "ハイブリッド量子化技術によるGPU最大85%削減",
+        "1万人規模の同時接続・全職員利用に対応",
         "RAG + 構造化データ・非構造化データ両対応",
-        "1万人規模の同時接続対応",
+        "回答ごとの出典明示でハルシネーション抑制",
         "HPE × NVIDIA 共同検証済みパッケージ"
       ]
     }
@@ -54,48 +55,6 @@
       "sameAs": [
         "https://x.com/sparticle_ai",
         "https://note.com/sparticle"
-      ]
-    }
-    </script>
-
-    <!-- Structured Data: FAQPage -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "LGWAN環境でも利用できますか？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "はい、GBase On-PremisesはLGWAN-ASP接続環境でも完全閉域で動作します。外部ネットワーク接続を一切必要とせず、データを庁外に出すことなく生成AIを活用いただけます。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "導入にはどれくらいの期間がかかりますか？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "標準的なステップ（ヒアリング・要件定義・カスタマイズ・データ投入・テスト）で約2ヶ月、最短で60日以内に本番運用を開始できます。地場SIerとの連携により、地域のお客様にも迅速に対応します。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "DX関連の補助金は活用できますか？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "デジタル田園都市国家構想交付金、自治体DX推進事業、各種ICT基盤整備補助金等の対象となる場合があります。Sparticleおよび地場パートナーが補助金申請から導入までトータルで支援します。"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "庁内独自の規程・マニュアルにも対応できますか？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "はい。RAG（検索拡張生成）方式により、庁内文書（PDF・Word・Excel・CSV・データベース）を学習データとして取り込み、エビデンスに基づいた回答を生成します。非構造化・構造化データの両方に対応しています。"
-          }
-        }
       ]
     }
     </script>
@@ -1567,7 +1526,7 @@
         <div class="cases-grid">
             <!-- Case: Miyazaki -->
             <article class="case-card">
-                <div class="case-cover" style="display:flex; align-items:center; justify-content:center;">
+                <div class="case-cover" role="img" aria-label="宮崎県庁との連携協定締結式（プレスリリース掲載画像 予定地）" style="display:flex; align-items:center; justify-content:center;">
                     <span style="color: rgba(255,255,255,0.85); font-size: 0.95rem; letter-spacing: 0.05em; text-align:center; padding: 1rem;">プレスリリース掲載画像 予定地</span>
                 </div>
                 <div class="case-body">
@@ -1587,7 +1546,7 @@
 
             <!-- Case: Osaka -->
             <article class="case-card">
-                <div class="case-cover" style="display:flex; align-items:center; justify-content:center;">
+                <div class="case-cover" role="img" aria-label="大阪府行政AIエージェントコンソーシアム設立式（プレスリリース掲載画像 予定地）" style="display:flex; align-items:center; justify-content:center;">
                     <span style="color: rgba(255,255,255,0.85); font-size: 0.95rem; letter-spacing: 0.05em; text-align:center; padding: 1rem;">プレスリリース掲載画像 予定地</span>
                 </div>
                 <div class="case-body">
