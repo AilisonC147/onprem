@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自治体・官公庁向けオンプレミスAI | GBase On-Premises</title>
+    <meta name="description" content="GBase On-Premisesは庁内データを外部に出さずに全職員がAIを活用できる、完全オンプレミス型エンタープライズRAG。LGWAN対応、Sparticle独自の日本語特化80B LLM搭載。宮崎県庁・大阪府との連携実績。">
+    <meta property="og:title" content="GBase On-Premises - 自治体・官公庁向けオンプレミスAIソリューション">
+    <meta property="og:description" content="データを庁外に出さず、全職員がAIを活用。Sparticle-GBase-JP-80B搭載の完全オンプレミスAI。宮崎県庁との連携協定、大阪府AIコンソーシアム参画実績。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://onprem.gbase.ai/solutions/government">
+    <meta property="og:image" content="https://onprem.gbase.ai/solutions/government/images/hero-government.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="canonical" href="https://onprem.gbase.ai/solutions/government">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Structured Data: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "GBase On-Premises",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "On-Premises (Linux)",
+      "description": "GBase On-Premisesは自治体・官公庁向けの完全オンプレミス型エンタープライズRAG。Sparticle独自の日本語特化LLM Sparticle-GBase-JP-80Bを搭載し、LGWAN環境でも全職員のAI活用を実現。",
+      "url": "https://onprem.gbase.ai/solutions/government",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "JPY",
+        "availability": "https://schema.org/InStock"
+      },
+      "featureList": [
+        "完全オンプレミス・LGWAN対応",
+        "Sparticle-GBase-JP-80B 日本語特化LLM",
+        "ハイブリッド量子化技術によるGPU最大85%削減",
+        "RAG + 構造化データ・非構造化データ両対応",
+        "1万人規模の同時接続対応",
+        "HPE × NVIDIA 共同検証済みパッケージ"
+      ]
+    }
+    </script>
+
+    <!-- Structured Data: Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Sparticle Inc.",
+      "url": "https://sparticle.com",
+      "logo": "https://onprem.gbase.ai/assets/images/logo.svg",
+      "sameAs": [
+        "https://x.com/sparticle_ai",
+        "https://note.com/sparticle"
+      ]
+    }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "LGWAN環境でも利用できますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい、GBase On-PremisesはLGWAN-ASP接続環境でも完全閉域で動作します。外部ネットワーク接続を一切必要とせず、データを庁外に出すことなく生成AIを活用いただけます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "導入にはどれくらいの期間がかかりますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "標準的なステップ（ヒアリング・要件定義・カスタマイズ・データ投入・テスト）で約2ヶ月、最短で60日以内に本番運用を開始できます。地場SIerとの連携により、地域のお客様にも迅速に対応します。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "DX関連の補助金は活用できますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "デジタル田園都市国家構想交付金、自治体DX推進事業、各種ICT基盤整備補助金等の対象となる場合があります。Sparticleおよび地場パートナーが補助金申請から導入までトータルで支援します。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "庁内独自の規程・マニュアルにも対応できますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。RAG（検索拡張生成）方式により、庁内文書（PDF・Word・Excel・CSV・データベース）を学習データとして取り込み、エビデンスに基づいた回答を生成します。非構造化・構造化データの両方に対応しています。"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #050038;
+            --primary-dark: #0D0D0F;
+            --primary-deep: #050038;
+            --primary-light: #DCE972;
+            --accent: #DCE972;
+            --accent-light: #E8F0A3;
+            --gradient-from: #DDDD44;
+            --gradient-to: #AFFBF8;
+            --text-dark: #050038;
+            --text-gray: #808080;
+            --text-light: #F7F8F5;
+            --bg-light: #FFFFFF;
+            --bg-gray: #F7F8F5;
+            --bg-blue: #F7F8F5;
+            --bg-cream: #E6EBE1;
+            --bg-navy: #050038;
+            --border: #E5E7EB;
+            --border-lime: #E8F0A3;
+            --shadow-sm: 0 1px 2px 0 rgba(5, 0, 56, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(5, 0, 56, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(5, 0, 56, 0.12);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Hiragino Kaku Gothic ProN', 'Yu Gothic', Meiryo, sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--primary);
+        }
+        .nav-logo img {
+            height: 32px;
+            width: auto;
+            display: block;
+        }
+        .nav-links {
+            display: flex; gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-buttons { display: flex; gap: 0.75rem; }
+        .btn {
+            padding: 0.625rem 1.5rem;
+            border-radius: 999px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.25s;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+            font-size: 0.95rem;
+        }
+        .btn-primary {
+            background: linear-gradient(to right, var(--gradient-from), var(--gradient-to));
+            color: var(--primary);
+        }
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+            filter: brightness(1.05);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 1.5px solid var(--primary);
+        }
+        .btn-secondary:hover {
+            background: var(--bg-cream);
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            min-height: 640px;
+            padding: 9rem 2rem 6rem;
+            background:
+                linear-gradient(135deg, rgba(5, 0, 56, 0.92) 0%, rgba(5, 0, 56, 0.78) 50%, rgba(13, 13, 15, 0.72) 100%),
+                radial-gradient(ellipse at top right, rgba(220, 233, 114, 0.18) 0%, transparent 60%),
+                url('images/hero-government.jpg'),
+                linear-gradient(135deg, #050038 0%, #0D0D0F 100%);
+            background-size: cover, cover, cover, cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .hero h1 .accent { color: var(--accent); }
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .hero-inner { max-width: 760px; }
+        .hero-badges {
+            display: flex; gap: 0.625rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.75rem;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1.1rem;
+            background: var(--primary-dark);
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .hero h1 {
+            font-size: 2.875rem;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+        }
+        .hero-subtitle {
+            font-size: 1.125rem;
+            margin-bottom: 2.25rem;
+            color: rgba(255, 255, 255, 0.92);
+            line-height: 1.8;
+        }
+        .hero-cta {
+            display: flex; gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .hero .btn-primary {
+            background: linear-gradient(to right, var(--gradient-from), var(--gradient-to));
+            color: var(--primary);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+        }
+        .hero .btn-primary:hover { filter: brightness(1.05); }
+        .hero .btn-secondary {
+            color: white;
+            border-color: rgba(255, 255, 255, 0.7);
+        }
+        .hero .btn-secondary:hover { background: rgba(255, 255, 255, 0.1); }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: var(--bg-navy);
+            color: white;
+            padding: 2rem;
+        }
+        .trust-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+        .trust-item strong {
+            display: block;
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+        .trust-item span {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Section base */
+        .section { padding: 5rem 2rem; }
+        .section-gray { background: var(--bg-gray); }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-eyebrow {
+            display: block;
+            width: max-content;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            background: var(--accent-light);
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            letter-spacing: 0.12em;
+            margin: 0 auto 1rem;
+            text-transform: uppercase;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 1rem;
+            max-width: 760px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        /* Pain Grid */
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+        }
+        .pain-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.75rem 1.5rem;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+        .pain-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--border-lime);
+        }
+        .pain-icon {
+            width: 56px; height: 56px;
+            margin: 0 auto 1.25rem;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            display: flex; align-items: center; justify-content: center;
+            color: var(--primary);
+        }
+        .pain-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .pain-num {
+            display: inline-block;
+            color: var(--text-gray);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        .pain-card h3 {
+            font-size: 1.0625rem;
+            font-weight: 800;
+            margin-bottom: 0.625rem;
+            color: var(--text-dark);
+        }
+        .pain-card p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Feature Rows (Solutions) */
+        .feature-row {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 5rem;
+        }
+        .feature-row.reverse { grid-template-columns: 1fr 1.1fr; }
+        .feature-row.reverse .feature-visual { order: 2; }
+        .feature-row:last-child { margin-bottom: 0; }
+        .feature-visual {
+            aspect-ratio: 4 / 3;
+            background: linear-gradient(135deg, var(--bg-cream), var(--bg-gray));
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: 700;
+            text-align: center;
+            padding: 0;
+        }
+        .feature-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .feature-visual.placeholder {
+            padding: 2rem;
+            border: 1.5px dashed var(--border-lime);
+        }
+        .feature-label {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 0.03em;
+        }
+        .feature-content h3 {
+            font-size: 1.625rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+            color: var(--text-dark);
+        }
+        .feature-content p {
+            color: var(--text-gray);
+            line-height: 1.85;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        .feature-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        .feature-list li {
+            padding: 0.5rem 0;
+            color: var(--text-gray);
+            display: flex;
+            gap: 0.625rem;
+            align-items: flex-start;
+            font-size: 0.95rem;
+        }
+        .feature-list li::before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        /* Pillars (Differentiator) */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .pillar-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            position: relative;
+        }
+        .pillar-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--border-lime);
+        }
+        .pillar-num {
+            position: absolute;
+            top: 1.25rem; right: 1.5rem;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-light);
+            line-height: 1;
+        }
+        .pillar-icon {
+            width: 56px; height: 56px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            display: flex; align-items: center; justify-content: center;
+            color: var(--primary);
+            margin-bottom: 1.25rem;
+        }
+        .pillar-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .pillar-tag {
+            display: inline-block;
+            background: var(--bg-cream);
+            color: var(--primary);
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+        .pillar-card h3 {
+            font-size: 1.125rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+            color: var(--text-dark);
+        }
+        .pillar-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.75;
+        }
+
+        /* Scenarios */
+        .scenarios-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .scenario-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            transition: all 0.35s;
+            display: flex;
+            flex-direction: column;
+        }
+        .scenario-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        .scenario-header {
+            position: relative;
+            min-height: 170px;
+            color: var(--text-dark);
+            padding: 1.75rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            border-bottom: 1px solid var(--border);
+        }
+        .scenario-header {
+            background: linear-gradient(135deg, #EFF7F4 0%, #D4EBE7 100%);
+        }
+        .scenario-header::before {
+            content: "";
+            position: absolute;
+            top: -50px; right: -50px;
+            width: 220px; height: 220px;
+            background: radial-gradient(circle, rgba(220, 233, 114, 0.35), transparent 70%);
+            border-radius: 50%;
+        }
+        .scenario-icon {
+            position: absolute;
+            top: 1.25rem; right: 1.25rem;
+            width: 64px; height: 64px;
+            color: var(--primary);
+            opacity: 0.85;
+            z-index: 1;
+            transition: transform 0.4s ease;
+        }
+        .scenario-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .scenario-card:hover .scenario-icon {
+            transform: scale(1.08) rotate(-4deg);
+        }
+        .scenario-header > *:not(.scenario-icon) {
+            position: relative;
+            z-index: 2;
+        }
+        .scenario-header h3 {
+            color: var(--text-dark);
+        }
+        .scenario-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+            align-self: flex-start;
+        }
+        .scenario-header h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            line-height: 1.4;
+        }
+        .scenario-body {
+            padding: 1.5rem;
+            flex: 1;
+        }
+        .scenario-body p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        .scenario-features {
+            list-style: none;
+        }
+        .scenario-features li {
+            padding: 0.5rem 0;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .scenario-features li::before {
+            content: "·  ";
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Cases */
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        .case-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .case-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        .case-cover {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            background: linear-gradient(135deg, var(--primary-deep), var(--primary-dark));
+            overflow: hidden;
+            border-bottom: 4px solid var(--accent);
+        }
+        .case-cover img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .case-cover-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(5, 0, 56, 0.55) 0%, rgba(13, 13, 15, 0.35) 100%);
+        }
+        .case-cover-text {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+        }
+        .case-body {
+            padding: 1.75rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .case-meta {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.875rem;
+        }
+        .case-tag {
+            background: var(--bg-cream);
+            color: var(--primary);
+            padding: 0.3rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .case-card h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 0.875rem;
+            line-height: 1.45;
+            color: var(--text-dark);
+        }
+        .case-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .case-quote {
+            background: var(--bg-cream);
+            border-left: 4px solid var(--accent);
+            padding: 1rem 1.25rem;
+            border-radius: 8px;
+            font-style: italic;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            margin-top: 0.75rem;
+        }
+        .case-quote-author {
+            display: block;
+            margin-top: 0.5rem;
+            font-style: normal;
+            color: var(--text-gray);
+            font-size: 0.85rem;
+        }
+        .case-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 1rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border-bottom: 1.5px solid transparent;
+            transition: border-color 0.2s, gap 0.2s;
+        }
+        .case-link::after {
+            content: "↗";
+            font-size: 1rem;
+            transition: transform 0.2s;
+        }
+        .case-link:hover {
+            border-bottom-color: var(--primary);
+        }
+        .case-link:hover::after {
+            transform: translate(2px, -2px);
+        }
+        .case-source {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--text-gray);
+        }
+
+        /* Partners */
+        .partners-bar {
+            background: var(--bg-gray);
+            padding: 3rem 2rem;
+        }
+        .partners-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+            align-items: center;
+        }
+        .partner-item {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.25rem 1rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            min-height: 140px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .partner-item:hover {
+            border-color: var(--border-lime);
+            box-shadow: var(--shadow-sm);
+        }
+        .partner-logo {
+            width: 100%;
+            max-width: 150px;
+            height: 48px;
+            object-fit: contain;
+            object-position: center;
+        }
+        .partner-item small {
+            display: block;
+            color: var(--text-gray);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            line-height: 1.4;
+        }
+
+        /* FAQ */
+        .faq-list {
+            max-width: 880px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .faq-list details {
+            background: white;
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+        .faq-list details[open] { border-color: var(--primary-light); }
+        .faq-list summary {
+            font-size: 1.0625rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-list summary::-webkit-details-marker { display: none; }
+        .faq-list summary::after {
+            content: "+";
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: 400;
+            transition: transform 0.2s;
+        }
+        .faq-list details[open] summary::after {
+            content: "−";
+        }
+        .faq-list details p {
+            margin-top: 1rem;
+            color: var(--text-gray);
+            line-height: 1.85;
+            font-size: 0.95rem;
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 5rem 2rem;
+            text-align: center;
+            background:
+                radial-gradient(ellipse at top right, rgba(220, 233, 114, 0.18) 0%, transparent 60%),
+                linear-gradient(135deg, #050038 0%, #0D0D0F 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: "";
+            position: absolute;
+            top: -100px; right: -100px;
+            width: 360px; height: 360px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%);
+            border-radius: 50%;
+        }
+        .cta-section::after {
+            content: "";
+            position: absolute;
+            bottom: -80px; left: -80px;
+            width: 280px; height: 280px;
+            background: radial-gradient(circle, rgba(255,255,255,0.07), transparent 70%);
+            border-radius: 50%;
+        }
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .cta-section h2 {
+            font-size: 2.125rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.45;
+        }
+        .cta-section p {
+            font-size: 1.0625rem;
+            margin-bottom: 2rem;
+            opacity: 0.92;
+            line-height: 1.8;
+        }
+        .cta-section .hero-cta { justify-content: center; }
+        .cta-section .btn-primary {
+            background: linear-gradient(to right, var(--gradient-from), var(--gradient-to));
+            color: var(--primary);
+        }
+        .cta-section .btn-primary:hover {
+            filter: brightness(1.05);
+        }
+        .cta-section .btn-secondary {
+            background: transparent;
+            color: white;
+            border-color: rgba(255, 255, 255, 0.7);
+        }
+        .cta-section .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 3rem 2rem 2rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr repeat(3, 1fr);
+            gap: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .footer-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.875rem;
+        }
+        .footer-brand img {
+            height: 28px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+        .footer-tagline {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.875rem;
+            line-height: 1.7;
+        }
+        .footer h4 {
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .footer ul { list-style: none; }
+        .footer li { padding: 0.4rem 0; }
+        .footer a {
+            color: rgba(255, 255, 255, 0.65);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .footer a:hover { color: white; }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 1.5rem auto 0;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        /* Credibility Banner */
+        .credibility-banner {
+            padding: 2.5rem 2rem;
+            background: white;
+            border-bottom: 1px solid var(--border);
+        }
+        .cb-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: auto 1px 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .cb-badge {
+            position: relative;
+            flex-shrink: 0;
+        }
+        .cb-badge svg {
+            width: 140px;
+            height: 140px;
+            display: block;
+        }
+        .cb-divider {
+            width: 1px;
+            height: 110px;
+            background: var(--border);
+        }
+        .cb-partners {
+            min-width: 0;
+        }
+        .cb-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+        }
+        .cb-logos {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+        .cb-logos img {
+            height: 40px;
+            width: auto;
+            max-width: 130px;
+            object-fit: contain;
+            opacity: 0.8;
+            transition: opacity 0.25s;
+            filter: grayscale(20%);
+        }
+        .cb-logos img:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+        }
+        @media (max-width: 768px) {
+            .cb-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                text-align: center;
+            }
+            .cb-divider { display: none; }
+            .cb-badge { margin: 0 auto; }
+            .cb-logos { justify-content: center; gap: 1.75rem; }
+            .cb-logos img { height: 32px; }
+        }
+
+        /* Featured LLM Section */
+        .llm-section {
+            padding: 6rem 2rem;
+            background:
+                radial-gradient(ellipse at top right, rgba(220, 233, 114, 0.18) 0%, transparent 60%),
+                radial-gradient(ellipse at bottom left, rgba(175, 251, 248, 0.08) 0%, transparent 55%),
+                linear-gradient(135deg, #050038 0%, #0D0D0F 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .llm-section::before {
+            content: "";
+            position: absolute;
+            top: -120px; right: -120px;
+            width: 420px; height: 420px;
+            background: radial-gradient(circle, rgba(220, 233, 114, 0.1), transparent 70%);
+            border-radius: 50%;
+        }
+        .llm-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .llm-eyebrow {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            background: var(--accent);
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            letter-spacing: 0.12em;
+            margin-bottom: 1.25rem;
+            text-transform: uppercase;
+        }
+        .llm-content h2 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.01em;
+            color: white;
+        }
+        .llm-model {
+            display: inline-block;
+            color: var(--accent);
+            font-weight: 800;
+        }
+        .llm-content > p {
+            font-size: 1.0625rem;
+            color: rgba(255, 255, 255, 0.88);
+            line-height: 1.85;
+            margin-bottom: 1.75rem;
+        }
+        .llm-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.75rem;
+            padding: 1.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(220, 233, 114, 0.25);
+            border-radius: 14px;
+        }
+        .llm-stat { text-align: center; }
+        .llm-stat strong {
+            display: block;
+            font-size: 1.875rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.02em;
+        }
+        .llm-stat span {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+        .llm-content .feature-list li {
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .llm-content .feature-list li::before {
+            color: var(--accent);
+        }
+        .llm-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1.1rem;
+            background: rgba(220, 233, 114, 0.12);
+            border: 1px solid rgba(220, 233, 114, 0.4);
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 1rem;
+        }
+        .llm-visual {
+            aspect-ratio: 4 / 3;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .llm-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .pain-grid { grid-template-columns: repeat(2, 1fr); }
+            .pillars-grid, .scenarios-grid { grid-template-columns: 1fr; }
+            .cases-grid { grid-template-columns: 1fr; }
+            .feature-row { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem; }
+            .feature-row.reverse .feature-visual { order: 0; }
+            .partners-grid { grid-template-columns: repeat(3, 1fr); }
+            .trust-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-content { grid-template-columns: 1fr 1fr; }
+            .llm-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .llm-content h2 { font-size: 1.75rem; }
+            .llm-section { padding: 4rem 1.5rem; }
+        }
+        @media (max-width: 640px) {
+            .hero { min-height: 540px; padding: 7rem 1.5rem 4rem; }
+            .hero h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+            .pain-grid { grid-template-columns: 1fr; }
+            .partners-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-content { grid-template-columns: 1fr; }
+            .section-title { font-size: 1.625rem; }
+            .llm-stats { grid-template-columns: repeat(3, 1fr); padding: 1rem 0.5rem; }
+            .llm-stat strong { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+    <div class="nav-container">
+        <a href="/" class="nav-logo" aria-label="GBase On-Prem">
+            <img src="https://onprem.gbase.ai/logo.png" alt="GBase On-Prem ロゴ">
+        </a>
+        <ul class="nav-links">
+            <li><a href="/products">製品</a></li>
+            <li><a href="/solutions">ソリューション</a></li>
+            <li><a href="/case-studies">導入事例</a></li>
+            <li><a href="/resources">リソース</a></li>
+        </ul>
+        <div class="nav-buttons">
+            <a href="/contact" class="btn btn-secondary">お問い合わせ</a>
+            <a href="/download" class="btn btn-primary">資料ダウンロード</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-inner">
+            <h1>完全オンプレミスの<span class="accent">AI</span>で、<br>自治体・官公庁の知識を<br>全職員に開放</h1>
+            <p class="hero-subtitle">
+                データを庁外に出さずに、LGWAN環境でも生成AIを活用。Sparticle独自の日本語特化LLM「Sparticle-GBase-JP-80B」を搭載した、自治体・官公庁向けエンタープライズRAGです。
+            </p>
+            <div class="hero-cta">
+                <a href="/download" class="btn btn-primary">資料を無料ダウンロード</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Credibility Banner -->
+<section class="credibility-banner">
+    <div class="cb-grid">
+        <div class="cb-badge" aria-label="自治体・官公庁 導入実績バッジ">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <!-- Sun-burst rays -->
+                <g fill="#DCE972" opacity="0.7">
+                    <polygon points="100,8 103,22 97,22"/>
+                    <polygon points="146,18 142,32 138,28"/>
+                    <polygon points="178,52 168,60 168,52"/>
+                    <polygon points="186,98 174,100 178,92"/>
+                    <polygon points="174,142 164,138 168,132"/>
+                    <polygon points="146,176 138,168 142,164"/>
+                    <polygon points="100,188 97,178 103,178"/>
+                    <polygon points="54,176 58,164 62,168"/>
+                    <polygon points="26,142 32,132 36,138"/>
+                    <polygon points="14,98 22,92 26,100"/>
+                    <polygon points="22,52 32,52 32,60"/>
+                    <polygon points="54,18 62,28 58,32"/>
+                </g>
+
+                <!-- Outer ring -->
+                <circle cx="100" cy="100" r="84" fill="#FFFFFF" stroke="#050038" stroke-width="3"/>
+                <!-- Inner thin ring -->
+                <circle cx="100" cy="100" r="78" fill="none" stroke="#050038" stroke-width="1" opacity="0.35"/>
+
+                <!-- Lime fill ring -->
+                <circle cx="100" cy="100" r="72" fill="#DCE972" opacity="0.18"/>
+
+                <!-- Top text -->
+                <text x="100" y="80" text-anchor="middle"
+                      font-family="'Yu Gothic UI', 'Hiragino Sans', sans-serif"
+                      font-size="13" font-weight="700" fill="#050038" letter-spacing="2">
+                    自治体・官公庁
+                </text>
+
+                <!-- Main text -->
+                <text x="100" y="120" text-anchor="middle"
+                      font-family="'Yu Gothic UI', 'Hiragino Sans', sans-serif"
+                      font-size="30" font-weight="800" fill="#050038" letter-spacing="1">
+                    導入実績
+                </text>
+
+                <!-- Underline accent -->
+                <line x1="74" y1="134" x2="126" y2="134" stroke="#DCE972" stroke-width="4" stroke-linecap="round"/>
+
+                <!-- Laurel branches -->
+                <g stroke="#9BA832" stroke-width="2" fill="none" stroke-linecap="round">
+                    <path d="M 38 105 Q 30 110, 28 122"/>
+                    <path d="M 36 100 Q 26 100, 22 108"/>
+                    <path d="M 38 95 Q 28 90, 26 80"/>
+                    <path d="M 162 105 Q 170 110, 172 122"/>
+                    <path d="M 164 100 Q 174 100, 178 108"/>
+                    <path d="M 162 95 Q 172 90, 174 80"/>
+                </g>
+            </svg>
+        </div>
+        <div class="cb-divider"></div>
+        <div class="cb-partners">
+            <p class="cb-label">テクノロジー＆ソリューションパートナー</p>
+            <div class="cb-logos">
+                <img src="images/partners/hpe.svg" alt="HPE" loading="lazy">
+                <img src="data:image/png;base64,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" alt="NVIDIA" loading="lazy" style="height: 90px; max-width: 270px;">
+                <img src="https://www.ansys.com/content/dam/company/channel-partners/partner-profile-logos/sb-c-s-logo-420x280.png?wid=1200" alt="SB C&amp;S" loading="lazy" style="height: 80px; max-width: 220px;">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMSEhUSExIVFRUXFxsYGBYWFxcXFRgdHhYYGBsZHhggHSggGB4lHRcdITEhJiorLi8uGx8zODYtNygtLisBCgoKDg0OGxAQGy8mICUtNzcuKzc3Ly4xNzEtLy0vNy8yMDUtLS0tLSstLTUxNi41NzAyNSstLS8tNzUtKy0tL//AABEIAG4ByQMBIgACEQEDEQH/xAAcAAEAAgIDAQAAAAAAAAAAAAAABgcEBQIDCAH/xABVEAABAwICBgUEDAkICQUAAAABAAIDBBEFEgYHEyExQSJRYXGBFCMykRdCUlRicnOSk7PB0ggVFiQ1gqGxskNVdKPCw9PhJTM0NlODotHwREVjZLT/xAAaAQEAAwADAAAAAAAAAAAAAAAABAUGAQID/8QAMxEBAAEDAgMFBwMEAwAAAAAAAAECAwQRIQUSMUFRYXHREyIygZGxwTM08CNCoeEUFST/2gAMAwEAAhEDEQA/ALxREQEWHiOJxQNzSvDRyHM9w4lQbHNPnuu2nbkHu3WL/AcG/t8FIs41y78Mbd/Yi5GbZx/jnfu7U3xTF4aZuaaQN6hxce5o3lQPF9ZEhdanja1o5yC7j4A2HrKhlZUueS97i4neXONz4krRsxuF8uyY/M6x3j0d2+1+Z7upWlvBs2tPaTrMqW5xLIv6+yjSI+c/6WdS60HD/W04PaxxH7CD+9TXRvH4q2IyRBws7K5rrBwNgeRO4g8VQkhUq1X4zsKvZOPQnGX9cXLD+0t/WC65WDbi3NVEaTD3w8+7VXFNydYlc6IipV6Ii4SytaC5zg1o3kkgAd5PBBzRRcawsN2hj8rZcbsxDtme6S2Xxut9RYjDMLxSxyDrY9ru3kV3qt1U/FEw4iqJ6SykRF0ciIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiIMWvxCOFuaR4aOV+J7hxKheM6cPN207cg926xd4DgPG67tMGNNRvAPm29/F3NRqakYeFx3H/urfDxrXLFdca/ZneJZuRzTbtzERH1autqnOJfI8k83ON/2lRDGNMYo7ti867rG5g8efh612t0JxbEqh8VrQsfbau6EFtxBA4vNiNwuRzIVraH6n6GjtJKPKphvzSAbNp+DFw+dfwXGRxGqJ5LcaaO2HwemYi5eq5td9vXrLz/jJrZYW1MzHtp3uysNssbjYus0e23A79/etVQSlj87eLRceCvz8JAWoaYD3x/dPXn+Dn8Uqrqrqqq5pnde026KaeWmNI7liQ1AkY144OF/8l8bKWuDmmzmkEEcQQbg+tR7ROtu10RPDpN7uY9e/xW8cVpbN2LtuKmbuWJtXZpejNGcWFXSxTji5vSHU4bnD5wKzK6tjhYZJZGxsHFzyGj1lUJo/pvUUMMkMIYc7swc+5yG1jYcDew47t3A3UcxnFp6l+eeV8juRcdw7m8GjsACrP+tma530hcxmRyRtutfSXW9FHdlHHtnf8R92xDtDfSf/ANPequx/SaqrTeomc4cmDoxjuYN3ibntXTh2Cyy77ZW+6d9g4n9yktBgsUW+2d3unb/UOA/erGzi27fwx81ZlcTpp2mdZ7oRqgwWWWxtlb7p271DiVK9HsHjhmjcOk/O3pHiOkOA5LJc5KeW0jDe3Sb/ABBSKo92VROZdu1xHSNekLyREWSbgREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERBBdNHWqP8Alt/e5RuSRSHT11p2/Jj+Jyij3rRYlOtqnyYviVzTIrjxSPRHGtjLs3nzcht2NdwB8eB8OpWKqSJVl6GY1t4sjj5yPcetw5O+w/5qJxHG0/q0/P1WHBM7X+hX8vT8/VBfwkR+Y05/+x/dPXnyHn8Ur0L+Eh/sFP8A0kfVSKhcGoHzybNnMG55NHMlVNNM1TpHVoqqopiaqp2hnaI4Y+WYOb0WM9J3h6I6yVNZcKPJ48QsvD6NkEbY2DcOfMnmT2ldjnLS4uP7G3yz17WSys+u9d5qdo7GnjwWV5t0QOZv9nErc0OBxR7yM7ut3AdzeC7KB3SPd9oWXJIALkgAczuCkRCDfyrtXu66R4OZK4C5IABJPADeT4KLYzppDHdsXnXdY3MHjz8PWrk1TYjTVVEyeKNrZR0Jubg8cd535T6Q7D1gqHf4hbt7U7yl4nB7173q/djx6/RVGmeLvw9zYnxHauYJAHEABpJAJtvvdp3KFYdi81RWUxkeSNvHZo3NHnG8vt4qY/hE/pRn9GZ9ZKq+0eNqqnP/AM0f1jVTX8u7d6zt3NLi8PsY/wAMb989XtNERRk1j4hWsgifNIbMjaXuIBJDWi5NhvO4cAoV7MWD++nfQzfcUp0oqGx0dRI+JsrGwyOdE42a8BhJYTY2B4cCqFGnNDszL+TMOzBsZMwyA3tbNsLcSglWmWumJjoPxfKyRpcdttIZQWi7bFt8vLN18lJ/Ziwf3076Gb7ipLSLEWV+wkpMF8nZG4lxhaZGy729ElsQG6x6+K30em1E55iboxEZBxYDd4txu3YXCC5tGdPaDEJTDSzF72tLyDHI0ZQQL3c0Di4blJSVU2qjSWmqa2WGLCIqGRkTi57XDPbOwZC3ZNI4348huVsScD3IIgdaWED/ANaz5kv3F89lPCPfzPmS/cVValNEaPEDWmqh2mzfHk6T22zbW/okXvlHqVoexLhHvMfSS/fQdvsp4R7+Z8yX7ilOG18dREyaF2eN4zNcARcddiAVUGtnV/h1Hhss9PT5JGujAdnkNryNB3FxHAqf6rv0TRfIt+1BKUUR1g6GOxNsLW1b6bZlxuxpdmzAC3ptta3bxVa6WasDQUk1VJi85EbbhuRwzuO5jb7XddxAvy3nkgm2DaZ1MuO1OGuEewiYXNIadpcNjO92a3tzy6lYS8TxSzZnSB0mYNzPcC7NlJaLk8bb2+sK6cE1T+VwR1MOMzujkaHNOzN+0Hz24g3BHWCgu9FoNCdHTh9KKd07pyHOdtHDKTmN7WzO4d646c4BNXU2xgqXUz87XbRua9gDdvRcDvv18kEhUA1X6dTYm+qbLFHHsC0DJm33Lwb3J9yo97EmI/z7P/Xf4y01dqpkw6GWpdjToI2jM8sjewu6hulGZxJsB1lBfKKitRmHVlVO6snqal1PFdsYfLIWyPPwS6xDRvPaR1FXqgIo4NNqQ4h+LMz/ACixO9hDLhoflzG1yWm4sCNx3rFrtPIYsTiwt0UgfILiU5RHva5zbbyTcty8BvQS1FFdY+lpwukFSIxKTI1mQuy3uHE77H3PUtzo7iRqqWCpLNntomSZM2bKHNDgM1hfceoII3Np7lxhmE+T+kL7bPw8y6X0Mu/0bced1NVQ2k2Lw0mlbKiofkiY0ZnWc62alcwbmgk73DgFdOEY5TVTc1PPHKPgPDiO8cR4oNgiIg0OI6aYfTyOhmrIY5G2zMc6zhcAi47iCsb2Q8L9/wBP88Kq6jBYKzSqpgqY9pGW3y3c3eKeMg3BBViexLhHvMfSS/fQbD2Q8L9/0/zws7B9KqKreY6eqileGlxax1yACAT3XI9a0PsS4R7zH0kv31AdSFDGMXxF0QtFGJGMG82aZ+iL9zEF6oiICIiAiKO6c6Ww4ZTOnlILyCIo79KR9tw7AOJPIdtgQ54hpph8EjoZqyGORps5jnWcNwO/wK6PZAwv3/T/AEgVa6tdXLMRjlxHE2Oe6peXxtzPjNiSTJ0SDZxO4dQvzClOK6rcFp4ZJ5KZwZGxz3eem4NBPu0EvwjSmiqnmOnqopXhpcWscHEAEAnuuR61uFSf4OGF7qusy2a5zYWDja3TcLn4zFdiCvNYZ/OGfJj+JyjNM0Oe1p4FwB8SApLrGP5wz5MfxOUZoj5xnx2/xBaXE/b0+TDcQjXNq82TjuGuppnRHhxafdNPA/Z3grqwjFHU8zZW8jvHumniP/OdlY+mWCeUw3aPOsuW9Z62+PLtsqkc5cYt6Mi1pV16T/PF6ZuJVh5GtHTrTP8AO5vdfr/KMPpDF09pUty24m8Unq7epQrAMJbTR5dxed73dZ6h2Bbuave6JsJN2NeXtBHAkWNjy3X9ZWE5y6YuFTZqmqd57PJJzOIVZNMURtHb4z6PrnLpc5azHsXEDd297tzR/aPYFmOepcVxNU0x1hFizVFMVTG09PkzMPf0j8X7QtpSaPMxF/kkj3Ma8OOZtr3a0lvHlmAv2X4cVpKB3SPd9oUu0Ak/Poh1h4/q3H7F55H6NflP2c49OmVR5x91D45hMlJUSU0wtJG4td1HmCOwggjsIUm1UaYnDawOefMS2ZMOoX6L+9pJPcXK0tfuhm3hGIQt85CLSgcXRcc3aWE/NJ9yF55WXbVan4RRBxCEixBpm7xzG0ktv5qusAP51B8tH/GF9xTGJahsLZTm2EQhYeeQOJaD3ZrDsAXVhH+vh+UZ/EEHthERBo9Of0dWf0aX6tyqHQrFKiLA44ocPNcyaWoZKzpWa2zLcAeNz6lb2nP6OrP6NL9W5Uxq9oMbkoIjhlTHFCC8Pa/JcybRxJ6UbjbKWjjy4dYa7RbSvEsCjdBJRPyTPvE2bM2zrAHLu6V7tuN3DtWw1fOxShqpZ5MKmmlqXgPnka8FjXPu+wDeZIJ+KFqtZVDjMb6T8YVEcri87DJk6LrsuTaNvweN+CnH4m0s9/Qf1X+Ag4aA/wC82J/Fk+sjVxScD3Kl9WQeNIa8SEF4icHkcC4PiDj866uiTge5B5j1Z45ilMar8XUjKgOczaZmPflttMtsr22vd3XwU4/LbSb+aYvoZv8AGXX+Dd/7h8eH++V1IPO2sHSbG56KSOtw9kMBcwukbHI0gh4Ld5kcN5sOCuDVd+iaL5Fv2rUa9v0PN8eL61q2+q79E0XyLftQSeWQNBc4hrQLkk2AA4knkFRekWJP0kxGOhpi4UMDs8koHpWuC/f172sHaTwvab62dH6zEG01LSvLI3vcah17MDQG2zW3u3k2bzPdcRdmp2up3PbRYrJBESDlDpWOJygEuyEAm97dQQYmA4TC/SSvpTGNiaZ0WQcMuzgbYdVguOiuMSaO1z8NrCTRyuzQzHg25sH9gPB45EX74vhOilc/GaijZiD2VLGEvqQ+UOeLRmxcHZj6Q4n2qnkGqCpnJGI4jJUx5HCO75XOjebWeM7iOViOfqsFvRyBwDmkEEXBBuCDwIPMLkorq1wCagohSzvD3MkflcCS0sJu2wPo93I3XPWFgtVWUuwpJ9g90jcz8zmdCxzDo7zfdu5oOvS/WFQ4cCJZQ+XlDHZ0h7xezB2uI8VSGMYxXaQOllMb/JqUB/k0HSf0rgW3dNxsbvt0Rchp9E2fopqYoaYiSoLquUb/ADgtED17P236xcOxaTUW0CvxYAAASgADcB52fdZBttW2szD5I46MsFC9gDGxPdeM77WbIbdIniHWJJ5q0FBdPtWFJiQdIAIKniJWAWebcJG+3Hb6W4b7blN4GZWtB5AD9iCodbWDVEeJ0GIUkMksgcA9sbSSdm4EXtwDmuLSTyCzda+itXUV2H1dFBtHxHpnMxmUMkY9ly4jm5+7fwKtNzgBcmwHEngq7051t0dE1zIHtqajeA1hvGw9b3jduPtRv7uKCMa+681M9FhcO+Rzw9w42c87OMG3DcXk9hBVzUVM2KNkbdzWNawdzQAP2BVNql0NqJKh2MYjm28lzE14s4ZhYyFvtej0Wt5DlwVvoKI0jwqGq0rbTzsD4nss5pJF7Uj3DeCCLEA+C3GM6jow7a4fVyU8g3ta8lzR1APbZ7O85isOr/3xi+If/wAciutBQ0ukWkWDf7VH5VTt/lHDaNt17VtnN73jwV44fU7WKOS1s7Gute9szQbX58V3kX3FGtAAAFgNwA4BBBaTQN7MakxXbtLXgjZZTmHmmx+le3Ft+CnaEqJ6T6xcPoWnaVDXyDhFERJITa9iAbM73EIM3TvSFmH0U1S4jMGlsY91I4WYPXvPYCeSg/4PGDOjo5qt4Oapk3E8SyO4B8Xuf6lE2R12lNW1z2ugoIncvRHWAbeclI3X4NH/AFX5QUbIY2QxNDY2NDWtHAACwCDTad0lZLRvZQSbOoLm5XZstgHDNvseSrD8mtKvfo+mb91XeiCkPya0q9+j6Zv3U/JrSr36Ppm/dV3ogx6BrxFGJDd4Y0OPG7sovv571VtJq1nrsRmrcUeXwtmeIICb5oxI7Z3tuZHaxyje7nbfe2lr8XxympW5qieKIfDeGk9w4nwQZ7WgAACwG4AcAqX13aVOqHswaju+SR7dtl3779CL12c7qyjtXDS/W/JUu8jweOR8knR22U5z8mziPjOtbfu5iQ6qdWnkF6uqIkrHg88wiDuNj7Z55u7wOZITDQvR9uH0UNK3eWN6bvdPJzPd3Zibdllu0RBXWsndPH8n/aconTu6bfjD94Uq1mu8/H8n/aKg9Q7ou7j+5abE/b0+TFcQp/8AZXPj6J9pjrcoKLMyN3lUw3ZIiMgPwpeA37rDMR1KrMM0r8ukle9jI3lxdkZfLlPVc8b8e9VgsjD6p0UjZGcWn1jmD3jcqLFvzZuc3Z2tVm4sZFqae3s81qucsHEq9sLC93LgOZPUuLMRY6ITZrMtcnq6x333KBY1ijqh+bg0bmt6h195V1lZcWqNY6z09VBhYM3bmlW0R19HTV1b5ZM7zvJ8AOQHUFYLnqtQ4qxC5ROGVTPPM+H5WXE6IjkiPH8M6gf6Xh9qlWr13+kIf1/qnqHUb/S8PtUq1cP/ANIw/wDM+qep9/8ARr8p+yrtUaZNHnH3XXIwOBaQCCLEHeCDxFl5Q1qaHnDa1zGg7CW74T8G+9ne0m3dlPNesVDdbGBQVmHyNlkZG9nThkeQ0B4G5t+p3okDr7FmYjXaGsmdHk5Z2CRl08VgTaRhNuXSCzqPA+ch/VH2n/st1RNa17A0ADO3cPjBT7XD66o1r2j/ACiV5dMTpTu9WoiKvS2DjuH+U001Pmy7WN8ea18uZpbe3O11qdX+i34spBS7Xa2e5+bLk9K261z1KSIghusHQb8ZupnbfZeTvLrZM+a5YbekLej+1Zen+iz8SgZCypdTlsgkztBJIDHty7nD3V/BSdEEF1dato8KfJNtnTzSDKXFoaA2+Y2FySSQLknkpy4XFl9RBSg1DOBJbiLm3NzaIj+87Vy9gqT+dH/Rn/EV0ogpSTUM5wscSeR1GIkfWK1tFsH8jpIaXPn2TAzPbLmtztc29a2qICIiCGYXoLscWnxTb5tq0t2WS2W4jF8+bf6HVz7FM0RAREQFDNBdBfxdUVc+32vlLg7Lky5OnI618xzenblwUzRAREQarSjBhW0stKXlglblLgLkC4PDwUf0T1X4fQEPbEZpRwlms9wPW1tg1p7QL9qmqICIiCEzaBZsZZi3lHoi2xycfMui9PN8K/DkpsiICIiDGxOk20MkV7bRjmXte2Zpbe3PioBo9qXw6nIdKH1Lxv8AOm0fzG2BHY66shEHXTwNY0MY1rGtFmtaA1oHUANwC7ERAREQEREBV/pRqqpsQrXVdRNLYta3ZsytHRFt7iCTfssrARBp9HdF6ShblpadkVxYuAvI74zzdzu4lbhEQEREFZa0D+cR/Jf2nKESO3FWdp5o1UVUjJIQ0hrMpBdZ18xPPdz61X+IaP1cQOenkHaG5h623C0OHeo9jTTrGrK5+Nc/5FVfLOk9qk0JVh6Jan6+ss+UeSxH20oO0I7Itx+cWq69EtWGH0Fnti20w/lZrOcD8FtsrO8C/aVnmqUdojq1xKuYBlMFOTmzzXaD2tZbM7d3DtVrYbqUoYqaSNxdNO+NzRM/cGOIsHMjG5tjv3lx7VZ6LmZmeriIiOjxFV0z4pHxSNyvY4sc08Q5pII8CFOS9bf8ILRrYVjaxg6FSOl1CRoAPdmbY94ctCXq04Z/d8vyr8+NeX5/hk0r957lJ9AK1kWIQvkc1jAJMznGwA2MnPvUQpn7z3LsfIrSunmpmnvVsU8tyKu5bGkutZjbso2Zz/xZAQ39VnF3ebdxVXYxjE1S/aTyukd8I7h2AcGjuCwXyLYYBo3VVzstPEXC9jIejG3vfw8Bc9i8bdm1YjWNvFKmu5enf6NU+RbjRbRmqrJGmCIlrXAukPRjbY+6PE9guVamjGqanhs+qd5Q/wBx6MI8OL/Hd2Kw4YmsaGtaGtAsGtAAA6gBwUS/xGmNrca+KXaxJ61OaIip04REQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERBFdZ2jf4ww6aEC8jRtIuvOy5AHxhdn6y867RetFqcS0Zo6jfNSwvPuixub5w3/tUzEyYsTOsa6vC/Z9ppv0eZKd28rb4Ho/VVrstPE54vYvO6Nve87r9nHsVzxasMNbIJBC6w/kzI8xnvBNz3Xt2KXwQtY0MY0NaBYNaAGgdQA3BS7nEo09yPqj04e+tUq80a1TU8Vn1bvKH8cgu2EeHF/ju7FYcEDWNDGNa1rRYNaA1oHUANwC7EVZcvV3J1qlMooppjSIERF5u4iIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIg//9k=" alt="南日本ネットワーク" loading="lazy" style="height: 48px; max-width: 156px;">
+                <img src="images/partners/qtnet.svg" alt="QTnet" loading="lazy">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pain Points -->
+<section class="section section-gray" id="problems">
+    <div class="container">
+        <span class="section-eyebrow">CHALLENGES</span>
+        <h2 class="section-title">自治体DXで、多くの団体が直面する4つの課題</h2>
+        <p class="section-subtitle">
+            セキュリティ、精度、コスト、ナレッジ分散 —— 自治体・官公庁が直面する4つの壁を、ワンパッケージで解決します。
+        </p>
+        <div class="pain-grid">
+            <div class="pain-card">
+                <div class="pain-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 9.5-8 10-4.5-.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+                </div>
+                <span class="pain-num">課題 01</span>
+                <h3>データ主権・セキュリティの壁</h3>
+                <p>機密データをクラウドに預けられない。LGWAN環境でも生成AIを活用したい</p>
+            </div>
+            <div class="pain-card">
+                <div class="pain-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                </div>
+                <span class="pain-num">課題 02</span>
+                <h3>精度・日本語対応の壁</h3>
+                <p>汎用の海外LLMでは行政文書・例規・敬語の精度が業務利用には不十分</p>
+            </div>
+            <div class="pain-card">
+                <div class="pain-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/><path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg>
+                </div>
+                <span class="pain-num">課題 03</span>
+                <h3>コスト・初期投資の壁</h3>
+                <p>高額なGPU・サーバー投資が、自治体の予算規模では踏み切れない</p>
+            </div>
+            <div class="pain-card">
+                <div class="pain-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                </div>
+                <span class="pain-num">課題 04</span>
+                <h3>ナレッジ分散の壁</h3>
+                <p>部署ごとに散在する規程・通達・マニュアルの横断検索が非効率</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Solutions -->
+<section class="section" id="solutions">
+    <div class="container">
+        <span class="section-eyebrow">SOLUTION</span>
+        <h2 class="section-title">GBase On-Premisesがすべて解決します</h2>
+        <p class="section-subtitle">
+            完全オンプレミスでありながら、クラウド級のAI性能。Sparticleの独自技術で「セキュリティ」と「業務効率」を両立します。
+        </p>
+
+        <!-- Feature 01: Data Sovereignty -->
+        <div class="feature-row">
+            <div class="feature-visual">
+                <img src="images/feature-data-sovereignty.jpg" alt="完全オンプレミス・庁内ネットワーク内で完結する閉域運用イメージ" width="1200" height="900" loading="lazy" decoding="async">
+            </div>
+            <div class="feature-content">
+                <span class="feature-label">01 · データ主権の壁を解決</span>
+                <h3>完全オンプレミス、データを庁外に出さない</h3>
+                <p>外部ネットワークへの接続を一切必要とせず、庁内のセキュアな環境で機密データを学習・運用。LGWAN-ASP接続環境にも対応し、ソブリン性（データ主権）を完全に確保します。</p>
+                <ul class="feature-list">
+                    <li>外部API呼び出しゼロ、完全閉域で動作</li>
+                    <li>LGWAN環境でのAI業務支援を実現</li>
+                    <li>HPE ProLiant DL385 Gen11 採用パッケージあり</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Feature 02: GPU Efficiency -->
+        <div class="feature-row reverse">
+            <div class="feature-visual">
+                <img src="images/feature-gpu-cost.jpg" alt="限られた自治体予算でも全職員にAIを届ける構成イメージ" width="1200" height="900" loading="lazy" decoding="async">
+            </div>
+            <div class="feature-content">
+                <span class="feature-label">02 · コストの壁を解決</span>
+                <h3>限られた自治体予算でも、<br>全職員に行き渡るAI基盤を</h3>
+                <p>「予算規模では大規模AI導入は難しい」——その壁を、独自のハイブリッド量子化技術で打破。GPU使用量を最大85%削減・推論速度1.5倍を実現し、初期投資・運用コストを大幅に圧縮。1万人規模の自治体でも、全職員一人ひとりに行き渡るAI基盤を構築できます。</p>
+                <ul class="feature-list">
+                    <li>H100×2枚で同時接続320名 / RTX Pro 6000×2-4枚で150名</li>
+                    <li>デジタル田園都市国家構想交付金等、補助金対象構成に対応</li>
+                    <li>既存サーバー活用も視野に入れた、貴自治体専用構成をご提案</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Feature 03: RAG Cross-Search -->
+        <div class="feature-row">
+            <div class="feature-visual">
+                <img src="images/feature-rag-flow.jpg" alt="例規・台帳・通達を部署横断で検索するRAGエンジンのイメージ" width="1200" height="900" loading="lazy" decoding="async">
+            </div>
+            <div class="feature-content">
+                <span class="feature-label">03 · ナレッジ分散の壁を解決</span>
+                <h3>例規・台帳・通達を、<br>部署を越えて即座に検索</h3>
+                <p>庁内に散在する例規集・通達・マニュアル・住民台帳・統計データを、RAGエンジンで一元検索。PDF・Word・Excel・CSV・データベースを横断し、部署や担当範囲を越えて、職員が必要な情報に即座に辿り着けます。3年ごとの人事異動による知識継承の壁も低減します。</p>
+                <ul class="feature-list">
+                    <li>例規集・通達・マニュアル・住民台帳・税情報を一括検索</li>
+                    <li>PDF・Word・Excel・CSV・SQL DB の横断検索に対応</li>
+                    <li>Text-to-SQL / TAG（Table Augmented Generation）で構造化データも自然言語で照会</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Feature 04: Source & Hallucination -->
+        <div class="feature-row reverse">
+            <div class="feature-visual">
+                <img src="images/feature-source-evidence.jpg" alt="回答に根拠条文を明示し住民への説明責任を担保するイメージ" width="1200" height="900" loading="lazy" decoding="async">
+            </div>
+            <div class="feature-content">
+                <span class="feature-label">04 · 信頼性の壁を解決</span>
+                <h3>全ての回答に根拠を明示、<br>住民への説明責任を担保</h3>
+                <p>生成された回答には、必ず出典条文・該当箇所を明示。職員は根拠を即座に確認でき、住民への窓口対応や申請受付でも自信をもって正確な情報を提示できます。AIの誤回答による行政リスクを抑制し、行政文書としての信頼性を担保します。</p>
+                <ul class="feature-list">
+                    <li>回答ごとに条例・通達・マニュアルの出典を自動表示</li>
+                    <li>窓口・申請受付で、根拠条文を即座に提示</li>
+                    <li>AIの誤情報による説明責任リスクを大幅に抑制</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pillars / Differentiator -->
+<section class="section section-gray" id="pillars">
+    <div class="container">
+        <span class="section-eyebrow">WHY GBASE</span>
+        <h2 class="section-title">自治体・官公庁向けに選ばれる3つの理由</h2>
+        <div class="pillars-grid">
+            <div class="pillar-card">
+                <div class="pillar-num">01</div>
+                <div class="pillar-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M9 13.5 L7 21 L12 18 L17 21 L15 13.5"/><circle cx="12" cy="9" r="2"/></svg>
+                </div>
+                <h3>GENIAC-PRIZE 採択の<br>国産日本語LLM</h3>
+                <p>NEDO「GENIAC-PRIZE」に国産基盤モデルとして登録。日本語の文化的文脈・敬語・行政用語を深く理解し、海外モデルとの差を行政文書ベンチマークで検証済みです。</p>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-num">02</div>
+                <div class="pillar-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="6" rx="1.5"/><rect x="3" y="13" width="18" height="6" rx="1.5"/><circle cx="7" cy="6" r="0.6" fill="currentColor" stroke="none"/><circle cx="7" cy="16" r="0.6" fill="currentColor" stroke="none"/><line x1="11" y1="6" x2="18" y2="6"/><line x1="11" y1="16" x2="18" y2="16"/></svg>
+                </div>
+                <h3>HPE × NVIDIA × Sparticle<br>共同BMT実施済み</h3>
+                <p>HPE ProLiant DL385 Gen11 + NVIDIA H100 / RTX Pro 6000 構成で BMT を共同実施。サーバー・GPU・ソフトウェアがワンパッケージで動作保証され、SI 連携もスムーズです。</p>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-num">03</div>
+                <div class="pillar-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="9" y1="2" x2="15" y2="2"/></svg>
+                </div>
+                <h3>最短60日で本番稼働、<br>補助金申請まで一気通貫</h3>
+                <p>ヒアリング・要件定義・カスタマイズ・データ投入・テストまで、標準2ヶ月の導入プロセス。デジタル田園都市国家構想交付金、自治体DX推進事業等の補助金申請から本番運用までトータルで支援します。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Scenarios -->
+<section class="section" id="scenarios">
+    <div class="container">
+        <span class="section-eyebrow">USE CASES</span>
+        <h2 class="section-title">庁内のあらゆる業務をAIで支援</h2>
+        <p class="section-subtitle">
+            部署ごとに散在する庁内ナレッジを横断検索。窓口・内部業務・住民対応のすべてで、職員の業務負担を軽減します。
+        </p>
+        <div class="scenarios-grid">
+            <div class="scenario-card">
+                <div class="scenario-header">
+                    <div class="scenario-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 64">
+                            <path d="M8 16a6 6 0 0 1 6-6h28a6 6 0 0 1 6 6v16a6 6 0 0 1-6 6H26l-10 8v-8h-2a6 6 0 0 1-6-6z"/>
+                            <line x1="16" y1="20" x2="40" y2="20"/>
+                            <line x1="16" y1="28" x2="34" y2="28"/>
+                            <circle cx="48" cy="46" r="10"/>
+                            <path d="M44 44h8M48 40v8"/>
+                        </svg>
+                    </div>
+                    <span class="scenario-badge">シーン 01</span>
+                    <h3>税務窓口・住民相談</h3>
+                </div>
+                <div class="scenario-body">
+                    <p>住民からの問い合わせに対し、過去のFAQ・規程・通達を横断検索。チャットボット形式で<strong>24時間体制の一次対応</strong>を実現し、外国人住民にも多言語で応対できます。</p>
+                    <ul class="scenario-features">
+                        <li>夜間・休日の問い合わせも自動応対</li>
+                        <li>外国語対応（中国語・英語・ベトナム語等）</li>
+                        <li>FAQ・通達・例規をエビデンス付きで参照</li>
+                        <li>応対履歴の自動記録で後続対応もスムーズ</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="scenario-card">
+                <div class="scenario-header">
+                    <div class="scenario-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 64">
+                            <path d="M14 8h22l12 12v32a4 4 0 0 1-4 4H14a4 4 0 0 1-4-4V12a4 4 0 0 1 4-4z"/>
+                            <path d="M36 8v12h12"/>
+                            <path d="M32 42c-3.5-3-8-4-8-9 0-3 2.5-5.5 5.5-5.5 1.5 0 3 .5 4 1.5l1-1c1-1 2.5-1.5 4-1.5 3 0 5.5 2.5 5.5 5.5 0 5-4.5 6-8 9l-1 1z"/>
+                        </svg>
+                    </div>
+                    <span class="scenario-badge">シーン 02</span>
+                    <h3>福祉・健康部門</h3>
+                </div>
+                <div class="scenario-body">
+                    <p>障害福祉・介護・国民健康保険など、頻繁に改正される制度を横断検索。担当職員の制度学習コストを抑え、住民への正確な制度案内を実現します。</p>
+                    <ul class="scenario-features">
+                        <li>制度改正・通達の自動反映</li>
+                        <li>申請書類の根拠条文の即時提示</li>
+                        <li>3年ごとの異動でも知識継承を支援</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="scenario-card">
+                <div class="scenario-header">
+                    <div class="scenario-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 64">
+                            <line x1="6" y1="56" x2="58" y2="56"/>
+                            <path d="M32 8L8 22h48L32 8z"/>
+                            <line x1="10" y1="22" x2="54" y2="22"/>
+                            <line x1="14" y1="56" x2="14" y2="22"/>
+                            <line x1="24" y1="56" x2="24" y2="22"/>
+                            <line x1="32" y1="56" x2="32" y2="22"/>
+                            <line x1="40" y1="56" x2="40" y2="22"/>
+                            <line x1="50" y1="56" x2="50" y2="22"/>
+                        </svg>
+                    </div>
+                    <span class="scenario-badge">シーン 03</span>
+                    <h3>総務・人事・内部統制</h3>
+                </div>
+                <div class="scenario-body">
+                    <p>内規・服務・人事制度・調達ルールなど、職員からの内部問い合わせをAIが一次回答。総務部門の問合せ対応工数を削減し、本来業務に集中できます。</p>
+                    <ul class="scenario-features">
+                        <li>例規集・服務規程の横断検索</li>
+                        <li>稟議・申請フローの案内</li>
+                        <li>議事録・資料作成の補助</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Case Studies -->
+<section class="section section-gray" id="cases">
+    <div class="container">
+        <span class="section-eyebrow">CASE STUDIES</span>
+        <h2 class="section-title">自治体・官公庁での導入実績</h2>
+        <p class="section-subtitle">
+            宮崎県庁との連携協定締結、大阪府行政AIエージェントコンソーシアム参画 —— 自治体DXの最前線で選ばれています。
+        </p>
+        <div class="cases-grid">
+            <!-- Case: Miyazaki -->
+            <article class="case-card">
+                <div class="case-cover">
+                    <img src="images/case-miyazaki-cover.jpg" alt="宮崎県庁での連携協定締結式の様子" width="1600" height="900" loading="lazy" decoding="async">
+                </div>
+                <div class="case-body">
+                    <div class="case-meta">
+                        <span class="case-tag">自治体</span>
+                        <span class="case-tag">連携協定</span>
+                        <span class="case-tag">職員6,000名</span>
+                    </div>
+                    <h3>宮崎県庁 — データを県外に出さず、全職員がAIを活用</h3>
+                    <p>2026年3月27日、宮崎県・日本ヒューレット・パッカード・Sparticle・南日本ネットワークの四者で「生成AIの活用に関する連携協定」を締結。HPE ProLiant DL385 Gen11 を採用し、2026年4月より県庁職員約6,000名を対象とした業務支援基盤として本格稼働します。LGWAN環境での完全閉域運用を実現し、データを県外に出すことなく庁内業務にAIを活用できる体制を構築しました。</p>
+                    <a href="https://www.pref.miyazaki.lg.jp/kense/koho/chijishitsu/photogalleries/2026/20260327150445.html"
+                       target="_blank" rel="noopener noreferrer" class="case-link">
+                        宮崎県公式発表ページを見る
+                    </a>
+                </div>
+            </article>
+
+            <!-- Case: Osaka -->
+            <article class="case-card">
+                <div class="case-cover">
+                    <img src="images/case-osaka-cover.jpg" alt="大阪府行政AIエージェントコンソーシアム設立式の様子" width="1600" height="900" loading="lazy" decoding="async">
+                </div>
+                <div class="case-body">
+                    <div class="case-meta">
+                        <span class="case-tag">広域自治体</span>
+                        <span class="case-tag">コンソーシアム参画</span>
+                        <span class="case-tag">29団体</span>
+                    </div>
+                    <h3>大阪府 — 行政AIエージェントによる業務代行実証に参画</h3>
+                    <p>大阪府が設立した「大阪府行政AIエージェントコンソーシアム」（29団体参画）に、Sparticleが国内オンプレミスAI事業者として参画。「大阪府スマートシティ戦略推進業務 GBase On-Premises for HPE」として、AIエージェントによる行政手続きの代行実証を担当します。住民とのインターフェース技術・自治体内部システム連携・実証評価のための学術知見を集積し、大阪府内区市町村および全国自治体への展開可能なモデルの構築をめざします。</p>
+                    <a href="https://www.pref.osaka.lg.jp/o060020/senryaku_kikaku/ai-agent/gaiyou.html"
+                       target="_blank" rel="noopener noreferrer" class="case-link">
+                        大阪府公式コンソーシアム概要ページを見る
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="cta-content">
+        <h2>自治体・官公庁でのAI活用をご検討の方へ</h2>
+        <p>貴自治体・貴庁の業務に合わせた具体的な活用シーンと導入計画を、補助金活用も含めてご提案します。<br>宮崎県庁での実機デモを体験いただける視察ツアーもご用意しています。</p>
+        <div class="hero-cta">
+            <a href="/download" class="btn btn-primary">資料を無料ダウンロード</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-content">
+        <div>
+            <div class="footer-brand">
+                <img src="https://onprem.gbase.ai/logo.png" alt="GBase On-Prem">
+            </div>
+            <p class="footer-tagline">完全オンプレミス型のエンタープライズRAG。<br>Sparticle独自の日本語特化LLMで、組織の知識を安全にAI活用。</p>
+        </div>
+        <div>
+            <h4>製品</h4>
+            <ul>
+                <li><a href="/products/enterprise">Enterprise（1万人規模）</a></li>
+                <li><a href="/products/business">Business（100〜1,000人規模）</a></li>
+                <li><a href="/products/spark">for Spark（〜100人規模）</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>ソリューション</h4>
+            <ul>
+                <li><a href="/solutions/government">自治体・官公庁向け</a></li>
+                <li><a href="/solutions/finance">金融機関向け</a></li>
+                <li><a href="/solutions/healthcare">医療・病院向け</a></li>
+                <li><a href="/solutions/enterprise">大企業向け</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>会社情報</h4>
+            <ul>
+                <li><a href="/case-studies">導入事例</a></li>
+                <li><a href="/resources">リソース</a></li>
+                <li><a href="/partners">パートナー</a></li>
+                <li><a href="/contact">お問い合わせ</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        © 2026 Sparticle Inc. All rights reserved.
+    </div>
+</footer>
+
+</body>
+</html>
