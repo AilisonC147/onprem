@@ -428,12 +428,12 @@
           <!-- 課題 -->
           <section id="challenge" class="mb-12">
             <span class="section-label">導入の背景と課題</span>
-            <h2 class="section-heading">機密データを外に出せず、汎用AIでは精度に届かない</h2>
+            <h2 class="section-heading">機密データを外に出せず、汎用AIでは精度が不十分</h2>
             <p>
               株式会社荏原製作所は、ポンプ・送風機・冷却装置など産業機械の世界的な総合メーカーである。創業1912年以来、110年以上にわたり蓄積してきた設計ノウハウ・技術仕様書・社内規程は、同社の競争力の源泉そのものだ。
             </p>
             <p>
-              生成AIの登場と共に、社内でも活用検討が進んだ。だが、ここで重大な摩擦が生じる。クラウド型の汎用AIに自社の機密技術情報を渡せば、設計図や仕様書といった「外に出すと致命的な資産」が外部サーバーに渡ることになる。データ主権・情報セキュリティポリシーの観点から、これは許容できない。
+              生成AIの登場と共に、社内でも活用検討が進んだ。だが、ここで重大なジレンマが生じる。クラウド型の汎用AIに自社の機密技術情報を渡せば、設計図や仕様書といった「漏えいすれば事業に致命的な影響を与える資産」が外部サーバーに渡ることになる。データ主権・情報セキュリティポリシーの観点から、これは許容できない。
             </p>
             <p>
               一方、機密情報を渡さずに汎用AIを使った場合、得られる回答は一般論にとどまった。製造現場が必要としているのは「この設計仕様で、この温度条件で、過去にどんな対応をしたか」といった、専門家レベルの具体的な知見だ。
@@ -461,7 +461,7 @@
               <div class="pl-4 border-l-2 border-accent-300">
                 <h3 class="text-sm font-semibold text-gray-900 mb-1.5">② 70Bパラメータの日本語高精度モデル</h3>
                 <p class="text-sm text-gray-600 leading-relaxed mb-0">
-                  検証の結果、70B（700億パラメータ）モデルは<strong>一部タスクで GPT-4o mini と同等レベルの精度</strong>を実現。製造業の専門用語・社内固有の表記も、社内文書のRAG検索を併用することで精度高く扱える。
+                  検証の結果、70B（700億パラメータ）モデルは<strong>一部タスクで GPT-4o mini と同等レベルの精度</strong>を実現。製造業の専門用語・社内固有の表記も、社内文書のRAG検索を併用することで高い精度で扱える。
                 </p>
               </div>
               <div class="pl-4 border-l-2 border-accent-300">
@@ -473,7 +473,7 @@
               <div class="pl-4 border-l-2 border-accent-300">
                 <h3 class="text-sm font-semibold text-gray-900 mb-1.5">④ RAG で「荏原仕様の AI」が育つ</h3>
                 <p class="text-sm text-gray-600 leading-relaxed mb-0">
-                  社内文書をアップロードするだけで、Retrieval-Augmented Generation（RAG）の仕組みにより、自社固有の知識を反映した回答ができる「荏原専用AI」へ成長していく。専門知識を持つベンダー人材を呼ぶ必要はない。
+                  社内文書をアップロードするだけで、Retrieval-Augmented Generation（RAG）の仕組みにより、自社固有の知識を反映した回答ができる「荏原専用AI」へ成長していく。外部ベンダーの専門人材を別途配置する必要はない。
                 </p>
               </div>
             </div>
@@ -482,7 +482,7 @@
           <!-- 導入 -->
           <section id="implementation" class="mb-12">
             <span class="section-label">導入のプロセス</span>
-            <h2 class="section-heading">POC 約 2 ヶ月、専門知識ゼロでの社内ナレッジ構築</h2>
+            <h2 class="section-heading">POC 約 2 ヶ月、専門知識を必要としない社内ナレッジ構築</h2>
             <p>
               荏原製作所は CPS（Cyber Physical Strategy）推進部を中心に、現在 約 2 ヶ月にわたる POC（概念実証）として運用を継続している。導入における特徴は、AI 専門人材を新たに揃える必要が無かった点にある。
             </p>
