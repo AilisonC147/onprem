@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>荏原製作所 GBase OnPrem 導入事例｜機密技術文書を外部に出さず社内AIで活用、検索時間93%削減</title>
+  <meta name="description" content="荏原製作所が GBase OnPrem を導入。設計図・技術仕様書・社内規程など機密性の高いデータを外部に出さず、オンプレミス環境のRAG検索AIで活用。技術情報検索が30分→2分（93%削減）、満足度9/10。">
+  <meta name="keywords" content="荏原製作所, GBase OnPrem, オンプレミスAI, 製造業 AI, RAG検索, 機密データ AI活用, 70Bモデル, NVIDIA A100, 社内ナレッジベース">
+  <meta name="robots" content="index,follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="荏原製作所 GBase OnPrem 導入事例｜機密技術文書を外部に出さず社内AIで活用">
+  <meta property="og:description" content="製造業の機密性が高い技術文書を外部に出さずに、オンプレミスAIで活用。技術検索30分→2分、満足度9/10の事例。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://onprem.gbase.ai/case-studies/ebara">
+  <meta property="og:image" content="https://onprem.gbase.ai/og-case-ebara.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="荏原製作所 GBase OnPrem 導入事例">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="GBase OnPrem">
+  <meta property="article:published_time" content="2026-03-19T00:00:00+09:00">
+  <meta property="article:modified_time" content="2026-05-08T00:00:00+09:00">
+  <meta property="article:section" content="導入事例">
+  <meta property="article:tag" content="製造業">
+  <meta property="article:tag" content="オンプレミスAI">
+  <meta property="article:tag" content="RAG検索">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="荏原製作所 GBase OnPrem 導入事例">
+  <meta name="twitter:description" content="機密性の高い技術文書を外部に出さず、オンプレミスAIで活用。技術検索93%削減。">
+  <meta name="twitter:image" content="https://onprem.gbase.ai/og-case-ebara.jpg">
+  <meta name="twitter:image:alt" content="荏原製作所 GBase OnPrem 導入事例">
+
+  <link rel="canonical" href="https://onprem.gbase.ai/case-studies/ebara">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: { 50:'#F0F0F8', 100:'#D5D4E8', 200:'#A6A4D0', 300:'#7773B7', 400:'#4D4895', 500:'#2D2870', 600:'#1A165A', 700:'#0F0B47', 800:'#070336', 900:'#050038' },
+            accent: { 50:'#FAFCEC', 100:'#F4F8DC', 200:'#E8F0A3', 300:'#DCE972', 400:'#CDD850', 500:'#9BA832' },
+            mint: { 100:'#EFF7F4', 200:'#E6EBE1', 300:'#D4EBE7' },
+            lime: { 100:'#F4F8DC', 200:'#E8F0A3', 300:'#DCE972', 400:'#CDD850', 500:'#9BA832' },
+            dark: { 800:'#0D0D0F', 900:'#050038' }
+          },
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans JP', 'sans-serif'],
+            jp: ['Noto Sans JP', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* ===== CSS vars for site header / footer ===== */
+    :root {
+      --sol-text: #050038; --sol-brand: #050038; --sol-accent: #9BA832;
+      --sol-secondary: #5E6278; --sol-bg: #F7F8F5;
+      --sol-border: #E4E7EC; --sol-lime: #DCE972;
+    }
+    /* ===== SITE HEADER ===== */
+    .site-header { position: sticky; top: 0; z-index: 50; width: 100%; border-bottom: 1px solid var(--sol-border); background: rgba(255,255,255,0.95); backdrop-filter: blur(4px); }
+    .site-header-inner { padding: 0 40px; display: flex; justify-content: center; }
+    .site-header-content { display: flex; height: 64px; width: 100%; max-width: 1200px; align-items: center; justify-content: space-between; }
+    .site-logo img { height: 32px; width: auto; }
+    .site-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; transition: opacity 0.2s; }
+    .site-logo:hover { opacity: 0.8; }
+    .site-logo-text { font-size: 16px; font-weight: 800; color: var(--sol-brand); letter-spacing: -0.01em; }
+    .site-nav { display: flex; align-items: center; gap: 0; }
+    .nav-link { font-size: 14px; font-weight: 500; color: var(--sol-text); text-decoration: none; padding: 20px 16px; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
+    .nav-link:hover { color: var(--sol-accent); }
+    .nav-dropdown { position: relative; }
+    .nav-btn { display: flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 500; color: var(--sol-text); background: none; border: none; cursor: pointer; padding: 20px 16px; border-bottom: 2px solid transparent; transition: color 0.2s; }
+    .nav-btn svg { width: 14px; height: 14px; }
+    .nav-btn:hover { color: var(--sol-accent); }
+    .nav-dropdown-menu { display: none; position: absolute; top: calc(100% - 4px); left: 0; background: #fff; border: 1px solid var(--sol-border); border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); min-width: 220px; padding: 8px; z-index: 100; }
+    .nav-dropdown-menu::before { content: ''; position: absolute; top: -8px; left: 0; right: 0; height: 8px; }
+    .nav-dropdown-menu-wide { min-width: 320px; }
+    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+    .nav-dropdown-inner { display: flex; flex-direction: column; gap: 2px; }
+    .nav-dropdown-item { display: block; padding: 8px 12px; border-radius: 6px; text-decoration: none; color: var(--sol-text); transition: background 0.15s; }
+    .nav-dropdown-item:hover { background: var(--sol-bg); }
+    .item-title { font-size: 13px; font-weight: 600; }
+    .item-sub { font-size: 12px; color: var(--sol-secondary); margin-top: 2px; }
+    .site-header-actions { display: flex; align-items: center; gap: 12px; }
+    .btn-contact-pill { font-size: 13px; font-weight: 700; color: var(--sol-brand); background: linear-gradient(to right, #DDDD44, #AFFBF8); border-radius: 9999px; padding: 8px 18px; text-decoration: none; transition: all 0.2s; border: none; box-shadow: 0 2px 8px rgba(155, 168, 50, 0.2); }
+    .btn-contact-pill:hover { background: linear-gradient(to right, #CDD850, #7AEAE5); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(155, 168, 50, 0.3); }
+    .btn-onprem-gradient { background: linear-gradient(to right, #DDDD44, #AFFBF8); color: #050038; transition: all 0.2s; }
+    .btn-onprem-gradient:hover { background: linear-gradient(to right, #CDD850, #7AEAE5); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(155, 168, 50, 0.35), 0 4px 8px rgba(0, 0, 0, 0.08); }
+    /* ===== SITE FOOTER ===== */
+    .site-footer { background: var(--sol-bg); border-top: 1px solid var(--sol-border); color: var(--sol-secondary); padding: 48px 40px 24px; }
+    .site-footer-inner { max-width: 1200px; margin: 0 auto; }
+    .site-footer-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 32px; margin-bottom: 40px; }
+    @media (max-width: 960px) { .site-footer-grid { grid-template-columns: repeat(2, 1fr); } }
+    .site-footer h3 { font-size: 13px; font-weight: 700; color: var(--sol-text); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--sol-border); }
+    .site-footer h3.mt { margin-top: 28px; }
+    .site-footer ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .site-footer ul a { font-size: 13px; color: var(--sol-secondary); text-decoration: none; transition: color 0.2s; }
+    .site-footer ul a:hover { color: var(--sol-accent); }
+    .site-footer-brand { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+    .footer-tagline { font-size: 12px; color: var(--sol-secondary); line-height: 1.6; }
+    .site-footer-bottom { border-top: 1px solid var(--sol-border); padding-top: 20px; font-size: 12px; color: var(--sol-secondary); }
+
+    .icon { font-family: 'Material Symbols Rounded'; font-size: 24px; font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24; }
+    .gradient-text { background: linear-gradient(135deg, #050038 0%, #9BA832 55%, #DCE972 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .cta-gradient-text { background: linear-gradient(135deg, #DCE972 0%, #E8F0A3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .stat-gradient-text { background: linear-gradient(135deg, #5C6B1F 0%, #9BA832 50%, #CDD850 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .footer-social { display: flex; gap: 10px; margin-top: 20px; }
+    .footer-social a { width: 18px; height: 18px; color: var(--sol-secondary); transition: color 0.2s; display: inline-block; }
+    .footer-social a:hover { color: var(--sol-accent); }
+    .footer-social svg { width: 100%; height: 100%; }
+    .site-footer-bottom-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; }
+    .site-footer-legal { display: flex; flex-wrap: wrap; gap: 20px; }
+    .site-footer-legal a { font-size: 12px; color: var(--sol-secondary); text-decoration: none; transition: color 0.2s; }
+    .site-footer-legal a:hover { color: var(--sol-accent); }
+    .img-depth { box-shadow: 0 20px 60px rgba(5,0,56,0.18), 0 8px 24px rgba(5,0,56,0.10); }
+    .stat-card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+    .stat-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(155,168,50,0.18), 0 4px 8px rgba(0,0,0,0.05) !important; }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(155,168,50,0.20), 0 8px 16px rgba(0,0,0,0.06); }
+    .btn-3d { box-shadow: 0 4px 14px rgba(0,0,0,0.15), 0 2px 4px rgba(0,0,0,0.08); transition: all 0.25s ease; }
+    .btn-3d:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2), 0 4px 8px rgba(0,0,0,0.1); }
+    .section-fade { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .section-fade.visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      .section-fade { opacity: 1; transform: none; transition: none; }
+      .stat-card:hover, .card-hover:hover, .btn-3d:hover { transform: none; }
+    }
+    /* Article body */
+    .article-body { font-size: 15px; line-height: 1.85; color: #374151; }
+    .article-body p { margin-bottom: 1.25rem; }
+    .section-heading { font-size: 18px; font-weight: 700; color: #050038; padding-bottom: 12px; border-bottom: 1px solid #E5E7EB; margin-bottom: 20px; }
+    .section-label { font-size: 11px; font-weight: 700; color: #9BA832; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 6px; }
+    .sidebar-sticky { position: sticky; top: 80px; }
+    /* Hero illustration */
+    .hero-illustration {
+      background:
+        radial-gradient(ellipse 70% 60% at 30% 30%, rgba(220, 233, 114, 0.50) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 60% at 70% 70%, rgba(232, 240, 163, 0.35) 0%, transparent 65%),
+        linear-gradient(135deg, #050038 0%, #1A165A 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-illustration::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(220, 233, 114, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(220, 233, 114, 0.08) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+  </style>
+
+  <!-- JSON-LD: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "荏原製作所 GBase OnPrem 導入事例｜機密技術文書を外部に出さず社内AIで活用、検索時間93%削減",
+    "description": "株式会社荏原製作所が GBase OnPrem を採用。設計図・技術仕様書・社内規程など機密性の高いデータを外部に出さず、オンプレミス環境のRAG検索AIで活用。技術情報検索が30分→2分（93%削減）、満足度9/10の事例。",
+    "image": [
+      "https://onprem.gbase.ai/og-case-ebara.jpg",
+      "https://www.ebara.com/adobe/dynamicmedia/deliver/dm-aid--76c1020d-cb53-46e4-982f-de902022bd63/img-our-business-02.jpg"
+    ],
+    "author": { "@type": "Organization", "name": "Sparticle Inc.", "url": "https://sparticle.com/" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "GBase OnPrem",
+      "logo": { "@type": "ImageObject", "url": "https://onprem.gbase.ai/logo.png" }
+    },
+    "datePublished": "2026-03-19",
+    "dateModified": "2026-05-08",
+    "inLanguage": "ja",
+    "articleSection": "導入事例",
+    "keywords": "荏原製作所, GBase OnPrem, オンプレミスAI, 製造業 AI, RAG検索, 機密データ AI活用, 70Bモデル, NVIDIA A100, 社内ナレッジベース",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://onprem.gbase.ai/case-studies/ebara"
+    },
+    "about": {
+      "@type": "Organization",
+      "name": "株式会社荏原製作所",
+      "alternateName": "Ebara Corporation",
+      "url": "https://www.ebara.com/",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Ebara.svg/250px-Ebara.svg.png",
+      "industry": "産業機械（ポンプ・送風機・冷却装置等）"
+    },
+    "mentions": {
+      "@type": "SoftwareApplication",
+      "name": "GBase OnPrem",
+      "url": "https://onprem.gbase.ai/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "On-premises (Linux)"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: Product (GBase OnPrem) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "GBase OnPrem",
+    "url": "https://onprem.gbase.ai/",
+    "image": "https://onprem.gbase.ai/logo.png",
+    "description": "企業向けオンプレミスAIナレッジベース。RAG検索・社内FAQチャットボット・権限管理・ログ監査まで一元化。機密情報を外部に出さずに、高精度AI検索とナレッジ活用を実現。",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "On-premises (Linux)",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "JPY",
+      "availability": "https://schema.org/InStock"
+    },
+    "featureList": [
+      "オンプレミス・完全閉域運用",
+      "RAG（Retrieval-Augmented Generation）検索",
+      "70B/80B 日本語高精度モデル",
+      "NVIDIA A100 / H200 GPU 対応",
+      "8-bit 量子化最適化",
+      "ファイル解析・社内ナレッジベース構築",
+      "権限管理・ログ監査"
+    ],
+    "publisher": { "@type": "Organization", "name": "Sparticle Inc.", "url": "https://sparticle.com/" }
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://onprem.gbase.ai/" },
+      { "@type": "ListItem", "position": 2, "name": "導入事例", "item": "https://onprem.gbase.ai/case-studies" },
+      { "@type": "ListItem", "position": 3, "name": "荏原製作所", "item": "https://onprem.gbase.ai/case-studies/ebara" }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Sparticle Inc.",
+    "url": "https://onprem.gbase.ai/",
+    "logo": "https://onprem.gbase.ai/logo.png",
+    "sameAs": [
+      "https://x.com/sparticle_ai",
+      "https://note.com/sparticle",
+      "https://www.linkedin.com/company/sparticle-inc"
+    ]
+  }
+  </script>
+</head>
+<body class="bg-white text-gray-900 font-sans antialiased">
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="site-header-inner">
+      <div class="site-header-content">
+        <a href="https://onprem.gbase.ai/" class="site-logo">
+          <img src="https://onprem.gbase.ai/logo.png" alt="GBase OnPrem ロゴ" width="32" height="32" decoding="async">
+        </a>
+        <nav class="site-nav">
+          <div class="nav-dropdown">
+            <button class="nav-btn">製品
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="nav-dropdown-menu">
+              <div class="nav-dropdown-inner">
+                <a href="https://onprem.gbase.ai/" class="nav-dropdown-item">
+                  <div class="item-title">GBase on Prem</div>
+                  <div class="item-sub">大規模組織向け</div>
+                </a>
+                <a href="https://onprem.gbase.ai/" class="nav-dropdown-item">
+                  <div class="item-title">GBase on Spark</div>
+                  <div class="item-sub">中堅・部門向け</div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <button class="nav-btn">ソリューション
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="nav-dropdown-menu nav-dropdown-menu-wide">
+              <div class="nav-dropdown-inner">
+                <a href="https://ailisonc147.github.io/onprem/government-solution.html" class="nav-dropdown-item">
+                  <div class="item-title">自治体・官公庁</div>
+                  <div class="item-sub">機密情報を外に出さない閉域AI</div>
+                </a>
+                <a href="#" class="nav-dropdown-item">
+                  <div class="item-title">製造業</div>
+                  <div class="item-sub">技術文書・社内ノウハウのAI活用</div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <a href="#" class="nav-link">導入事例</a>
+          <div class="nav-dropdown">
+            <button class="nav-btn">リソース
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="nav-dropdown-menu">
+              <div class="nav-dropdown-inner">
+                <a href="https://onprem.gbase.ai/blog" class="nav-dropdown-item">
+                  <div class="item-title">ブログ</div>
+                </a>
+                <a href="https://onprem.gbase.ai/#implementation-flow" class="nav-dropdown-item">
+                  <div class="item-title">導入流れ</div>
+                </a>
+                <a href="https://onprem.gbase.ai/#faq" class="nav-dropdown-item">
+                  <div class="item-title">よくある質問</div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <div class="site-header-actions">
+          <a href="https://onprem.gbase.ai/#contact" class="btn-contact-pill">問い合わせ</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== BREADCRUMB ===== -->
+    <div class="bg-gray-50 border-b border-gray-100">
+      <div class="max-w-7xl mx-auto px-6 py-3">
+        <nav class="flex items-center gap-1 text-sm text-gray-500" aria-label="breadcrumb">
+          <a href="https://onprem.gbase.ai/" class="hover:text-accent-500 transition-colors">ホーム</a>
+          <span class="icon text-gray-300 mx-0.5" style="font-size: 15px;">chevron_right</span>
+          <a href="https://onprem.gbase.ai/case-studies" class="hover:text-accent-500 transition-colors">導入事例</a>
+          <span class="icon text-gray-300 mx-0.5" style="font-size: 15px;">chevron_right</span>
+          <span class="text-gray-800 font-medium">株式会社荏原製作所</span>
+        </nav>
+      </div>
+    </div>
+
+    <!-- ===== HERO ===== -->
+    <section class="py-16 md:py-20 bg-gradient-to-br from-accent-50 via-white to-white overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-14 items-center">
+          <div>
+            <div class="flex items-center gap-4 mb-6">
+              <div class="h-12 flex items-center justify-center bg-white rounded-lg border border-gray-200 px-4" style="box-shadow: 0 2px 8px rgba(5,0,56,0.06);">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Ebara.svg/250px-Ebara.svg.png" alt="株式会社荏原製作所 公式ロゴ" class="h-7 w-auto" width="120" height="28" decoding="async">
+              </div>
+              <div>
+                <p class="text-xs text-gray-500 leading-none mb-1.5">導入企業</p>
+                <p class="text-xl font-bold text-primary-900 font-jp leading-tight">株式会社荏原製作所</p>
+              </div>
+            </div>
+            <h1 class="text-3xl lg:text-4xl font-extrabold leading-tight tracking-tight mb-5 font-jp" style="color: #A8C72E;">
+              外部に出せない技術文書を、<br>社内AIで安全に活用する。
+            </h1>
+            <p class="text-lg text-gray-600 leading-relaxed mb-8 max-w-lg">
+              設計図・技術仕様書・社内規程など機密性の高いデータを外部に出さず、オンプレミス環境のRAG検索AIで活用。技術情報検索の所要時間を <strong class="text-primary-900">30分→2分（93%削減）</strong> に短縮。
+            </p>
+            <a href="#contact" class="btn-onprem-gradient inline-flex items-center gap-2 px-7 py-3 font-bold rounded-full" style="box-shadow: 0 4px 16px rgba(155,168,50,0.3);">
+              <span class="icon text-lg">mail</span>
+              お問い合わせ・ご相談
+            </a>
+          </div>
+          <div class="aspect-[4/3] rounded-2xl overflow-hidden img-depth max-w-md ml-auto">
+            <img src="https://www.ebara.com/adobe/dynamicmedia/deliver/dm-aid--76c1020d-cb53-46e4-982f-de902022bd63/img-our-business-02.jpg?quality=85&preferwebp=true"
+                 alt="荏原製作所 GBase OnPrem 導入 — 産業機械製造業の現場における AI ナレッジ活用"
+                 class="w-full h-full object-cover"
+                 width="1200"
+                 height="900"
+                 fetchpriority="high"
+                 decoding="async">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EFFECTS ===== -->
+    <section class="py-20 bg-accent-50 section-fade">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-12">
+          <p class="text-sm text-accent-500 font-semibold mb-3">導入効果</p>
+          <h2 class="text-3xl font-bold font-jp text-primary-900">数字で見る、導入の成果</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white rounded-2xl p-8 text-center stat-card cursor-pointer" style="box-shadow: 0 4px 20px rgba(5,0,56,0.06), 0 1px 3px rgba(0,0,0,0.04);">
+            <div class="text-4xl font-extrabold stat-gradient-text mb-2">9/10</div>
+            <p class="text-base text-gray-700 font-medium mb-2">導入満足度</p>
+            <p class="text-sm text-gray-400">CPS推進部・関係者評価</p>
+          </div>
+          <div class="bg-white rounded-2xl p-8 text-center stat-card cursor-pointer" style="box-shadow: 0 4px 20px rgba(5,0,56,0.06), 0 1px 3px rgba(0,0,0,0.04);">
+            <div class="text-4xl font-extrabold stat-gradient-text mb-2">93%</div>
+            <p class="text-base text-gray-700 font-medium mb-2">技術情報検索 時短</p>
+            <p class="text-sm text-gray-400">30分 → 2分</p>
+          </div>
+          <div class="bg-white rounded-2xl p-8 text-center stat-card cursor-pointer" style="box-shadow: 0 4px 20px rgba(5,0,56,0.06), 0 1px 3px rgba(0,0,0,0.04);">
+            <div class="text-4xl font-extrabold stat-gradient-text mb-2">95%</div>
+            <p class="text-base text-gray-700 font-medium mb-2">社内規程検索 時短</p>
+            <p class="text-sm text-gray-400">20分 → 1分</p>
+          </div>
+          <div class="bg-white rounded-2xl p-8 text-center stat-card cursor-pointer" style="box-shadow: 0 4px 20px rgba(5,0,56,0.06), 0 1px 3px rgba(0,0,0,0.04);">
+            <div class="text-4xl font-extrabold stat-gradient-text mb-2">0件</div>
+            <p class="text-base text-gray-700 font-medium mb-2">情報漏洩リスク</p>
+            <p class="text-sm text-gray-400">完全閉域・データ主権確保</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MAIN CONTENT: 2-COLUMN ===== -->
+    <div class="max-w-7xl mx-auto px-6 py-16">
+      <div class="flex gap-14 items-start">
+
+        <!-- LEFT: Article body -->
+        <div class="flex-1 min-w-0 article-body section-fade">
+
+          <!-- 課題 -->
+          <section id="challenge" class="mb-12">
+            <span class="section-label">導入の背景と課題</span>
+            <h2 class="section-heading">機密データを外に出せず、汎用AIでは精度に届かない</h2>
+            <p>
+              株式会社荏原製作所は、ポンプ・送風機・冷却装置など産業機械の世界的な総合メーカーである。創業1912年以来、110年以上にわたり蓄積してきた設計ノウハウ・技術仕様書・社内規程は、同社の競争力の源泉そのものだ。
+            </p>
+            <p>
+              生成AIの登場と共に、社内でも活用検討が進んだ。だが、ここで重大な摩擦が生じる。クラウド型の汎用AIに自社の機密技術情報を渡せば、設計図や仕様書といった「外に出すと致命的な資産」が外部サーバーに渡ることになる。データ主権・情報セキュリティポリシーの観点から、これは許容できない。
+            </p>
+            <p>
+              一方、機密情報を渡さずに汎用AIを使った場合、得られる回答は一般論にとどまった。製造現場が必要としているのは「この設計仕様で、この温度条件で、過去にどんな対応をしたか」といった、専門家レベルの具体的な知見だ。
+            </p>
+            <p>
+              CPS推進部の担当者は当時の状況をこう振り返る。「汎用AIでは、製造業の現場で求められる<strong>"専門家レベルの回答"には届かない</strong>。かといって、重要な技術情報を外部に出すこともできませんでした」──この二律背反を解く方法を、同社は探していた。
+            </p>
+          </section>
+
+          <!-- 選定 -->
+          <section id="solution" class="mb-12">
+            <span class="section-label">選定の決め手</span>
+            <h2 class="section-heading">「外に出さず、専門家レベル」を両立する仕組み</h2>
+            <p>
+              荏原製作所が GBase OnPrem を選定した決め手は、4 つの条件を一つの構成で満たせる点だった。
+            </p>
+
+            <div class="space-y-5 my-6">
+              <div class="pl-4 border-l-2 border-accent-300">
+                <h3 class="text-sm font-semibold text-gray-900 mb-1.5">① 完全閉域 — すべての処理を社内ネットワーク内で</h3>
+                <p class="text-sm text-gray-600 leading-relaxed mb-0">
+                  設計図・技術仕様・社内規程といった機密データは、社外のサーバーへ一切送信されない。情報漏洩リスクはゼロ、コンプライアンス・データ主権の要件を確実に満たす。
+                </p>
+              </div>
+              <div class="pl-4 border-l-2 border-accent-300">
+                <h3 class="text-sm font-semibold text-gray-900 mb-1.5">② 70Bパラメータの日本語高精度モデル</h3>
+                <p class="text-sm text-gray-600 leading-relaxed mb-0">
+                  検証の結果、70B（700億パラメータ）モデルは<strong>一部タスクで GPT-4o mini と同等レベルの精度</strong>を実現。製造業の専門用語・社内固有の表記も、社内文書のRAG検索を併用することで精度高く扱える。
+                </p>
+              </div>
+              <div class="pl-4 border-l-2 border-accent-300">
+                <h3 class="text-sm font-semibold text-gray-900 mb-1.5">③ NVIDIA A100 + 8-bit 量子化で現実的なハード要件</h3>
+                <p class="text-sm text-gray-600 leading-relaxed mb-0">
+                  NVIDIA A100 GPU 4 基（各 40GB）構成と、8-bit 量子化技術により、70B/80B クラスのモデルを既存データセンター内に収まる規模で運用できる。
+                </p>
+              </div>
+              <div class="pl-4 border-l-2 border-accent-300">
+                <h3 class="text-sm font-semibold text-gray-900 mb-1.5">④ RAG で「荏原仕様の AI」が育つ</h3>
+                <p class="text-sm text-gray-600 leading-relaxed mb-0">
+                  社内文書をアップロードするだけで、Retrieval-Augmented Generation（RAG）の仕組みにより、自社固有の知識を反映した回答ができる「荏原専用AI」へ成長していく。専門知識を持つベンダー人材を呼ぶ必要はない。
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 導入 -->
+          <section id="implementation" class="mb-12">
+            <span class="section-label">導入のプロセス</span>
+            <h2 class="section-heading">POC 約 2 ヶ月、専門知識ゼロでの社内ナレッジ構築</h2>
+            <p>
+              荏原製作所は CPS（Cyber Physical Strategy）推進部を中心に、現在 約 2 ヶ月にわたる POC（概念実証）として運用を継続している。導入における特徴は、AI 専門人材を新たに揃える必要が無かった点にある。
+            </p>
+            <p>
+              社内ナレッジベースは、現場の担当者が技術文書・社内規程・過去案件資料を <strong>シンプルにアップロードするだけ</strong> で構築できる。ファイル解析・チャンク分割・ベクトル化はシステムが自動的に処理し、利用者は従来のファイル整理感覚で運用を進められる。
+            </p>
+            <p>
+              またハードウェアの選定・設置・運用ハンドオーバーまで、Sparticle のオンプレミスチームが伴走支援。POC 期間中の応答精度チューニングまで含めて支援することで、社内側の負荷を最小化している。
+            </p>
+          </section>
+
+          <!-- 効果 -->
+          <section id="results" class="mb-12">
+            <span class="section-label">POC 運用での効果</span>
+            <h2 class="section-heading">情報を探す時間が、判断する時間に変わった</h2>
+            <p>
+              POC 運用を通じて、CPS推進部の担当者からは <strong>「満足度 10 点中 9 点」</strong> という高い評価が寄せられている。具体的な業務改善は次の通り。
+            </p>
+
+            <div class="grid sm:grid-cols-3 gap-4 my-6">
+              <div class="bg-accent-50 border border-accent-100 rounded-xl p-5 text-center">
+                <p class="text-xs text-accent-500 font-semibold mb-2 tracking-wide">技術情報検索</p>
+                <p class="text-2xl font-extrabold text-primary-900">30分 → 2分</p>
+                <p class="text-xs text-gray-500 mt-1">93% 削減</p>
+              </div>
+              <div class="bg-accent-50 border border-accent-100 rounded-xl p-5 text-center">
+                <p class="text-xs text-accent-500 font-semibold mb-2 tracking-wide">社内規程検索</p>
+                <p class="text-2xl font-extrabold text-primary-900">20分 → 1分</p>
+                <p class="text-xs text-gray-500 mt-1">95% 削減</p>
+              </div>
+              <div class="bg-accent-50 border border-accent-100 rounded-xl p-5 text-center">
+                <p class="text-xs text-accent-500 font-semibold mb-2 tracking-wide">技術文書横断検索</p>
+                <p class="text-2xl font-extrabold text-primary-900">45分 → 3分</p>
+                <p class="text-xs text-gray-500 mt-1">93% 削減</p>
+              </div>
+            </div>
+
+            <p>
+              定量効果に加え、これまで「外に出せない」がゆえに AI 検証から除外されていた機密データを、社内環境で安全に AI 活用検証できるようになったことも大きな価値となっている。同様に機密性が求められる業界では、<a href="https://ailisonc147.github.io/onprem/government-solution.html" class="text-accent-500 underline hover:no-underline">自治体・官公庁向けの GBase OnPrem 導入</a>でも完全閉域運用のニーズが急速に高まっている。
+            </p>
+          </section>
+
+          <!-- 顧客の声 -->
+          <section id="testimonial" class="mb-12">
+            <span class="section-label">お客様の声</span>
+            <h2 class="section-heading">現場からの評価</h2>
+
+            <div class="space-y-5">
+              <div class="bg-gradient-to-br from-accent-50 to-white rounded-2xl p-7 border border-accent-100">
+                <div class="flex items-center gap-1 text-accent-400 mb-3">
+                  <span class="icon text-xl">format_quote</span>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-5 font-jp text-sm">
+                  汎用AIでは、製造業の現場で求められる"専門家レベルの回答"には届かない。かといって、重要な技術情報を外部に出すこともできませんでした。GBase OnPrem は、その両方を一度に解決してくれた仕組みです。
+                </p>
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-full bg-primary-900 flex items-center justify-center flex-none">
+                    <span class="text-accent-300 text-sm font-bold">E</span>
+                  </div>
+                  <div class="leading-tight">
+                    <p class="font-semibold text-sm text-gray-800 mb-0.5" style="margin-bottom:2px;">CPS推進部 担当者</p>
+                    <p class="text-xs text-gray-500" style="margin-bottom:0;">株式会社荏原製作所</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+        </div>
+        <!-- END LEFT -->
+
+        <!-- RIGHT: Sidebar -->
+        <div class="w-72 flex-none sidebar-sticky">
+          <div class="border border-gray-200 rounded-xl overflow-hidden" style="box-shadow: 0 2px 12px rgba(5,0,56,0.06);">
+
+            <div class="bg-accent-50 px-5 py-4 border-b border-accent-100">
+              <p class="text-xs font-semibold text-accent-500 uppercase tracking-wider mb-2">導入企業</p>
+              <div class="flex items-center gap-3">
+                <div class="h-9 flex items-center justify-center bg-white rounded-md border border-gray-200 px-2.5 flex-none" style="box-shadow: 0 1px 4px rgba(5,0,56,0.06);">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Ebara.svg/250px-Ebara.svg.png" alt="株式会社荏原製作所 公式ロゴ" class="h-5 w-auto" width="86" height="20" decoding="async" loading="lazy">
+                </div>
+                <p class="text-sm font-bold text-gray-900 font-jp leading-tight">株式会社<br>荏原製作所</p>
+              </div>
+            </div>
+
+            <div class="divide-y divide-gray-100">
+              <div class="px-5 py-3.5 flex items-start gap-3">
+                <span class="icon text-accent-400 mt-0.5" style="font-size:18px;">history_edu</span>
+                <div>
+                  <p class="text-xs text-gray-400 mb-0.5">創業</p>
+                  <p class="text-sm font-medium text-gray-800">1912年（明治45年）</p>
+                </div>
+              </div>
+              <div class="px-5 py-3.5 flex items-start gap-3">
+                <span class="icon text-accent-400 mt-0.5" style="font-size:18px;">category</span>
+                <div>
+                  <p class="text-xs text-gray-400 mb-0.5">業種</p>
+                  <p class="text-sm font-medium text-gray-800">産業機械メーカー（ポンプ・送風機・冷却装置等）</p>
+                </div>
+              </div>
+              <div class="px-5 py-3.5 flex items-start gap-3">
+                <span class="icon text-accent-400 mt-0.5" style="font-size:18px;">groups</span>
+                <div>
+                  <p class="text-xs text-gray-400 mb-0.5">従業員数</p>
+                  <p class="text-sm font-medium text-gray-800">約18,000名（連結）</p>
+                </div>
+              </div>
+              <div class="px-5 py-3.5 flex items-start gap-3">
+                <span class="icon text-accent-400 mt-0.5" style="font-size:18px;">location_city</span>
+                <div>
+                  <p class="text-xs text-gray-400 mb-0.5">本社所在地</p>
+                  <p class="text-sm font-medium text-gray-800">東京都大田区</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="px-5 py-4 border-t border-gray-100 bg-gray-50">
+              <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">課題</p>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-xs text-gray-700 leading-relaxed">
+                  <span class="text-accent-400 flex-none" style="margin-top: 1px;">•</span>
+                  <span>機密性の高い技術文書を外部クラウド AI に渡せない</span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-gray-700 leading-relaxed">
+                  <span class="text-accent-400 flex-none" style="margin-top: 1px;">•</span>
+                  <span>汎用 AI では現場が必要とする専門家レベルの回答に届かない</span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-gray-700 leading-relaxed">
+                  <span class="text-accent-400 flex-none" style="margin-top: 1px;">•</span>
+                  <span>110年以上蓄積した社内ノウハウを業務に活用できていない</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="px-5 py-4 border-t border-gray-100">
+              <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">使用用途</p>
+              <ul class="space-y-2">
+                <li class="flex items-start gap-2 text-xs text-gray-700 leading-relaxed">
+                  <span class="text-accent-400 flex-none" style="margin-top: 1px;">•</span>
+                  <span>過去の設計仕様書を自然言語で検索</span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-gray-700 leading-relaxed">
+                  <span class="text-accent-400 flex-none" style="margin-top: 1px;">•</span>
+                  <span>社内規程の該当箇所を即座に特定</span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-gray-700 leading-relaxed">
+                  <span class="text-accent-400 flex-none" style="margin-top: 1px;">•</span>
+                  <span>技術文書の横断検索・社内ノウハウ活用</span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+        <!-- END RIGHT -->
+
+      </div>
+    </div>
+
+    <!-- ===== RELATED CASES (hidden) ===== -->
+
+    <!-- ===== CTA ===== -->
+    <section id="contact" class="py-24 bg-gradient-to-br from-dark-900 to-primary-700 text-white">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-3xl lg:text-4xl font-bold mb-6 font-jp">
+          貴社の機密データも、<br>
+          <span class="cta-gradient-text">外に出さず AI で活用しませんか？</span>
+        </h2>
+        <p class="text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+          製造業・自治体・金融など、機密性の高いデータを扱う組織向けに、貴社環境内でのオンプレミス AI 構築をご提案します。<br>
+          POC からの段階的な導入も可能です。
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="https://onprem.gbase.ai/#contact" class="btn-onprem-gradient px-10 py-4 font-bold rounded-full text-lg" style="box-shadow: 0 6px 20px rgba(155,168,50,0.4), 0 2px 6px rgba(0,0,0,0.15);">
+            お問い合わせ
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <div class="site-footer-grid">
+          <div>
+            <h3>製品</h3>
+            <ul>
+              <li><a href="https://onprem.gbase.ai/">GBase on Prem</a></li>
+              <li><a href="https://onprem.gbase.ai/">GBase on Spark</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>ソリューション</h3>
+            <ul>
+              <li><a href="https://ailisonc147.github.io/onprem/government-solution.html">自治体・官公庁</a></li>
+              <li><a href="#">製造業</a></li>
+            </ul>
+            <h3 class="mt">導入事例</h3>
+            <ul>
+              <li><a href="#">事例一覧</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>リソース</h3>
+            <ul>
+              <li><a href="https://onprem.gbase.ai/blog">ブログ</a></li>
+              <li><a href="https://onprem.gbase.ai/#implementation-flow">導入流れ</a></li>
+              <li><a href="https://onprem.gbase.ai/#faq">よくある質問</a></li>
+              <li><a href="https://onprem.gbase.ai/#contact">お問い合わせ</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>その他のプロダクト</h3>
+            <ul>
+              <li><a href="https://gbase.ai/" target="_blank" rel="noopener">GBase（ナレッジ AI）</a></li>
+              <li><a href="https://cs.gbase.ai/" target="_blank" rel="noopener">GBase Support（AIサポート）</a></li>
+              <li><a href="https://subtitles.felo.me/" target="_blank" rel="noopener">Felo Subtitles（多言語字幕）</a></li>
+              <li><a href="https://s.gbase.ai/" target="_blank" rel="noopener">GBase GTM（顧客獲得 AI）</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Sparticle について</h3>
+            <ul>
+              <li><a href="https://sparticle.com" target="_blank" rel="noopener">会社概要</a></li>
+              <li><a href="https://www.sparticle.com/careers" target="_blank" rel="noopener">採用情報</a></li>
+            </ul>
+            <div class="footer-social">
+              <a href="https://x.com/sparticle_ai" target="_blank" rel="noopener" aria-label="X" title="X (Twitter)">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a href="https://note.com/sparticle" target="_blank" rel="noopener" aria-label="note" title="note">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 .279c4.623 0 10.953-.235 15.498-.117 6.099.156 8.39 2.813 8.468 9.374.077 3.71 0 14.335 0 14.335h-6.598c0-9.296.04-10.83 0-13.759-.078-2.578-.814-3.807-2.795-4.041-2.097-.235-7.975-.04-7.975-.04v17.84H0Z"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/company/sparticle-inc" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45C23.2 24 24 23.23 24 22.28V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="site-footer-bottom">
+          <div class="site-footer-bottom-row">
+            <span>© 2026 Sparticle Inc. All rights reserved.</span>
+            <div class="site-footer-legal">
+              <a href="https://gbase.ai/privacy-policy" target="_blank" rel="noopener">プライバシーポリシー</a>
+              <a href="https://gbase.ai/on-premises/terms-of-use" target="_blank" rel="noopener">利用規約</a>
+              <a href="https://gbase.ai/on-premises/maintenance-support-service-specification" target="_blank" rel="noopener">保守サポートサービス仕様</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Scroll animation -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.section-fade').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
