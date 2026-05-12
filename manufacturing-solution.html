@@ -1,0 +1,1803 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>製造業向けオンプレミスAI | GBase On-Premises</title>
+    <meta name="description" content="GBase On-Premisesは設計図・技術仕様書を外部に出さずに製造業の機密技術文書をAIで活用できる、完全オンプレミス型エンタープライズRAG。Sparticle独自の日本語特化LLMで製造業の専門用語に対応。荏原製作所での POC 実績あり。">
+    <meta name="keywords" content="製造業 AI, オンプレミス AI, 製造業 ナレッジ, 技術文書 AI 活用, RAG 製造業, 設計図 AI, 暗黙知 継承, GBase OnPrem">
+    <meta name="robots" content="index,follow">
+    <meta property="og:title" content="GBase On-Premises - 製造業向けオンプレミスAIソリューション">
+    <meta property="og:description" content="設計図・技術仕様書を社外に出さず、製造業の専門ノウハウをAIで活用。完全オンプレミスRAGで出典明示・暗黙知の継承を実現。荏原製作所での導入実績。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ailisonc147.github.io/onprem/manufacturing-solution.html">
+    <meta property="og:image" content="https://ailisonc147.github.io/onprem/images/hero-manufacturing.jpg">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:site_name" content="GBase On-Premises">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="canonical" href="https://ailisonc147.github.io/onprem/manufacturing-solution.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Structured Data: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "GBase On-Premises",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "On-Premises (Linux)",
+      "description": "GBase On-Premisesは製造業向けの完全オンプレミス型エンタープライズRAG。設計図・技術仕様書を外部に出さずに、製造業の機密技術文書を AI で横断活用。Sparticle独自の日本語特化LLMで専門用語にも対応。",
+      "url": "https://ailisonc147.github.io/onprem/manufacturing-solution.html",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "JPY",
+        "availability": "https://schema.org/InStock"
+      },
+      "featureList": [
+        "完全オンプレミス・データ主権確保",
+        "ハイブリッド量子化技術による GPU 使用量最大 75% 削減",
+        "全社員規模に展開可能な構成",
+        "RAG + 構造化データ・非構造化データ両対応",
+        "回答ごとの出典明示で技術判断の信頼性担保",
+        "文書内の表・図・画像も自然言語で照会"
+      ]
+    }
+    </script>
+
+    <!-- Structured Data: Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Sparticle Inc.",
+      "url": "https://sparticle.com",
+      "logo": "https://onprem.gbase.ai/assets/images/logo.svg",
+      "sameAs": [
+        "https://x.com/sparticle_ai",
+        "https://note.com/sparticle"
+      ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #050038;
+            --primary-dark: #0D0D0F;
+            --primary-deep: #050038;
+            --primary-light: #DCE972;
+            --accent: #DCE972;
+            --accent-light: #E8F0A3;
+            --gradient-from: #DDDD44;
+            --gradient-to: #AFFBF8;
+            --text-dark: #050038;
+            --text-gray: #808080;
+            --text-light: #F7F8F5;
+            --bg-light: #FFFFFF;
+            --bg-gray: #F7F8F5;
+            --bg-blue: #F7F8F5;
+            --bg-cream: #E6EBE1;
+            --bg-navy: #050038;
+            --border: #E5E7EB;
+            --border-lime: #E8F0A3;
+            --shadow-sm: 0 1px 2px 0 rgba(5, 0, 56, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(5, 0, 56, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(5, 0, 56, 0.12);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Hiragino Kaku Gothic ProN', 'Yu Gothic', Meiryo, sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--primary);
+        }
+        .nav-logo img {
+            height: 32px;
+            width: auto;
+            display: block;
+        }
+        .nav-links {
+            display: flex; gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-links > li { position: relative; }
+        .nav-dropdown { position: relative; }
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            font-weight: 500;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            font-family: inherit;
+            transition: color 0.3s;
+        }
+        .nav-btn svg { width: 14px; height: 14px; }
+        .nav-btn:hover, .nav-dropdown:hover .nav-btn { color: var(--primary); }
+        .nav-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 0;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            min-width: 220px;
+            padding: 8px;
+            z-index: 200;
+        }
+        .nav-dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -16px;
+            left: 0;
+            right: 0;
+            height: 16px;
+        }
+        .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+        .nav-dropdown-menu-wide { min-width: 320px; }
+        .nav-dropdown-inner { display: flex; flex-direction: column; gap: 2px; }
+        .nav-dropdown-item {
+            display: block;
+            padding: 8px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: background 0.15s;
+        }
+        .nav-dropdown-item:hover { background: var(--bg-cream, #F7F8F5); }
+        .item-title { font-size: 13px; font-weight: 600; }
+        .item-sub { font-size: 12px; color: var(--text-gray); margin-top: 2px; }
+        .nav-buttons { display: flex; gap: 0.75rem; align-items: center; }
+        .btn {
+            padding: 0.625rem 1.5rem;
+            border-radius: 999px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.25s;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+            font-size: 0.95rem;
+        }
+        .btn-primary {
+            background: linear-gradient(to right, var(--gradient-from), var(--gradient-to));
+            color: var(--primary);
+        }
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+            filter: brightness(1.05);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 1.5px solid var(--primary);
+        }
+        .btn-secondary:hover {
+            background: var(--bg-cream);
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            min-height: 640px;
+            padding: 9rem 2rem 6rem;
+            background:
+                linear-gradient(135deg, rgba(5, 0, 56, 0.88) 0%, rgba(5, 0, 56, 0.68) 50%, rgba(13, 13, 15, 0.55) 100%),
+                radial-gradient(ellipse at top right, rgba(220, 233, 114, 0.18) 0%, transparent 60%),
+                url('images/hero-manufacturing.jpg'),
+                linear-gradient(135deg, #050038 0%, #0D0D0F 100%);
+            background-size: cover, cover, cover, cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .hero h1 .accent { color: var(--accent); }
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .hero-inner { max-width: 760px; }
+        .hero-badges {
+            display: flex; gap: 0.625rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.75rem;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1.1rem;
+            background: var(--primary-dark);
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .hero h1 {
+            font-size: 2.875rem;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+        }
+        .hero-subtitle {
+            font-size: 1.125rem;
+            margin-bottom: 2.25rem;
+            color: rgba(255, 255, 255, 0.92);
+            line-height: 1.8;
+        }
+        .hero-cta {
+            display: flex; gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .hero .btn-primary {
+            background: linear-gradient(to right, var(--gradient-from), var(--gradient-to));
+            color: var(--primary);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+        }
+        .hero .btn-primary:hover { filter: brightness(1.05); }
+        .hero .btn-secondary {
+            color: white;
+            border-color: rgba(255, 255, 255, 0.7);
+        }
+        .hero .btn-secondary:hover { background: rgba(255, 255, 255, 0.1); }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: var(--bg-navy);
+            color: white;
+            padding: 2rem;
+        }
+        .trust-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+        .trust-item strong {
+            display: block;
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+        .trust-item span {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Section base */
+        .section { padding: 5rem 2rem; }
+        .section-gray { background: var(--bg-gray); }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-eyebrow {
+            display: block;
+            width: max-content;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            background: var(--accent-light);
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            letter-spacing: 0.12em;
+            margin: 0 auto 1rem;
+            text-transform: uppercase;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 1rem;
+            max-width: 760px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        /* Pain Grid */
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+        }
+        .pain-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.75rem 1.5rem;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+        .pain-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--border-lime);
+        }
+        .pain-icon {
+            width: 56px; height: 56px;
+            margin: 0 auto 1.25rem;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            display: flex; align-items: center; justify-content: center;
+            color: var(--primary);
+        }
+        .pain-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .pain-num {
+            display: inline-block;
+            color: var(--text-gray);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        .pain-card h3 {
+            font-size: 1.0625rem;
+            font-weight: 800;
+            margin-bottom: 0.625rem;
+            color: var(--text-dark);
+        }
+        .pain-card p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Feature Rows (Solutions) */
+        .feature-row {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 5rem;
+        }
+        .feature-row.reverse { grid-template-columns: 1fr 1.1fr; }
+        .feature-row.reverse .feature-visual { order: 2; }
+        .feature-row:last-child { margin-bottom: 0; }
+        .feature-visual {
+            aspect-ratio: 4 / 3;
+            background: linear-gradient(135deg, var(--bg-cream), var(--bg-gray));
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: 700;
+            text-align: center;
+            padding: 0;
+        }
+        .feature-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .feature-visual.placeholder {
+            padding: 2rem;
+            border: 1.5px dashed var(--border-lime);
+        }
+        .feature-label {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 0.03em;
+        }
+        .feature-content h3 {
+            font-size: 1.625rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+            color: var(--text-dark);
+        }
+        .feature-content p {
+            color: var(--text-gray);
+            line-height: 1.85;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        .feature-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        .feature-list li {
+            padding: 0.5rem 0;
+            color: var(--text-gray);
+            display: flex;
+            gap: 0.625rem;
+            align-items: flex-start;
+            font-size: 0.95rem;
+        }
+        .feature-list li::before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        /* Pillars (Differentiator) */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .pillar-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            position: relative;
+        }
+        .pillar-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--border-lime);
+        }
+        .pillar-num {
+            position: absolute;
+            top: 1.25rem; right: 1.5rem;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-light);
+            line-height: 1;
+        }
+        .pillar-icon {
+            width: 56px; height: 56px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            display: flex; align-items: center; justify-content: center;
+            color: var(--primary);
+            margin-bottom: 1.25rem;
+        }
+        .pillar-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .pillar-tag {
+            display: inline-block;
+            background: var(--bg-cream);
+            color: var(--primary);
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+        .pillar-card h3 {
+            font-size: 1.125rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+            color: var(--text-dark);
+        }
+        .pillar-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.75;
+        }
+
+        /* Scenarios */
+        .scenarios-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .scenario-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            transition: all 0.35s;
+            display: flex;
+            flex-direction: column;
+        }
+        .scenario-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        .scenario-header {
+            position: relative;
+            min-height: 170px;
+            color: var(--text-dark);
+            padding: 1.75rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            border-bottom: 1px solid var(--border);
+        }
+        .scenario-header {
+            background: linear-gradient(135deg, #EFF7F4 0%, #D4EBE7 100%);
+        }
+        .scenario-header::before {
+            content: "";
+            position: absolute;
+            top: -50px; right: -50px;
+            width: 220px; height: 220px;
+            background: radial-gradient(circle, rgba(220, 233, 114, 0.35), transparent 70%);
+            border-radius: 50%;
+        }
+        .scenario-icon {
+            position: absolute;
+            top: 1.25rem; right: 1.25rem;
+            width: 64px; height: 64px;
+            color: var(--primary);
+            opacity: 0.85;
+            z-index: 1;
+            transition: transform 0.4s ease;
+        }
+        .scenario-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .scenario-card:hover .scenario-icon {
+            transform: scale(1.08) rotate(-4deg);
+        }
+        .scenario-header > *:not(.scenario-icon) {
+            position: relative;
+            z-index: 2;
+        }
+        .scenario-header h3 {
+            color: var(--text-dark);
+        }
+        .scenario-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+            align-self: flex-start;
+        }
+        .scenario-header h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            line-height: 1.4;
+        }
+        .scenario-body {
+            padding: 1.5rem;
+            flex: 1;
+        }
+        .scenario-body p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        .scenario-features {
+            list-style: none;
+        }
+        .scenario-features li {
+            padding: 0.5rem 0;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .scenario-features li::before {
+            content: "·  ";
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Cases */
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        .case-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .case-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        .case-cover {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            background: linear-gradient(135deg, var(--primary-deep), var(--primary-dark));
+            overflow: hidden;
+            border-bottom: 4px solid var(--accent);
+        }
+        .case-cover img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .case-cover-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(5, 0, 56, 0.55) 0%, rgba(13, 13, 15, 0.35) 100%);
+        }
+        .case-cover-text {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+        }
+        .case-body {
+            padding: 1.75rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .case-meta {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.875rem;
+        }
+        .case-tag {
+            background: var(--bg-cream);
+            color: var(--primary);
+            padding: 0.3rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .case-card h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 0.875rem;
+            line-height: 1.45;
+            color: var(--text-dark);
+        }
+        .case-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .case-quote {
+            background: var(--bg-cream);
+            border-left: 4px solid var(--accent);
+            padding: 1rem 1.25rem;
+            border-radius: 8px;
+            font-style: italic;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            margin-top: 0.75rem;
+        }
+        .case-quote-author {
+            display: block;
+            margin-top: 0.5rem;
+            font-style: normal;
+            color: var(--text-gray);
+            font-size: 0.85rem;
+        }
+        .case-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 1rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border-bottom: 1.5px solid transparent;
+            transition: border-color 0.2s, gap 0.2s;
+        }
+        .case-link::after {
+            content: "↗";
+            font-size: 1rem;
+            transition: transform 0.2s;
+        }
+        .case-link:hover {
+            border-bottom-color: var(--primary);
+        }
+        .case-link:hover::after {
+            transform: translate(2px, -2px);
+        }
+        .case-source {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--text-gray);
+        }
+        /* Featured single case study */
+        .featured-case {
+            display: grid;
+            grid-template-columns: 5fr 6fr;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-lg);
+        }
+        .featured-case-visual {
+            position: relative;
+            background-image: url('https://www.ebara.com/adobe/dynamicmedia/deliver/dm-aid--76c1020d-cb53-46e4-982f-de902022bd63/img-our-business-02.jpg?quality=85&preferwebp=true');
+            background-size: cover;
+            background-position: center;
+            min-height: 380px;
+        }
+        .featured-case-visual::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(5, 0, 56, 0.65) 100%);
+        }
+        .featured-case-visual-logo {
+            position: absolute;
+            left: 1.5rem;
+            bottom: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0.75rem 1.25rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+            z-index: 1;
+        }
+        .featured-case-visual-logo img {
+            height: 26px;
+            width: auto;
+        }
+        .featured-case-visual-logo span {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        .featured-case-body {
+            padding: 2rem 2.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        .featured-case-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .featured-case-eyebrow::before {
+            content: '';
+            display: inline-block;
+            width: 24px;
+            height: 2px;
+            background: var(--accent);
+        }
+        .featured-case h3 {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.45;
+        }
+        .featured-case-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+            padding: 1rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .featured-case-metric {
+            text-align: center;
+        }
+        .featured-case-metric-num {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.1;
+        }
+        .featured-case-metric-label {
+            font-size: 0.72rem;
+            color: var(--text-gray);
+            margin-top: 0.25rem;
+            line-height: 1.3;
+        }
+        .featured-case-quote {
+            background: var(--bg-cream);
+            border-left: 3px solid var(--accent);
+            padding: 0.875rem 1.125rem;
+            border-radius: 6px;
+            font-size: 0.88rem;
+            color: var(--text-dark);
+            line-height: 1.7;
+            font-style: italic;
+        }
+        .featured-case-quote-author {
+            display: block;
+            margin-top: 0.4rem;
+            font-style: normal;
+            color: var(--text-gray);
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+        .featured-case-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: auto;
+            padding-top: 0.5rem;
+        }
+        .featured-case-cta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.92rem;
+            text-decoration: none;
+            border-bottom: 1.5px solid transparent;
+            transition: border-color 0.2s, gap 0.2s;
+        }
+        .featured-case-cta a::after {
+            content: "↗";
+            transition: transform 0.2s;
+        }
+        .featured-case-cta a:hover {
+            border-bottom-color: var(--primary);
+        }
+        .featured-case-cta a:hover::after {
+            transform: translate(2px, -2px);
+        }
+        @media (max-width: 960px) {
+            .featured-case { grid-template-columns: 1fr; }
+            .featured-case-visual { min-height: 240px; }
+            .featured-case-metrics { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* Partners */
+        .partners-bar {
+            background: var(--bg-gray);
+            padding: 3rem 2rem;
+        }
+        .partners-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+            align-items: center;
+        }
+        .partner-item {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.25rem 1rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            min-height: 140px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .partner-item:hover {
+            border-color: var(--border-lime);
+            box-shadow: var(--shadow-sm);
+        }
+        .partner-logo {
+            width: 100%;
+            max-width: 150px;
+            height: 48px;
+            object-fit: contain;
+            object-position: center;
+        }
+        .partner-item small {
+            display: block;
+            color: var(--text-gray);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            line-height: 1.4;
+        }
+
+        /* FAQ */
+        .faq-list {
+            max-width: 880px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .faq-list details {
+            background: white;
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+        .faq-list details[open] { border-color: var(--primary-light); }
+        .faq-list summary {
+            font-size: 1.0625rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-list summary::-webkit-details-marker { display: none; }
+        .faq-list summary::after {
+            content: "+";
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: 400;
+            transition: transform 0.2s;
+        }
+        .faq-list details[open] summary::after {
+            content: "−";
+        }
+        .faq-list details p {
+            margin-top: 1rem;
+            color: var(--text-gray);
+            line-height: 1.85;
+            font-size: 0.95rem;
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 5rem 2rem;
+            text-align: center;
+            background:
+                radial-gradient(ellipse at top right, rgba(220, 233, 114, 0.18) 0%, transparent 60%),
+                linear-gradient(135deg, #050038 0%, #0D0D0F 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: "";
+            position: absolute;
+            top: -100px; right: -100px;
+            width: 360px; height: 360px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%);
+            border-radius: 50%;
+        }
+        .cta-section::after {
+            content: "";
+            position: absolute;
+            bottom: -80px; left: -80px;
+            width: 280px; height: 280px;
+            background: radial-gradient(circle, rgba(255,255,255,0.07), transparent 70%);
+            border-radius: 50%;
+        }
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .cta-section h2 {
+            font-size: 2.125rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.45;
+        }
+        .cta-section p {
+            font-size: 1.0625rem;
+            margin-bottom: 2rem;
+            opacity: 0.92;
+            line-height: 1.8;
+        }
+        .cta-section .hero-cta { justify-content: center; }
+        .cta-section .btn-primary {
+            background: linear-gradient(to right, var(--gradient-from), var(--gradient-to));
+            color: var(--primary);
+        }
+        .cta-section .btn-primary:hover {
+            filter: brightness(1.05);
+        }
+        .cta-section .btn-secondary {
+            background: transparent;
+            color: white;
+            border-color: rgba(255, 255, 255, 0.7);
+        }
+        .cta-section .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 3rem 2rem 2rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .footer h4.mt { margin-top: 1.75rem; }
+        .footer ul a small {
+            display: inline;
+            font-size: 0.72rem;
+            color: rgba(255, 255, 255, 0.45);
+            margin-left: 0.25rem;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+        .footer-social { display: flex; gap: 10px; margin-top: 1.25rem; }
+        .footer-social a {
+            width: 18px;
+            height: 18px;
+            color: rgba(255, 255, 255, 0.55);
+            transition: color 0.2s;
+            display: inline-block;
+        }
+        .footer-social a:hover { color: var(--accent); }
+        .footer-social svg { width: 100%; height: 100%; }
+        .footer-bottom-row {
+            max-width: 1200px;
+            margin: 1.5rem auto 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+        .footer-legal { display: flex; flex-wrap: wrap; gap: 1.25rem; }
+        .footer-legal a {
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-legal a:hover { color: var(--accent); }
+        .footer-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.875rem;
+        }
+        .footer-brand img {
+            height: 28px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+        .footer-tagline {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.875rem;
+            line-height: 1.7;
+        }
+        .footer h4 {
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .footer ul { list-style: none; }
+        .footer li { padding: 0.4rem 0; }
+        .footer a {
+            color: rgba(255, 255, 255, 0.65);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .footer a:hover { color: white; }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 1.5rem auto 0;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        /* Featured LLM Section */
+        .llm-section {
+            padding: 6rem 2rem;
+            background:
+                radial-gradient(ellipse at top right, rgba(220, 233, 114, 0.18) 0%, transparent 60%),
+                radial-gradient(ellipse at bottom left, rgba(175, 251, 248, 0.08) 0%, transparent 55%),
+                linear-gradient(135deg, #050038 0%, #0D0D0F 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .llm-section::before {
+            content: "";
+            position: absolute;
+            top: -120px; right: -120px;
+            width: 420px; height: 420px;
+            background: radial-gradient(circle, rgba(220, 233, 114, 0.1), transparent 70%);
+            border-radius: 50%;
+        }
+        .llm-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .llm-eyebrow {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            background: var(--accent);
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            letter-spacing: 0.12em;
+            margin-bottom: 1.25rem;
+            text-transform: uppercase;
+        }
+        .llm-content h2 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.01em;
+            color: white;
+        }
+        .llm-model {
+            display: inline-block;
+            color: var(--accent);
+            font-weight: 800;
+        }
+        .llm-content > p {
+            font-size: 1.0625rem;
+            color: rgba(255, 255, 255, 0.88);
+            line-height: 1.85;
+            margin-bottom: 1.75rem;
+        }
+        .llm-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.75rem;
+            padding: 1.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(220, 233, 114, 0.25);
+            border-radius: 14px;
+        }
+        .llm-stat { text-align: center; }
+        .llm-stat strong {
+            display: block;
+            font-size: 1.875rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.02em;
+        }
+        .llm-stat span {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+        .llm-content .feature-list li {
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .llm-content .feature-list li::before {
+            color: var(--accent);
+        }
+        .llm-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1.1rem;
+            background: rgba(220, 233, 114, 0.12);
+            border: 1px solid rgba(220, 233, 114, 0.4);
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 1rem;
+        }
+        .llm-visual {
+            aspect-ratio: 4 / 3;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .llm-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .pain-grid { grid-template-columns: repeat(2, 1fr); }
+            .pillars-grid, .scenarios-grid { grid-template-columns: 1fr; }
+            .cases-grid { grid-template-columns: 1fr; }
+            .feature-row { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem; }
+            .feature-row.reverse .feature-visual { order: 0; }
+            .partners-grid { grid-template-columns: repeat(3, 1fr); }
+            .trust-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-content { grid-template-columns: repeat(2, 1fr); }
+            .llm-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .llm-content h2 { font-size: 1.75rem; }
+            .llm-section { padding: 4rem 1.5rem; }
+        }
+        @media (max-width: 640px) {
+            .hero { min-height: 540px; padding: 7rem 1.5rem 4rem; }
+            .hero h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+            .pain-grid { grid-template-columns: 1fr; }
+            .partners-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-content { grid-template-columns: 1fr; }
+            .section-title { font-size: 1.625rem; }
+            .llm-stats { grid-template-columns: repeat(3, 1fr); padding: 1rem 0.5rem; }
+            .llm-stat strong { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+    <div class="nav-container">
+        <a href="https://onprem.gbase.ai/" class="nav-logo" aria-label="GBase On-Prem">
+            <img src="https://onprem.gbase.ai/logo.png" alt="GBase On-Prem ロゴ">
+        </a>
+        <ul class="nav-links">
+            <li class="nav-dropdown">
+                <button class="nav-btn" type="button">製品
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="nav-dropdown-menu">
+                    <div class="nav-dropdown-inner">
+                        <a href="https://onprem.gbase.ai/" class="nav-dropdown-item">
+                            <div class="item-title">GBase on Prem</div>
+                            <div class="item-sub">大規模組織向け</div>
+                        </a>
+                        <a href="https://onprem.gbase.ai/products/onspark" class="nav-dropdown-item">
+                            <div class="item-title">GBase on Spark</div>
+                            <div class="item-sub">中堅・部門向け</div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-dropdown">
+                <button class="nav-btn" type="button">ソリューション
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="nav-dropdown-menu nav-dropdown-menu-wide">
+                    <div class="nav-dropdown-inner">
+                        <a href="https://ailisonc147.github.io/onprem/government-solution.html" class="nav-dropdown-item">
+                            <div class="item-title">自治体・官公庁</div>
+                            <div class="item-sub">機密情報を外に出さない閉域AI</div>
+                        </a>
+                        <a href="https://ailisonc147.github.io/onprem/manufacturing-solution.html" class="nav-dropdown-item">
+                            <div class="item-title">製造業</div>
+                            <div class="item-sub">技術文書・社内ノウハウのAI活用</div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li><a href="#">導入事例</a></li>
+            <li class="nav-dropdown">
+                <button class="nav-btn" type="button">リソース
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="nav-dropdown-menu">
+                    <div class="nav-dropdown-inner">
+                        <a href="https://onprem.gbase.ai/blog" class="nav-dropdown-item">
+                            <div class="item-title">ブログ</div>
+                        </a>
+                        <a href="https://onprem.gbase.ai/#implementation-flow" class="nav-dropdown-item">
+                            <div class="item-title">導入流れ</div>
+                        </a>
+                        <a href="https://onprem.gbase.ai/#faq" class="nav-dropdown-item">
+                            <div class="item-title">よくある質問</div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="nav-buttons">
+            <a href="#contact" class="btn btn-primary">お問い合わせ</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-inner">
+            <h1>設計から品質まで <span class="accent">AI</span> で即解決。<br>製造業の暗黙知を、社内に閉じる。</h1>
+            <p class="hero-subtitle">
+                CAD 図面・BOM・DR 議事録・是正処置記録・特許文献 — 製造現場のあらゆる技術文書を、機密性を保ったまま AI で横断活用。Sparticle 独自の日本語特化 LLM が、製造業の専門用語と暗黙知に深く対応します。
+            </p>
+            <div class="hero-cta">
+                <a href="#contact" class="btn btn-primary">お問い合わせ</a>
+                <a href="#contact" class="btn btn-secondary">資料を無料ダウンロード</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pain Points -->
+<section class="section section-gray" id="problems">
+    <div class="container">
+        <span class="section-eyebrow">CHALLENGES</span>
+        <h2 class="section-title">製造業の現場で繰り返される、4つの「探す・思い出す・聞く」</h2>
+        <p class="section-subtitle">
+            設計レビュー、品質対応、技術継承、特許戦略 —— 製造現場の日常業務で「過去資料が見つからない」が生む手戻りと機会損失を、AI で根絶します。
+        </p>
+        <div class="pain-grid">
+            <div class="pain-card">
+                <div class="pain-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h18v18H3z"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+                </div>
+                <span class="pain-num">課題 01</span>
+                <h3>設計レビュー（DR）の手戻り</h3>
+                <p>「過去にこの温度条件で類似案件があったはず」を探すのに半日。再設計の手戻りが発生し、開発リードタイムが伸び続ける</p>
+            </div>
+            <div class="pain-card">
+                <div class="pain-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                </div>
+                <span class="pain-num">課題 02</span>
+                <h3>品質対応・FMEA の遅延</h3>
+                <p>不具合発生時、是正処置記録・類似製品の影響範囲を探すのに数日。FMEA の再評価も属人化し、客先対応のスピードが追いつかない</p>
+            </div>
+            <div class="pain-card">
+                <div class="pain-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <span class="pain-num">課題 03</span>
+                <h3>ベテラン引退と暗黙知の消失</h3>
+                <p>「あの不具合、〇〇さんに聞けばわかる」が通用しなくなる日が近い。設計・製造・検査の判断ノウハウが、退職とともに失われる</p>
+            </div>
+            <div class="pain-card">
+                <div class="pain-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 7h7l-5.5 4.5L18 22l-6-4-6 4 1.5-8.5L2 9h7z"/></svg>
+                </div>
+                <span class="pain-num">課題 04</span>
+                <h3>知財・技術文献の死蔵</h3>
+                <p>自社が保有する特許・技術論文・研究報告が、社内で活用されていない。競合特許の調査も時間がかかり、知財戦略の意思決定が後手に回る</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Solutions -->
+<section class="section" id="solutions">
+    <div class="container">
+        <span class="section-eyebrow">SOLUTION</span>
+        <h2 class="section-title">設計から品質、知財まで貫通する 4 つの解</h2>
+        <p class="section-subtitle">
+            機密技術文書を社外に出さず、製造業の現場で求められる専門家レベルの回答を、社内に蓄積した暗黙知を、AI でその場で引き出す基盤を提供します。
+        </p>
+
+        <!-- Feature 01: Data Sovereignty -->
+        <div class="feature-row">
+            <div class="feature-visual">
+                <img src="images/feature-data-sovereignty.jpg" alt="完全オンプレミス・社内ネットワーク内で完結する閉域運用イメージ" width="1200" height="900" loading="lazy" decoding="async">
+            </div>
+            <div class="feature-content">
+                <span class="feature-label">01 · データ主権の壁を解決</span>
+                <h3>完全オンプレミス、技術機密を社外に出さない</h3>
+                <p>外部ネットワークへの接続を一切必要とせず、社内のセキュアな環境で機密データを学習・運用。設計図・技術仕様書・社内規程といった「漏えいすれば事業に致命的な影響を与える資産」を、データ主権を守ったまま AI で活用できます。</p>
+                <ul class="feature-list">
+                    <li>外部 API 呼び出しゼロ、完全閉域で動作</li>
+                    <li>知財・機密情報・個人情報を社内ネットワーク内で完結処理</li>
+                    <li>情報漏えいリスクを排除、コンプライアンス要件を確実に満たす</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Feature 02: GPU Efficiency -->
+        <div class="feature-row reverse">
+            <div class="feature-visual">
+                <img src="images/feature-gpu-cost.jpg" alt="独自量子化技術で GPU 使用量を最大 75% 削減、推論速度を最大 3 倍に高速化するイメージ" width="1200" height="900" loading="lazy" decoding="async">
+            </div>
+            <div class="feature-content">
+                <span class="feature-label">02 · 専門家レベル精度の壁を解決</span>
+                <h3>製造業の専門用語にも届く、<br>日本語特化 LLM × RAG</h3>
+                <p>Sparticle 独自の日本語特化 LLM が製造業の専門用語・技術知識を深く理解。社内文書を RAG で参照することで、汎用 AI では届かない「<strong>自社固有の専門家レベルの回答</strong>」を実現します。さらに <strong>独自のハイブリッド量子化技術で GPU 使用量を最大 75% 削減</strong>、<strong>推論速度を最大 3 倍に高速化</strong>し、現実的なハード要件で全社展開できます。</p>
+                <ul class="feature-list">
+                    <li>製造業の専門用語・社内固有の表記も高精度に扱える</li>
+                    <li>社内文書のアップロードだけで「自社専用 AI」へ成長</li>
+                    <li>独自量子化技術で低コスト構成・全社員規模で展開可能</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Feature 03: Source & Hallucination -->
+        <div class="feature-row">
+            <div class="feature-visual">
+                <img src="images/feature-source-evidence.jpg" alt="回答に根拠資料を明示し技術判断の信頼性を担保するイメージ" width="1200" height="900" loading="lazy" decoding="async">
+            </div>
+            <div class="feature-content">
+                <span class="feature-label">03 · 信頼性・技術判断の壁を解決</span>
+                <h3>全ての回答に根拠を明示、<br>技術判断の信頼性を担保</h3>
+                <p>生成された回答には、必ず出典文書・該当箇所を明示。設計者・品質保証担当は根拠を即座に確認でき、客先対応・社内レビューでも自信をもって判断できます。AI の誤回答（ハルシネーション）による技術判断リスクを抑制し、ベテラン社員の暗黙知を「根拠付きで継承可能なナレッジ」へと変換します。</p>
+                <ul class="feature-list">
+                    <li>回答ごとに設計仕様書・技術文書・社内規程の出典を自動表示</li>
+                    <li>客先対応・社内レビューで根拠資料を即座に提示</li>
+                    <li>暗黙知を根拠付きで形式知化、若手社員への継承を支援</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Feature 04: RAG Cross-Search -->
+        <div class="feature-row reverse">
+            <div class="feature-visual">
+                <img src="images/feature-rag-flow.jpg" alt="設計図・検査記録・部品台帳を部署横断で検索する RAG エンジンのイメージ" width="1200" height="900" loading="lazy" decoding="async">
+            </div>
+            <div class="feature-content">
+                <span class="feature-label">04 · ナレッジ分散の壁を解決</span>
+                <h3>CAD・BOM・PLM・是正処置記録を、<br>製造工程の全フェーズで横断検索</h3>
+                <p>社内に散在する CAD 図面・BOM・PLM データ・MES ログ・是正処置記録（CAPA）・FMEA・変更管理票・特許文献を、RAG エンジンで一元検索。設計・製造・品質保証・知財の部署境界を越えて、必要な情報に即座に辿り着けます。退職・異動による技術継承の壁も低減します。</p>
+                <ul class="feature-list">
+                    <li>CAD 図面・BOM・PLM・MES・CAPA・FMEA・変更管理票・特許文献に対応</li>
+                    <li>PDF・Word・Excel・CSV・CAD・SQL DB の横断検索に対応</li>
+                    <li>文書内の表・寸法・注記・図解も正確に解析、自然言語で照会可能</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pillars / Differentiator -->
+<section class="section section-gray" id="pillars">
+    <div class="container">
+        <span class="section-eyebrow">WHY GBASE</span>
+        <h2 class="section-title">製造業向けに選ばれる3つの理由</h2>
+        <div class="pillars-grid">
+            <div class="pillar-card">
+                <div class="pillar-num">01</div>
+                <div class="pillar-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M9 13.5 L7 21 L12 18 L17 21 L15 13.5"/><circle cx="12" cy="9" r="2"/></svg>
+                </div>
+                <h3>GENIAC-PRIZE 採択の<br>国産日本語LLM</h3>
+                <p>NEDO「GENIAC-PRIZE」に国産基盤モデルとして登録。日本の製造現場で使われる専門用語（FMEA・4M 分析・SPC・QC 工程図 etc.）や設計領域の表記揺れを深く理解。汎用 AI では届かない「現場の暗黙知を含む回答」を実現します。</p>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-num">02</div>
+                <div class="pillar-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="6" rx="1.5"/><rect x="3" y="13" width="18" height="6" rx="1.5"/><circle cx="7" cy="6" r="0.6" fill="currentColor" stroke="none"/><circle cx="7" cy="16" r="0.6" fill="currentColor" stroke="none"/><line x1="11" y1="6" x2="18" y2="6"/><line x1="11" y1="16" x2="18" y2="16"/></svg>
+                </div>
+                <h3>HPE × NVIDIA × Sparticle<br>共同BMT実施済み</h3>
+                <p>主要サーバー・GPU ベンダーとの共同 BMT（ベンチマークテスト）を実施済み。ハードウェアとソフトウェアがワンパッケージで動作保証され、SI 連携もスムーズに進められます。</p>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-num">03</div>
+                <div class="pillar-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="9" y1="2" x2="15" y2="2"/></svg>
+                </div>
+                <h3>最短60日で本番稼働</h3>
+                <p>ヒアリング・要件定義・カスタマイズ・データ投入・テストまで、標準2ヶ月の導入プロセスでスピーディに本番運用までトータルで支援します。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Scenarios -->
+<section class="section" id="scenarios">
+    <div class="container">
+        <span class="section-eyebrow">USE CASES</span>
+        <h2 class="section-title">「過去の蓄積」を、その場で引き出せる業務 AI</h2>
+        <p class="section-subtitle">
+            設計レビュー、品質トレーサビリティ、知財戦略 —— 製造業特有の workflow に密着した活用シーンを支援します。
+        </p>
+        <div class="scenarios-grid">
+            <div class="scenario-card">
+                <div class="scenario-header">
+                    <div class="scenario-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 64">
+                            <rect x="8" y="12" width="48" height="36" rx="2"/>
+                            <line x1="20" y1="22" x2="44" y2="22"/>
+                            <line x1="20" y1="30" x2="44" y2="30"/>
+                            <line x1="20" y1="38" x2="36" y2="38"/>
+                            <path d="M14 56 L50 56"/>
+                            <circle cx="32" cy="56" r="2" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <span class="scenario-badge">シーン 01</span>
+                    <h3>設計レビュー（DR）支援</h3>
+                </div>
+                <div class="scenario-body">
+                    <p>「この温度条件・材質で過去に類似案件があったか」を <strong>自然言語で問いかけるだけ</strong>。CAD 図面・技術仕様書・過去 DR 議事録から、根拠付きで設計判断材料を瞬時に提示します。</p>
+                    <ul class="scenario-features">
+                        <li>過去 DR 議事録・設計変更履歴を横断検索</li>
+                        <li>CAD 図面内の表・寸法・注記も自然言語で照会</li>
+                        <li>類似設計案件の温度・材質・公差条件を瞬時抽出</li>
+                        <li>設計判断の根拠資料を出典付きで提示</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="scenario-card">
+                <div class="scenario-header">
+                    <div class="scenario-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 64">
+                            <circle cx="32" cy="32" r="22"/>
+                            <path d="M22 32 L30 40 L44 24"/>
+                            <line x1="32" y1="10" x2="32" y2="6"/>
+                            <line x1="32" y1="58" x2="32" y2="54"/>
+                            <line x1="10" y1="32" x2="6" y2="32"/>
+                            <line x1="58" y1="32" x2="54" y2="32"/>
+                        </svg>
+                    </div>
+                    <span class="scenario-badge">シーン 02</span>
+                    <h3>品質トレーサビリティ・FMEA 更新</h3>
+                </div>
+                <div class="scenario-body">
+                    <p>不具合発生時、<strong>「該当現象 × 類似製品 × 影響範囲」</strong> を一気通貫で AI 検索。是正処置記録（CAPA）・FMEA・BOM データを横断し、原因究明と再発防止策の検討を加速します。</p>
+                    <ul class="scenario-features">
+                        <li>是正処置記録・不適合報告書（NCR）の横断検索</li>
+                        <li>BOM × 不具合履歴で影響範囲をその場で抽出</li>
+                        <li>FMEA 既存項目の自動関連付け、見落とし防止</li>
+                        <li>客先 8D レポート・是正回答書のドラフト生成</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="scenario-card">
+                <div class="scenario-header">
+                    <div class="scenario-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 64">
+                            <circle cx="22" cy="24" r="8"/>
+                            <circle cx="42" cy="24" r="8"/>
+                            <circle cx="32" cy="44" r="8"/>
+                            <line x1="22" y1="32" x2="32" y2="36"/>
+                            <line x1="42" y1="32" x2="32" y2="36"/>
+                            <line x1="30" y1="24" x2="34" y2="24"/>
+                        </svg>
+                    </div>
+                    <span class="scenario-badge">シーン 03</span>
+                    <h3>知財・技術戦略・暗黙知継承</h3>
+                </div>
+                <div class="scenario-body">
+                    <p>自社特許・技術論文・研究報告書を <strong>社内環境内で AI 横断分析</strong>。ベテラン技術者が残した過去資料を質問形式で引き出し、若手社員が即戦力化する技術継承基盤を構築します。</p>
+                    <ul class="scenario-features">
+                        <li>自社特許・技術論文の社内横断分析</li>
+                        <li>ベテラン議事録・退職者資料から暗黙知を発掘</li>
+                        <li>競合特許との対比、知財戦略の意思決定支援</li>
+                        <li>研究テーマと既存資産のシナジー検討</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Case Studies -->
+<section class="section section-gray" id="cases">
+    <div class="container">
+        <span class="section-eyebrow">CASE STUDIES</span>
+        <h2 class="section-title">製造業での導入実績</h2>
+        <p class="section-subtitle">
+            産業機械の世界的メーカー、株式会社荏原製作所で POC 導入。機密技術文書の AI 活用と技術検索時間の大幅短縮を実証しています。
+        </p>
+
+        <article class="featured-case" aria-labelledby="ebara-case-title">
+            <div class="featured-case-visual" role="img" aria-label="荏原製作所 GBase OnPrem 導入事例">
+                <div class="featured-case-visual-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Ebara.svg/250px-Ebara.svg.png" alt="株式会社荏原製作所 公式ロゴ" width="120" height="26" decoding="async" loading="lazy">
+                    <span>株式会社荏原製作所</span>
+                </div>
+            </div>
+            <div class="featured-case-body">
+                <span class="featured-case-eyebrow">産業機械メーカー</span>
+                <h3 id="ebara-case-title">技術文書の探索を 30 分から 2 分へ — 創業 110 年超の技術資産を、機密性を守ったまま AI で活かす</h3>
+
+                <div class="featured-case-metrics">
+                    <div class="featured-case-metric">
+                        <div class="featured-case-metric-num">9<span style="font-size:1rem;color:var(--text-gray);">/10</span></div>
+                        <div class="featured-case-metric-label">担当者 満足度</div>
+                    </div>
+                    <div class="featured-case-metric">
+                        <div class="featured-case-metric-num">-93%</div>
+                        <div class="featured-case-metric-label">技術情報検索<br>30 分 → 2 分</div>
+                    </div>
+                    <div class="featured-case-metric">
+                        <div class="featured-case-metric-num">-95%</div>
+                        <div class="featured-case-metric-label">社内規程検索<br>20 分 → 1 分</div>
+                    </div>
+                    <div class="featured-case-metric">
+                        <div class="featured-case-metric-num">0<span style="font-size:1rem;color:var(--text-gray);">件</span></div>
+                        <div class="featured-case-metric-label">情報漏洩リスク<br>完全閉域・データ主権確保</div>
+                    </div>
+                </div>
+
+                <p style="font-size: 0.95rem; color: var(--text-gray); line-height: 1.8; margin: 0;">
+                    CPS（Cyber Physical Strategy）推進部にて約 2 ヶ月の POC を実施。「機密情報を外に出せない」と「汎用 AI では届かない専門家レベルの回答」という二律背反を解消し、設計・製造・品質保証の現場で業務効率を大幅に改善しています。
+                </p>
+
+                <div class="featured-case-cta">
+                    <a href="https://ailisonc147.github.io/onprem/case-study-ebara.html">詳細な導入事例を見る</a>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+    <div class="cta-content">
+        <h2>設計・製造・品質・知財の現場で、AI を使い倒す</h2>
+        <p>貴社の CAD・BOM・是正処置記録・特許文献の活用シーンに合わせた、具体的な導入計画をご提案します。POC からの段階的な導入も可能で、荏原製作所での実証実績をベースに、貴社固有の workflow に最適化します。</p>
+        <div class="hero-cta">
+            <a href="#contact" class="btn btn-primary">お問い合わせ</a>
+            <a href="#contact" class="btn btn-secondary">資料を無料ダウンロード</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-content">
+        <div>
+            <h4>製品</h4>
+            <ul>
+                <li><a href="https://onprem.gbase.ai/">GBase on Prem</a></li>
+                <li><a href="https://onprem.gbase.ai/products/onspark">GBase on Spark</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>ソリューション</h4>
+            <ul>
+                <li><a href="https://ailisonc147.github.io/onprem/government-solution.html">自治体・官公庁</a></li>
+                <li><a href="https://ailisonc147.github.io/onprem/manufacturing-solution.html">製造業</a></li>
+            </ul>
+            <h4 class="mt">導入事例</h4>
+            <ul>
+                <li><a href="https://ailisonc147.github.io/onprem/case-study-ebara.html">事例一覧</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>リソース</h4>
+            <ul>
+                <li><a href="https://onprem.gbase.ai/blog">ブログ</a></li>
+                <li><a href="https://onprem.gbase.ai/#implementation-flow">導入流れ</a></li>
+                <li><a href="https://onprem.gbase.ai/#faq">よくある質問</a></li>
+                <li><a href="https://onprem.gbase.ai/#contact">お問い合わせ</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>その他のプロダクト</h4>
+            <ul>
+                <li><a href="https://gbase.ai/" target="_blank" rel="noopener">GBase<small>（ナレッジ AI）</small></a></li>
+                <li><a href="https://cs.gbase.ai/" target="_blank" rel="noopener">GBase Support<small>（AIサポート）</small></a></li>
+                <li><a href="https://subtitles.felo.me/" target="_blank" rel="noopener">Felo Subtitles<small>（多言語字幕）</small></a></li>
+                <li><a href="https://s.gbase.ai/" target="_blank" rel="noopener">GBase GTM<small>（顧客獲得 AI）</small></a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Sparticle について</h4>
+            <ul>
+                <li><a href="https://sparticle.com" target="_blank" rel="noopener">会社概要</a></li>
+                <li><a href="https://www.sparticle.com/careers" target="_blank" rel="noopener">採用情報</a></li>
+            </ul>
+            <div class="footer-social">
+                <a href="https://x.com/sparticle_ai" target="_blank" rel="noopener" aria-label="X" title="X (Twitter)">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="https://note.com/sparticle" target="_blank" rel="noopener" aria-label="note" title="note">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 .279c4.623 0 10.953-.235 15.498-.117 6.099.156 8.39 2.813 8.468 9.374.077 3.71 0 14.335 0 14.335h-6.598c0-9.296.04-10.83 0-13.759-.078-2.578-.814-3.807-2.795-4.041-2.097-.235-7.975-.04-7.975-.04v17.84H0Z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/company/sparticle-inc" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45C23.2 24 24 23.23 24 22.28V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-bottom-row">
+            <span>© 2026 Sparticle Inc. All rights reserved.</span>
+            <div class="footer-legal">
+                <a href="https://gbase.ai/privacy-policy" target="_blank" rel="noopener">プライバシーポリシー</a>
+                <a href="https://gbase.ai/on-premises/terms-of-use" target="_blank" rel="noopener">利用規約</a>
+                <a href="https://gbase.ai/on-premises/maintenance-support-service-specification" target="_blank" rel="noopener">保守サポートサービス仕様</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

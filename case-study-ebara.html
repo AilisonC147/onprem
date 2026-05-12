@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>荏原製作所 GBase OnPrem 導入事例｜機密技術文書を外部に出さず社内AIで活用、検索時間93%削減</title>
   <meta name="description" content="荏原製作所が GBase OnPrem を導入。設計図・技術仕様書・社内規程など機密性の高いデータを外部に出さず、オンプレミス環境のRAG検索AIで活用。技術情報検索が30分→2分（93%削減）、満足度9/10。">
-  <meta name="keywords" content="荏原製作所, GBase OnPrem, オンプレミスAI, 製造業 AI, RAG検索, 機密データ AI活用, 70Bモデル, NVIDIA A100, 社内ナレッジベース">
+  <meta name="keywords" content="荏原製作所, GBase OnPrem, オンプレミスAI, 製造業 AI, RAG検索, 機密データ AI活用, 80Bモデル, NVIDIA H100, 社内ナレッジベース">
   <meta name="robots" content="index,follow">
 
   <!-- Open Graph -->
@@ -140,24 +140,6 @@
     .section-heading { font-size: 18px; font-weight: 700; color: #050038; padding-bottom: 12px; border-bottom: 1px solid #E5E7EB; margin-bottom: 20px; }
     .section-label { font-size: 11px; font-weight: 700; color: #9BA832; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 6px; }
     .sidebar-sticky { position: sticky; top: 80px; }
-    /* Hero illustration */
-    .hero-illustration {
-      background:
-        radial-gradient(ellipse 70% 60% at 30% 30%, rgba(220, 233, 114, 0.50) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 60% at 70% 70%, rgba(232, 240, 163, 0.35) 0%, transparent 65%),
-        linear-gradient(135deg, #050038 0%, #1A165A 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-illustration::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(220, 233, 114, 0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(220, 233, 114, 0.08) 1px, transparent 1px);
-      background-size: 40px 40px;
-    }
   </style>
 
   <!-- JSON-LD: Article -->
@@ -167,10 +149,7 @@
     "@type": "Article",
     "headline": "荏原製作所 GBase OnPrem 導入事例｜機密技術文書を外部に出さず社内AIで活用、検索時間93%削減",
     "description": "株式会社荏原製作所が GBase OnPrem を採用。設計図・技術仕様書・社内規程など機密性の高いデータを外部に出さず、オンプレミス環境のRAG検索AIで活用。技術情報検索が30分→2分（93%削減）、満足度9/10の事例。",
-    "image": [
-      "https://onprem.gbase.ai/og-case-ebara.jpg",
-      "https://www.ebara.com/adobe/dynamicmedia/deliver/dm-aid--76c1020d-cb53-46e4-982f-de902022bd63/img-our-business-02.jpg"
-    ],
+    "image": "https://onprem.gbase.ai/og-case-ebara.jpg",
     "author": { "@type": "Organization", "name": "Sparticle Inc.", "url": "https://sparticle.com/" },
     "publisher": {
       "@type": "Organization",
@@ -181,7 +160,7 @@
     "dateModified": "2026-05-08",
     "inLanguage": "ja",
     "articleSection": "導入事例",
-    "keywords": "荏原製作所, GBase OnPrem, オンプレミスAI, 製造業 AI, RAG検索, 機密データ AI活用, 70Bモデル, NVIDIA A100, 社内ナレッジベース",
+    "keywords": "荏原製作所, GBase OnPrem, オンプレミスAI, 製造業 AI, RAG検索, 機密データ AI活用, 80Bモデル, NVIDIA H100, 社内ナレッジベース",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://onprem.gbase.ai/case-studies/ebara"
@@ -223,9 +202,9 @@
     "featureList": [
       "オンプレミス・完全閉域運用",
       "RAG（Retrieval-Augmented Generation）検索",
-      "70B/80B 日本語高精度モデル",
-      "NVIDIA A100 / H200 GPU 対応",
-      "8-bit 量子化最適化",
+      "80B 日本語高精度モデル",
+      "NVIDIA H100 GPU 対応",
+      "4-bit 量子化最適化",
       "ファイル解析・社内ナレッジベース構築",
       "権限管理・ログ監査"
     ],
@@ -351,37 +330,26 @@
     <!-- ===== HERO ===== -->
     <section class="py-16 md:py-20 bg-gradient-to-br from-accent-50 via-white to-white overflow-hidden">
       <div class="max-w-7xl mx-auto px-6">
-        <div class="grid lg:grid-cols-2 gap-14 items-center">
-          <div>
-            <div class="flex items-center gap-4 mb-6">
-              <div class="h-12 flex items-center justify-center bg-white rounded-lg border border-gray-200 px-4" style="box-shadow: 0 2px 8px rgba(5,0,56,0.06);">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Ebara.svg/250px-Ebara.svg.png" alt="株式会社荏原製作所 公式ロゴ" class="h-7 w-auto" width="120" height="28" decoding="async">
-              </div>
-              <div>
-                <p class="text-xs text-gray-500 leading-none mb-1.5">導入企業</p>
-                <p class="text-xl font-bold text-primary-900 font-jp leading-tight">株式会社荏原製作所</p>
-              </div>
+        <div class="max-w-3xl mx-auto text-center">
+          <div class="flex items-center justify-center gap-4 mb-6">
+            <div class="h-12 flex items-center justify-center bg-white rounded-lg border border-gray-200 px-4" style="box-shadow: 0 2px 8px rgba(5,0,56,0.06);">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Ebara.svg/250px-Ebara.svg.png" alt="株式会社荏原製作所 公式ロゴ" class="h-7 w-auto" width="120" height="28" decoding="async">
             </div>
-            <h1 class="text-3xl lg:text-4xl font-extrabold leading-tight tracking-tight mb-5 font-jp" style="color: #A8C72E;">
-              外部に出せない技術文書を、<br>社内AIで安全に活用する。
-            </h1>
-            <p class="text-lg text-gray-600 leading-relaxed mb-8 max-w-lg">
-              設計図・技術仕様書・社内規程など機密性の高いデータを外部に出さず、オンプレミス環境のRAG検索AIで活用。技術情報検索の所要時間を <strong class="text-primary-900">30分→2分（93%削減）</strong> に短縮。
-            </p>
-            <a href="#contact" class="btn-onprem-gradient inline-flex items-center gap-2 px-7 py-3 font-bold rounded-full" style="box-shadow: 0 4px 16px rgba(155,168,50,0.3);">
-              <span class="icon text-lg">mail</span>
-              お問い合わせ・ご相談
-            </a>
+            <div class="text-left">
+              <p class="text-xs text-gray-500 leading-none mb-1.5">導入企業</p>
+              <p class="text-xl font-bold text-primary-900 font-jp leading-tight">株式会社荏原製作所</p>
+            </div>
           </div>
-          <div class="aspect-[4/3] rounded-2xl overflow-hidden img-depth max-w-md ml-auto">
-            <img src="https://www.ebara.com/adobe/dynamicmedia/deliver/dm-aid--76c1020d-cb53-46e4-982f-de902022bd63/img-our-business-02.jpg?quality=85&preferwebp=true"
-                 alt="荏原製作所 GBase OnPrem 導入 — 産業機械製造業の現場における AI ナレッジ活用"
-                 class="w-full h-full object-cover"
-                 width="1200"
-                 height="900"
-                 fetchpriority="high"
-                 decoding="async">
-          </div>
+          <h1 class="text-3xl lg:text-4xl font-extrabold leading-tight tracking-tight mb-5 font-jp" style="color: #A8C72E;">
+            外部に出せない技術文書を、<br>社内AIで安全に活用する。
+          </h1>
+          <p class="text-lg text-gray-600 leading-relaxed mb-8 mx-auto max-w-2xl">
+            設計図・技術仕様書・社内規程など機密性の高いデータを外部に出さず、<br>オンプレミス環境のRAG検索AIで活用。<br>技術情報検索の所要時間を <strong class="text-primary-900">30分→2分（93%削減）</strong> に短縮。
+          </p>
+          <a href="#contact" class="btn-onprem-gradient inline-flex items-center gap-2 px-7 py-3 font-bold rounded-full" style="box-shadow: 0 4px 16px rgba(155,168,50,0.3);">
+            <span class="icon text-lg">mail</span>
+            お問い合わせ・ご相談
+          </a>
         </div>
       </div>
     </section>
@@ -459,15 +427,15 @@
                 </p>
               </div>
               <div class="pl-4 border-l-2 border-accent-300">
-                <h3 class="text-sm font-semibold text-gray-900 mb-1.5">② 70Bパラメータの日本語高精度モデル</h3>
+                <h3 class="text-sm font-semibold text-gray-900 mb-1.5">② 80Bパラメータの日本語高精度モデル</h3>
                 <p class="text-sm text-gray-600 leading-relaxed mb-0">
-                  検証の結果、70B（700億パラメータ）モデルは<strong>一部タスクで GPT-4o mini と同等レベルの精度</strong>を実現。製造業の専門用語・社内固有の表記も、社内文書のRAG検索を併用することで高い精度で扱える。
+                  検証の結果、80B（800億パラメータ）モデルは<strong>一部タスクで GPT-4o mini と同等レベルの精度</strong>を実現。製造業の専門用語・社内固有の表記も、社内文書のRAG検索を併用することで高い精度で扱える。
                 </p>
               </div>
               <div class="pl-4 border-l-2 border-accent-300">
-                <h3 class="text-sm font-semibold text-gray-900 mb-1.5">③ NVIDIA A100 + 8-bit 量子化で現実的なハード要件</h3>
+                <h3 class="text-sm font-semibold text-gray-900 mb-1.5">③ NVIDIA H100 + 4-bit 量子化で現実的なハード要件</h3>
                 <p class="text-sm text-gray-600 leading-relaxed mb-0">
-                  NVIDIA A100 GPU 4 基（各 40GB）構成と、8-bit 量子化技術により、70B/80B クラスのモデルを既存データセンター内に収まる規模で運用できる。
+                  NVIDIA H100 GPU 2 基（各 80GB）構成と、4-bit 量子化技術により、80B クラスのモデルを既存データセンター内に収まる規模で運用できる。
                 </p>
               </div>
               <div class="pl-4 border-l-2 border-accent-300">
@@ -521,7 +489,7 @@
             </div>
 
             <p>
-              定量効果に加え、これまで「外に出せない」がゆえに AI 検証から除外されていた機密データを、社内環境で安全に AI 活用検証できるようになったことも大きな価値となっている。同様に機密性が求められる業界では、<a href="https://ailisonc147.github.io/onprem/government-solution.html" class="text-accent-500 underline hover:no-underline">自治体・官公庁向けの GBase OnPrem 導入</a>でも完全閉域運用のニーズが急速に高まっている。
+              定量効果に加え、これまで「外に出せない」がゆえに AI 検証から除外されていた機密データを、社内環境で安全に AI 活用検証できるようになったことも大きな価値となっている。
             </p>
           </section>
 
@@ -653,7 +621,7 @@
           <span class="cta-gradient-text">外に出さず AI で活用しませんか？</span>
         </h2>
         <p class="text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-          製造業・自治体・金融など、機密性の高いデータを扱う組織向けに、貴社環境内でのオンプレミス AI 構築をご提案します。<br>
+          製造業・自治体・金融など、機密性の高いデータを扱う組織向けに、貴社環境内での<br>オンプレミス AI 構築をご提案します。<br>
           POC からの段階的な導入も可能です。
         </p>
         <div class="flex flex-wrap justify-center gap-4">
