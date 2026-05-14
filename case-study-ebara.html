@@ -138,6 +138,8 @@
     .article-body { font-size: 15px; line-height: 1.85; color: #374151; }
     .article-body p { margin-bottom: 1.25rem; }
     .section-heading { font-size: 18px; font-weight: 700; color: #050038; padding-bottom: 12px; border-bottom: 1px solid #E5E7EB; margin-bottom: 20px; }
+    .inline-link { color: #050038; font-weight: 600; text-decoration: underline; text-decoration-color: rgba(155, 168, 50, 0.55); text-underline-offset: 3px; transition: text-decoration-color 0.2s; }
+    .inline-link:hover { text-decoration-color: #9BA832; }
     .section-label { font-size: 11px; font-weight: 700; color: #9BA832; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 6px; }
     .sidebar-sticky { position: sticky; top: 80px; }
   </style>
@@ -409,6 +411,9 @@
             <p>
               CPS推進部の担当者は当時の状況をこう振り返る。「汎用AIでは、製造業の現場で求められる<strong>"専門家レベルの回答"には届かない</strong>。かといって、重要な技術情報を外部に出すこともできませんでした」──この二律背反を解く方法を、同社は探していた。
             </p>
+            <p>
+              機密データを扱う環境での AI 活用の前提については、<a href="https://onprem.gbase.ai/blog/on-premise-security/" class="inline-link">オンプレミスAIのセキュリティ解説</a>もあわせてご参照ください。
+            </p>
           </section>
 
           <!-- 選定 -->
@@ -441,7 +446,7 @@
               <div class="pl-4 border-l-2 border-accent-300">
                 <h3 class="text-sm font-semibold text-gray-900 mb-1.5">④ RAG で「荏原仕様の AI」が育つ</h3>
                 <p class="text-sm text-gray-600 leading-relaxed mb-0">
-                  社内文書をアップロードするだけで、Retrieval-Augmented Generation（RAG）の仕組みにより、自社固有の知識を反映した回答ができる「荏原専用AI」へ成長していく。外部ベンダーの専門人材を別途配置する必要はない。
+                  社内文書をアップロードするだけで、Retrieval-Augmented Generation（RAG）の仕組みにより、自社固有の知識を反映した回答ができる「荏原専用AI」へ成長していく。外部ベンダーの専門人材を別途配置する必要はない。RAG の仕組みは<a href="https://onprem.gbase.ai/blog/rag-toha/" class="inline-link">RAGとは？仕組みと導入方法</a>で詳しく解説しています。
                 </p>
               </div>
             </div>
@@ -458,7 +463,7 @@
               社内ナレッジベースは、現場の担当者が技術文書・社内規程・過去案件資料を <strong>シンプルにアップロードするだけ</strong> で構築できる。ファイル解析・チャンク分割・ベクトル化はシステムが自動的に処理し、利用者は従来のファイル整理感覚で運用を進められる。
             </p>
             <p>
-              またハードウェアの選定・設置・運用ハンドオーバーまで、Sparticle のオンプレミスチームが伴走支援。POC 期間中の応答精度チューニングまで含めて支援することで、社内側の負荷を最小化している。
+              またハードウェアの選定・設置・運用ハンドオーバーまで、Sparticle のオンプレミスチームが伴走支援。POC 期間中の応答精度チューニングまで含めて支援することで、社内側の負荷を最小化している。社内ナレッジベース構築の進め方は<a href="https://onprem.gbase.ai/blog/knowledge-base-guide/" class="inline-link">ナレッジベース構築ガイド</a>もあわせてご参照ください。
             </p>
           </section>
 
