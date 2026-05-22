@@ -1716,6 +1716,49 @@
     </div>
 </section>
 
+<!-- FAQ Section -->
+<section class="section section-gray" id="faq">
+    <div class="container">
+        <span class="section-eyebrow">FAQ</span>
+        <h2 class="section-title">よくある質問</h2>
+        <p class="section-subtitle">
+            製造業でのオンプレミス AI 導入に関して、よくいただくご質問にお答えします。
+        </p>
+
+        <div class="faq-list">
+            <details>
+                <summary>設計図面や CAD データ (DWG/DXF) も検索できますか？</summary>
+                <p>はい、対応しています。GBase On-Premises は AutoCAD の DWG・DXF 形式、SOLIDWORKS、Creo などの 3D CAD ファイル、および PDF 化された図面を横断検索できます。図面内の寸法や部品番号、注記も自然言語で検索可能で、「φ50 の軸受け部」「M8 ネジ穴」などの指示でも該当箇所をピンポイントで抽出します。荏原製作所での POC でも、技術図面の検索精度が実証されています。</p>
+            </details>
+
+            <details>
+                <summary>機密技術情報が外部に漏洩するリスクはありませんか？</summary>
+                <p>完全にゼロです。GBase On-Premises は貴社内のサーバーで完結する完全オンプレミス構成で、インターネット接続は不要です。学習データ・推論処理・検索履歴のすべてが社内に閉じており、外部 API への通信は一切発生しません。ISO 27001 認証取得済みの Sparticle が構築・運用支援を行い、NIST Cybersecurity Framework に準拠したセキュリティ設計を標準提供しています。</p>
+            </details>
+
+            <details>
+                <summary>導入にかかる期間と初期費用の目安を教えてください</summary>
+                <p>標準的な POC (概念実証) は約 2 ヶ月、本番展開まで含めると 3〜4 ヶ月が目安です。初期費用はサーバー構成により異なりますが、独自のハイブリッド量子化技術により GPU 使用量を最大 75% 削減できるため、従来型 RAG の 1/4 程度のハードウェアコストで導入可能です。荏原製作所では約 2 ヶ月の POC で技術検索時間 93% 削減を実証しており、ROI (投資回収) は平均 18 ヶ月以内です。</p>
+            </details>
+
+            <details>
+                <summary>既存の PLM や PDM システムと連携できますか？</summary>
+                <p>はい、主要な PLM/PDM システムとの連携に対応しています。Windchill、Teamcenter、ENOVIA、Aras Innovator などの製品データ管理システムから、REST API または定期バッチ処理でデータを取り込み、統合検索を実現します。BOM (部品表) データベースとの連携も可能で、「この部品を使っている設計はどれか」といった逆引き検索もサポートします。既存システムを置き換えるのではなく、「横断検索レイヤー」として機能します。</p>
+            </details>
+
+            <details>
+                <summary>専門用語や社内独自の略語にも対応できますか？</summary>
+                <p>Sparticle 独自開発の日本語特化 LLM を採用しており、製造業の専門用語 (JIS 規格用語、材料記号、加工用語など) を標準でカバーしています。さらに、貴社固有の略語・社内用語・製品コードを追加学習させることで、「この材質で SUS316L 相当品は？」「DR 議事録の是正処置」といった社内特有の表現にも高精度で応答します。POC 期間中に用語辞書をチューニングし、本番環境で継続的に精度向上を図ります。</p>
+            </details>
+
+            <details>
+                <summary>回答の根拠となった文書を確認できますか？</summary>
+                <p>すべての回答に出典 (出典ドキュメント名・ページ番号・該当箇所の引用) が自動的に付与されます。「この情報はどこから来たのか」を即座にトレースでき、技術判断の信頼性を担保します。荏原製作所の事例では、設計レビューや品質会議で「AI の回答が正しいか」を即座に原典で検証できることが高く評価されました。ISO 9001 や IATF 16949 などの品質管理体制にも適合します。</p>
+            </details>
+        </div>
+    </div>
+</section>
+
 
 <!-- CTA -->
 <section class="cta-section" id="contact">
