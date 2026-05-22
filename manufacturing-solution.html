@@ -1060,6 +1060,17 @@
             line-height: 1.4;
         }
 
+        /* Inline content link */
+        .inline-link {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: underline;
+            text-decoration-color: #C0D238;
+            text-underline-offset: 3px;
+            transition: text-decoration-color 0.2s;
+        }
+        .inline-link:hover { text-decoration-color: #9BA832; }
+
         /* FAQ */
         .faq-list {
             max-width: 880px;
@@ -1670,7 +1681,7 @@
                     <h3>設計レビュー（DR）支援</h3>
                 </div>
                 <div class="scenario-body">
-                    <p>「この温度条件・材質で過去に類似案件があったか」を <strong>自然言語で問いかけるだけ</strong>。CAD 図面・技術仕様書・過去 DR 議事録から、根拠付きで設計判断材料を瞬時に提示します。<a href="https://onprem.gbase.ai/blog/document-management-guide/" style="color: #6b7280; text-decoration: none; margin-left: 0.5rem;">→ ドキュメント管理の効率化ガイド</a></p>
+                    <p>「この温度条件・材質で過去に類似案件があったか」を <strong>自然言語で問いかけるだけ</strong>。CAD 図面・技術仕様書・過去 DR 議事録から、根拠付きで設計判断材料を瞬時に提示します。技術文書の管理手法は<a href="https://onprem.gbase.ai/blog/document-management-guide/" class="inline-link">ドキュメント管理の効率化ガイド</a>もご参照ください。</p>
                     <ul class="scenario-features">
                         <li>過去 DR 議事録・設計変更履歴を横断検索</li>
                         <li>CAD 図面内の表・寸法・注記も自然言語で照会</li>
@@ -1720,7 +1731,7 @@
                     <h3>知財・技術戦略・暗黙知継承</h3>
                 </div>
                 <div class="scenario-body">
-                    <p>自社特許・技術論文・研究報告書を <strong>社内環境内で AI 横断分析</strong>。ベテラン技術者が残した過去資料を質問形式で引き出し、若手社員が即戦力化する技術継承基盤を構築します。<a href="https://onprem.gbase.ai/blog/knowledge-management-guide/" style="color: #6b7280; text-decoration: none; margin-left: 0.5rem;">→ ナレッジ管理の進め方完全ガイド</a></p>
+                    <p>自社特許・技術論文・研究報告書を <strong>社内環境内で AI 横断分析</strong>。ベテラン技術者が残した過去資料を質問形式で引き出し、若手社員が即戦力化する技術継承基盤を構築します。技術継承の仕組み作りは<a href="https://onprem.gbase.ai/blog/knowledge-management-guide/" class="inline-link">ナレッジ管理の進め方完全ガイド</a>もご活用ください。</p>
                     <ul class="scenario-features">
                         <li>自社特許・技術論文の社内横断分析</li>
                         <li>ベテラン議事録・退職者資料から暗黙知を発掘</li>
@@ -1834,8 +1845,8 @@
         <h2>設計・製造・品質・知財の現場で、AI を使い倒す</h2>
         <p>貴社の CAD・BOM・是正処置記録・特許文献の活用シーンに合わせた、具体的な導入計画をご提案します。POC からの段階的な導入も可能で、荏原製作所での実証実績をベースに、貴社固有の workflow に最適化します。</p>
         <div class="hero-cta">
-            <a href="#contact" class="btn btn-primary">お問い合わせ</a>
-            <a href="#contact" class="btn btn-secondary">資料を無料ダウンロード</a>
+            <a href="https://onprem.gbase.ai/" class="btn btn-primary">無料デモ</a>
+            <a href="https://onprem.gbase.ai/" class="btn btn-secondary">資料請求申込</a>
         </div>
     </div>
 </section>
