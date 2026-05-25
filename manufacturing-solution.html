@@ -81,7 +81,7 @@
           "name": "機密技術情報が外部に漏洩するリスクはありませんか？",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "完全にゼロです。GBase On-Premises は貴社内のサーバーで完結する完全オンプレミス構成で、インターネット接続は不要です。学習データ・推論処理・検索履歴のすべてが社内に閉じており、外部 API への通信は一切発生しません。ISO 27001 認証取得済みの Sparticle が構築・運用支援を行い、NIST Cybersecurity Framework に準拠したセキュリティ設計を標準提供しています。"
+            "text": "外部送信による情報漏洩リスクを根本から排除します。GBase On-Premises は貴社内のサーバーで完結する完全オンプレミス構成で、インターネット接続は不要です。学習データ・推論処理・検索履歴のすべてが社内に閉じており、外部 API への通信は一切発生しません。ISO 27001 認証取得済みの Sparticle が構築・運用支援を行い、NIST Cybersecurity Framework に準拠したセキュリティ設計を標準提供しています。"
           }
         },
         {
@@ -553,6 +553,12 @@
             color: var(--primary);
             font-weight: 800;
             flex-shrink: 0;
+        }
+        .feature-note {
+            margin-top: 1rem;
+            font-size: 0.78rem;
+            color: var(--text-gray);
+            line-height: 1.6;
         }
 
         /* Pillars (Differentiator) */
@@ -1459,7 +1465,7 @@
                     </div>
                 </div>
             </li>
-            <li><a href="#">導入事例</a></li>
+            <li><a href="https://ailisonc147.github.io/onprem/case-study-ebara.html">導入事例</a></li>
             <li class="nav-dropdown">
                 <button class="nav-btn" type="button">リソース
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -1567,7 +1573,7 @@
                 <ul class="feature-list">
                     <li>外部 API 呼び出しゼロ、完全閉域で動作</li>
                     <li>知財・機密情報・個人情報を社内ネットワーク内で完結処理</li>
-                    <li>情報漏えいリスクを排除、コンプライアンス要件を確実に満たす</li>
+                    <li>外部送信による情報漏えいリスクを排除、コンプライアンス要件を確実に満たす</li>
                 </ul>
             </div>
         </div>
@@ -1586,6 +1592,7 @@
                     <li>社内文書のアップロードだけで「自社専用 AI」へ成長</li>
                     <li>独自量子化技術で低コスト構成・全社員規模で展開可能</li>
                 </ul>
+                <p class="feature-note">※ GPU 使用量・推論速度の削減効果は、Sparticle による自社検証環境での測定値です。対象モデル・ハードウェア構成・利用条件により数値は異なります。</p>
             </div>
         </div>
 
@@ -1636,8 +1643,8 @@
                 <div class="pillar-icon">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M9 13.5 L7 21 L12 18 L17 21 L15 13.5"/><circle cx="12" cy="9" r="2"/></svg>
                 </div>
-                <h3>GENIAC-PRIZE 採択の<br>国産日本語LLM</h3>
-                <p>NEDO「GENIAC-PRIZE」に国産基盤モデルとして登録。日本の製造現場で使われる専門用語（FMEA・4M 分析・SPC・QC 工程図 etc.）や設計領域の表記揺れを深く理解。汎用 AI では届かない「現場の暗黙知を含む回答」を実現します。</p>
+                <h3>NEDO「GENIAC-PRIZE」登録の<br>独自量子化技術 × RAG</h3>
+                <p>NEDO「GENIAC-PRIZE」のモデル一覧に、Sparticle独自の量子化技術によるモデル（Llama・Qwen 等ベース）が登録。これにRAGを組み合わせ、日本の製造現場で使われる専門用語（FMEA・4M 分析・SPC・QC 工程図 etc.）や設計領域の表記揺れにも対応し、汎用 AI では届かない「現場の暗黙知を含む回答」を実現します。</p>
             </div>
             <div class="pillar-card">
                 <div class="pillar-num">02</div>
@@ -1815,7 +1822,7 @@
 
             <details>
                 <summary>機密技術情報が外部に漏洩するリスクはありませんか？</summary>
-                <p>完全にゼロです。GBase On-Premises は貴社内のサーバーで完結する完全オンプレミス構成で、インターネット接続は不要です。学習データ・推論処理・検索履歴のすべてが社内に閉じており、外部 API への通信は一切発生しません。ISO 27001 認証取得済みの Sparticle が構築・運用支援を行い、NIST Cybersecurity Framework に準拠したセキュリティ設計を標準提供しています。</p>
+                <p>外部送信による情報漏洩リスクを根本から排除します。GBase On-Premises は貴社内のサーバーで完結する完全オンプレミス構成で、インターネット接続は不要です。学習データ・推論処理・検索履歴のすべてが社内に閉じており、外部 API への通信は一切発生しません。ISO 27001 認証取得済みの Sparticle が構築・運用支援を行い、NIST Cybersecurity Framework に準拠したセキュリティ設計を標準提供しています。</p>
             </details>
 
             <details>
