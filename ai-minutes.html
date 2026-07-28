@@ -1401,19 +1401,29 @@
             border-bottom: 1px solid var(--border);
             color: var(--text-dark);
         }
-        .compare-card ul { list-style: none; display: grid; gap: 0.7rem; }
+        .compare-card ul { list-style: none; display: grid; gap: 0.8rem; }
         .compare-card li {
             font-size: 0.9rem;
             color: var(--text-gray);
             line-height: 1.65;
-            padding-left: 1.6rem;
+            padding-left: 1.9rem;
             position: relative;
+        }
+        .compare-card li::before {
+            position: absolute; left: 0; top: 0.18em;
+            width: 19px; height: 19px;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 0.66rem;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
         }
         .compare-ng li::before {
             content: '✕';
-            position: absolute; left: 0; top: 0;
-            color: #B0B4BD;
-            font-weight: 700;
+            background: #F0625C;
         }
         .compare-ok {
             border: 2px solid var(--accent);
@@ -1422,9 +1432,7 @@
         .compare-ok li { color: var(--text-dark); }
         .compare-ok li::before {
             content: '✓';
-            position: absolute; left: 0; top: 0;
-            color: var(--primary);
-            font-weight: 800;
+            background: #9BA832;
         }
 
         .steps-grid {
