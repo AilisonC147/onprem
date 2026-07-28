@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ailisonc147.github.io/onprem/sitemap.xml
