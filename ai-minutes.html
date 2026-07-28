@@ -1394,7 +1394,7 @@
             border: 1px solid var(--border);
         }
         .compare-card h3 {
-            font-size: 1.05rem;
+            font-size: 1.0625rem;
             font-weight: 800;
             margin-bottom: 1rem;
             padding-bottom: 0.75rem;
@@ -1516,7 +1516,18 @@
         .hero-feature .hero-points { justify-content: center; }
         .hero-feature .hero-points li { color: rgba(5, 0, 56, 0.75); }
         .hero-feature .hero-points li::before { background: #9BA832; }
-        .hero-feature .btn-secondary { background: white; }
+        .hero-feature .hero-cta { align-items: center; }
+        .hero-feature .hero-cta .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.4;
+        }
+        .hero-feature .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border-color: var(--primary);
+        }
         .hero-feature .btn-secondary:hover { background: var(--bg-cream); }
         .hero-deco {
             position: absolute;
@@ -1534,7 +1545,6 @@
         .hero-mockup-wrap { max-width: 880px; margin: 3.5rem auto 0; }
         .hero-mockup img {
             width: 100%; height: auto; display: block;
-            filter: drop-shadow(0 24px 40px rgba(5, 0, 56, 0.16));
         }
 
         .ps-row {
@@ -1555,8 +1565,7 @@
             color: var(--text-gray);
             margin-bottom: 0.5rem;
         }
-        .ps-pain-card h3 {
-            font-size: 1.02rem;
+        XX            font-size: 1.0625rem;
             font-weight: 800;
             line-height: 1.5;
             color: var(--text-dark);
@@ -1784,7 +1793,7 @@
             </ul>
             <div class="hero-mockup-wrap">
                 <div class="hero-mockup">
-                    <img src="images/hero-minutes-upload.png" alt="会議の録音ファイルをドラッグ&ドロップし、言語と話者数を選んで文字起こしを開始する画面イメージ" width="1088" height="804" loading="eager" decoding="async" fetchpriority="high">
+                    <img src="images/hero-minutes-upload.png" alt="会議の録音ファイルをドラッグ&ドロップし、言語と話者数を選んで文字起こしを開始する画面イメージ" width="1208" height="924" loading="eager" decoding="async" fetchpriority="high">
                 </div>
             </div>
         </div>
@@ -1886,7 +1895,7 @@
 </section>
 
 <!-- 4 Differentiators -->
-<section class="section section-gray" id="features">
+<section class="section" id="features">
     <div class="container">
         <span class="section-eyebrow">FEATURES</span>
         <h2 class="section-title">GBase On-Premises のAI議事録、4つの特長</h2>
@@ -1900,7 +1909,6 @@
                 <img src="images/feature-minutes-local-llm.jpg" alt="議事録の要約を自社環境のローカルLLMで実行し、会議データを外部クラウドに送信しない構成イメージ" width="1200" height="900" loading="lazy" decoding="async">
             </div>
             <div class="feature-content">
-                <span class="feature-label">LOCAL LLM</span>
                 <h3>要約はローカルLLM。<br>会議データを外部に出さない</h3>
                 <p>議事録の要約は、外部クラウドではなく自社・組織内環境で動作するLLMが実行します。個人情報や意思決定前の機微な情報を含む会議も、外部に送信せずにAIで処理できます。閉域環境でのAI活用については、<a href="https://onprem.gbase.ai/blog/on-premise-security/" class="inline-link">オンプレミスAIのセキュリティ解説</a>もご参照ください。</p>
                 <ul class="feature-list">
@@ -1917,7 +1925,6 @@
                 <img src="images/feature-minutes-upload.jpg" alt="会議の録音ファイルをドラッグ&ドロップし、言語と話者数を選んで文字起こしを開始する画面イメージ" width="1200" height="900" loading="lazy" decoding="async">
             </div>
             <div class="feature-content">
-                <span class="feature-label">TRANSCRIPTION</span>
                 <h3>音声をアップロードするだけで、<br>読めるテキストに</h3>
                 <p>会議の録音ファイルをドラッグ&amp;ドロップするだけで、タイムスタンプ・話者ラベル付きの文字起こしを自動生成。句読点の補正とフィラー（「えー」「あの」等）の除去は標準で適用され、そのまま読める文章として出力します。</p>
                 <ul class="feature-list">
@@ -1934,7 +1941,6 @@
                 <img src="images/feature-minutes-template.jpg" alt="話者ラベル付き文字起こしをテンプレートに沿って構造化し、決定事項・ToDoが整理された議事録ドラフトを生成するイメージ" width="1200" height="900" loading="lazy" decoding="async">
             </div>
             <div class="feature-content">
-                <span class="feature-label">TEMPLATE</span>
                 <h3>テンプレートで、「読める議事録」まで<br>自動で仕上げる</h3>
                 <p>文字起こし結果をもとに、標準テンプレート（会議概要・議題・決定事項・ToDo）に沿ってLLMが議事録ドラフトを自動生成。担当者は「ゼロから書く」のではなく「確認して仕上げる」だけです。</p>
                 <ul class="feature-list">
@@ -1952,7 +1958,6 @@
                 <img src="images/feature-minutes-multilang.jpg" alt="日本語・英語・中国語が混在する会議を話者ごとに分離し、訳文付きで記録する文字起こし画面イメージ" width="1200" height="900" loading="lazy" decoding="async">
             </div>
             <div class="feature-content">
-                <span class="feature-label">MULTILINGUAL</span>
                 <h3>多言語が混ざる会議も、<br>話者ごとに正確に記録</h3>
                 <p>日本語・英語・中国語など複数の言語を選択でき、1つの音声に複数言語が混在していても認識できます。参加人数を事前に指定することで、話者分離（誰が話したか）の精度が向上します。</p>
                 <ul class="feature-list">
@@ -1966,7 +1971,7 @@
 </section>
 
 <!-- Compare -->
-<section class="section" id="compare">
+<section class="section section-gray" id="compare">
     <div class="container">
         <span class="section-eyebrow">WHY LOCAL LLM</span>
         <h2 class="section-title">「AIは使いたい。でも、データは外に出せない」を両立</h2>
@@ -1998,7 +2003,7 @@
 </section>
 
 <!-- Process Flow -->
-<section class="section section-gray" id="flow">
+<section class="section" id="flow">
     <div class="container">
         <span class="section-eyebrow">HOW IT WORKS</span>
         <h2 class="section-title">5ステップで完成する議事録生成フロー</h2>
@@ -2036,7 +2041,7 @@
 </section>
 
 <!-- Use cases -->
-<section class="section" id="use-cases">
+<section class="section section-gray" id="use-cases">
     <div class="container">
         <span class="section-eyebrow">USE CASES</span>
         <h2 class="section-title">あらゆる会議に適用できます</h2>
@@ -2121,7 +2126,7 @@
 </section>
 
 <!-- FAQ -->
-<section class="section section-gray" id="faq">
+<section class="section" id="faq">
     <div class="container">
         <span class="section-eyebrow">FAQ</span>
         <h2 class="section-title">AI議事録によくあるご質問</h2>
