@@ -1615,7 +1615,7 @@
             margin-bottom: 0.75rem;
         }
         .sol-icon svg { width: 22px; height: 22px; }
-        .sol-bullets { list-style: none; display: grid; gap: 0.5rem; margin-bottom: 1rem; }
+        .sol-bullets { list-style: none; display: grid; gap: 0.5rem; margin-bottom: 1.1rem; }
         .sol-bullets li {
             font-size: 0.85rem;
             color: var(--text-dark);
@@ -1632,18 +1632,23 @@
         }
         .sol-cta {
             margin-top: auto;
-            padding-top: 0.75rem;
-            border-top: 1px solid var(--border);
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
+            align-self: center;
             display: inline-flex;
             align-items: center;
-            gap: 0.3rem;
+            gap: 0.35rem;
+            padding: 0.5rem 1.15rem;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: var(--primary);
+            font-size: 0.82rem;
+            font-weight: 800;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: filter 0.3s, transform 0.3s;
         }
         .sol-cta::after { content: '→'; transition: transform 0.3s; }
-        .sol-cta:hover::after { transform: translateX(4px); }
+        .sol-cta:hover { filter: brightness(1.05); transform: translateY(-1px); }
+        .sol-cta:hover::after { transform: translateX(3px); }
         .section-note {
             max-width: 1100px;
             margin: 1.75rem auto 0;
@@ -1868,7 +1873,7 @@
                         <li>ドラフトは会議当日〜翌日に共有可能、決定事項の展開を加速。</li>
                         <li>担当者の作業は「ゼロから書く」から「確認・仕上げ」へ。</li>
                     </ul>
-                    <a href="government-solution.html" class="sol-cta">自治体・官公庁向けソリューションを見る</a>
+                    <a href="government-solution.html" class="sol-cta">自治体向けの活用法を見る</a>
                 </div>
                 <div class="ps-sol-card">
                     <div class="sol-title">「なぜその仕様か」を、遡れる記録に</div>
@@ -1880,7 +1885,7 @@
                         <li>元発言にタイムスタンプで遡れる、監査・不具合調査に強い記録。</li>
                         <li>会議記録を、検索して使える組織資産として蓄積。</li>
                     </ul>
-                    <a href="manufacturing-solution.html" class="sol-cta">製造業向けソリューションを見る</a>
+                    <a href="manufacturing-solution.html" class="sol-cta">製造業向けの活用法を見る</a>
                 </div>
                 <div class="ps-sol-card">
                     <div class="sol-title">会議データの外部送信ゼロで、AI要約を実現</div>
