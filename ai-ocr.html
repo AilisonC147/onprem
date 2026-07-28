@@ -1702,6 +1702,52 @@
             background: linear-gradient(135deg, var(--accent), var(--accent-light));
             color: var(--primary);
         }
+
+        /* effects stat band + flow diagram */
+        .effects-wrap { max-width: 1000px; margin: 4.5rem auto 0; }
+        .effects-title {
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+        .effect-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+        .effect-stat {
+            background: linear-gradient(180deg, #FAFBF3, #F4F8E6);
+            border: 1.5px solid var(--border-lime);
+            border-radius: 14px;
+            padding: 1.75rem 1rem 1.5rem;
+            text-align: center;
+        }
+        .effect-stat strong {
+            display: block;
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.2;
+        }
+        .effect-stat strong em { font-style: normal; font-size: 1.15rem; margin-left: 0.1em; }
+        .effect-stat small {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-gray);
+        }
+        .flow-diagram { max-width: 1000px; margin: 0 auto 2.75rem; }
+        .flow-diagram img {
+            width: 100%; height: auto; display: block;
+            border: 1.5px solid var(--border);
+            border-radius: 14px;
+        }
+        @media (max-width: 640px) {
+            .effect-stats { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -1998,6 +2044,25 @@
                 </ul>
             </div>
         </div>
+
+        <div class="effects-wrap">
+            <h3 class="effects-title">期待される導入効果</h3>
+            <div class="effect-stats">
+                <div class="effect-stat">
+                    <strong>約70%<em>削減</em><sup class="cite">※</sup></strong>
+                    <small>一次審査にかかる時間</small>
+                </div>
+                <div class="effect-stat">
+                    <strong>大幅減</strong>
+                    <small>差戻し・再申請の件数</small>
+                </div>
+                <div class="effect-stat">
+                    <strong>標準化</strong>
+                    <small>審査品質の均一化</small>
+                </div>
+            </div>
+            <p class="section-note">※ 約70%は導入実績に基づく参考値です。業務内容・書類量により異なります。トライアルにて実書類での効果を検証いただけます。</p>
+        </div>
     </div>
 </section>
 
@@ -2041,6 +2106,9 @@
         <p class="section-subtitle">
             ご利用者様側の事前設定は不要。アップロードから確認まで、すべて画面上で完結します。
         </p>
+        <div class="flow-diagram">
+            <img src="images/flow-ocr-pipeline.jpg" alt="PDF一括アップロードから高精度OCR読み取り、ルールDBとAIによる自動チェック、PDF上への指摘表示、注釈付きPDF出力までの処理フロー図" width="2200" height="500" loading="lazy" decoding="async">
+        </div>
         <div class="steps-grid steps-grid-five">
             <div class="step-card">
                 <span class="step-num">STEP 1</span>
