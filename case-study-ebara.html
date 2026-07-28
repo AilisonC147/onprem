@@ -143,6 +143,28 @@
     .inline-link:hover { text-decoration-color: #9BA832; }
     .section-label { font-size: 11px; font-weight: 700; color: #9BA832; text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 6px; }
     .sidebar-sticky { position: sticky; top: 80px; }
+
+    /* Notta-style product dropdown columns */
+    .nav-dropdown-cols { display: flex; flex-direction: row; gap: 1.25rem; }
+    .nav-col { min-width: 252px; }
+    .nav-col-label {
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        color: var(--text-gray, #808080);
+        padding: 6px 12px 2px;
+    }
+    .nav-item-icon { display: flex; gap: 10px; align-items: flex-start; }
+    .ndi-icon {
+        width: 28px; height: 28px;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #DCE972, #E8F0A3);
+        display: flex; align-items: center; justify-content: center;
+        color: #050038;
+        flex: none;
+        margin-top: 2px;
+    }
+    .ndi-icon svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
   </style>
 
   <!-- JSON-LD: Article -->
@@ -258,17 +280,36 @@
             <button class="nav-btn">製品
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </button>
-            <div class="nav-dropdown-menu">
-              <div class="nav-dropdown-inner">
-                <a href="https://onprem.gbase.ai/" class="nav-dropdown-item">
-                  <div class="item-title">GBase on Prem</div>
-                  <div class="item-sub">大規模組織向け</div>
-                </a>
-                <a href="https://onprem.gbase.ai/products/onspark" class="nav-dropdown-item">
-                  <div class="item-title">GBase on Spark</div>
-                  <div class="item-sub">中堅・部門向け</div>
-                </a>
-              </div>
+            <div class="nav-dropdown-menu nav-dropdown-menu-wide">
+                <div class="nav-dropdown-inner nav-dropdown-cols">
+                    <div class="nav-col">
+                        <div class="nav-col-label">プロダクト</div>
+                        <a href="https://onprem.gbase.ai/" class="nav-dropdown-item nav-item-icon">
+                            <span class="ndi-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><circle cx="7.5" cy="7.5" r="0.5"/><circle cx="7.5" cy="16.5" r="0.5"/></svg></span>
+                            <span>
+                                <div class="item-title">GBase on Prem</div>
+                                <div class="item-sub">大規模組織向け</div>
+                            </span>
+                        </a>
+                        <a href="https://onprem.gbase.ai/products/onspark" class="nav-dropdown-item nav-item-icon">
+                            <span class="ndi-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3L4 14h6l-1 7 9-11h-6z"/></svg></span>
+                            <span>
+                                <div class="item-title">GBase on Spark</div>
+                                <div class="item-sub">中堅・部門向け</div>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="nav-col">
+                        <div class="nav-col-label">機能一覧</div>
+                        <a href="https://ailisonc147.github.io/onprem/ai-minutes.html" class="nav-dropdown-item nav-item-icon">
+                            <span class="ndi-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span>
+                            <span>
+                                <div class="item-title">AI議事録作成</div>
+                                <div class="item-sub">録音から議事録ドラフトを自動生成</div>
+                            </span>
+                        </a>
+                    </div>
+                </div>
             </div>
           </div>
           <div class="nav-dropdown">
@@ -280,10 +321,6 @@
                 <a href="https://ailisonc147.github.io/onprem/government-solution.html" class="nav-dropdown-item">
                   <div class="item-title">自治体・官公庁</div>
                   <div class="item-sub">機密情報を外に出さない閉域AI</div>
-                </a>
-                <a href="https://ailisonc147.github.io/onprem/minutes-solution.html" class="nav-dropdown-item">
-                  <div class="item-title">AI議事録作成</div>
-                  <div class="item-sub">録音から議事録ドラフトまで自動生成</div>
                 </a>
                 <a href="#" class="nav-dropdown-item">
                   <div class="item-title">製造業</div>
@@ -652,13 +689,16 @@
               <li><a href="https://onprem.gbase.ai/">GBase on Prem</a></li>
               <li><a href="https://onprem.gbase.ai/products/onspark">GBase on Spark</a></li>
             </ul>
+            <h3 class="mt">機能一覧</h3>
+            <ul>
+              <li><a href="https://ailisonc147.github.io/onprem/ai-minutes.html">AI議事録作成</a></li>
+            </ul>
           </div>
           <div>
             <h3>ソリューション</h3>
             <ul>
               <li><a href="https://ailisonc147.github.io/onprem/government-solution.html">自治体・官公庁</a></li>
-                <li><a href="https://ailisonc147.github.io/onprem/minutes-solution.html">AI議事録作成</a></li>
-              <li><a href="#">製造業</a></li>
+              <li><a href="https://ailisonc147.github.io/onprem/manufacturing-solution.html">製造業</a></li>
             </ul>
             <h3 class="mt">導入事例</h3>
             <ul>
