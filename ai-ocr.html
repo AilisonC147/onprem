@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>オンプレミスAI議事録作成機能 | GBase On-Premises</title>
-    <meta name="description" content="会議音声をアップロードするだけで、話者ラベル付き文字起こしから議事録ドラフトまで自動生成。要約は自社環境のローカルLLMで完結し、会議データを外部に出しません。製造業・金融・自治体など、機密性の高い会議に対応するGBase On-Premisesの機能です。">
+    <title>AI-OCR書類チェック機能｜書類審査を自動化 | GBase On-Premises</title>
+    <meta name="description" content="PDFをアップロードするだけで、OCR読み取りから法令・記入要領に基づく不備チェックまで自動化。チェックルールの整備・更新はSparticle専門チームが代行し、設定不要で導入初日から高精度。自治体・金融・企業の定型書類審査に対応するGBase On-Premisesの機能です。">
     <meta name="robots" content="index,follow">
-    <meta property="og:title" content="オンプレミスAI議事録作成機能 | GBase On-Premises">
-    <meta property="og:description" content="録音のアップロードだけで文字起こしから議事録ドラフトまで自動生成。要約はローカルLLMで自社環境内に完結し、会議データを外部に出しません。">
+    <meta property="og:title" content="AI-OCR書類チェック機能｜書類審査を自動化 | GBase On-Premises">
+    <meta property="og:description" content="PDFをアップロードするだけで不備チェックまで自動化。ルール整備はSparticle専門チームが代行、設定不要で導入初日から高精度です。">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ailisonc147.github.io/onprem/ai-minutes.html">
-    <meta property="og:image" content="https://ailisonc147.github.io/onprem/images/feature-minutes-upload.jpg">
+    <meta property="og:url" content="https://ailisonc147.github.io/onprem/ai-ocr.html">
+    <meta property="og:image" content="https://ailisonc147.github.io/onprem/images/feature-ocr-highlight.jpg">
     <meta name="twitter:card" content="summary_large_image">
 
-    <link rel="canonical" href="https://ailisonc147.github.io/onprem/ai-minutes.html">
+    <link rel="canonical" href="https://ailisonc147.github.io/onprem/ai-ocr.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -23,23 +23,23 @@
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      "name": "GBase On-Premises AI議事録作成",
+      "name": "GBase On-Premises AI-OCR書類チェック",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "On-Premises (Linux)",
-      "description": "会議音声をアップロードするだけで、タイムスタンプ・話者ラベル付きの文字起こしから議事録ドラフトまで自動生成。要約は自社・組織内環境のローカルLLMで完結し、会議データを外部に出さずにAIを活用できるGBase On-Premisesの機能。製造業・金融・自治体など機密性の高い会議に対応。",
-      "url": "https://ailisonc147.github.io/onprem/ai-minutes.html",
+      "description": "PDFをアップロードするだけで、OCR読み取りから法令・記入要領に基づく不備チェックまで自動化。チェックルールの整備・更新はSparticle専門チームが代行し、設定不要で導入初日から高精度なチェックを利用できるGBase On-Premisesの機能。",
+      "url": "https://ailisonc147.github.io/onprem/ai-ocr.html",
       "offers": {
         "@type": "Offer",
         "priceCurrency": "JPY",
         "availability": "https://schema.org/InStock"
       },
       "featureList": [
-        "MP3・WAV・M4A・AAC・FLAC・OGG・WEBM の7つの音声形式に対応",
-        "1ファイル最大400MB・複数ファイルの一括処理",
-        "タイムスタンプ・話者ラベル付きの文字起こし自動生成",
-        "テンプレートに沿った議事録ドラフトの自動生成",
-        "多言語が混在する音声の認識と話者分離",
-        "要約はローカルLLMで自社環境内完結・外部送信ゼロ"
+        "複数ファイル・複数様式のPDF一括チェック（最大数十ファイル）",
+        "手書き・活字・表形式に対応した高精度OCR",
+        "法令・記入要領に基づくルール×AIのハイブリッド判定",
+        "指摘箇所のPDF上ハイライトと指摘理由・修正例の提示",
+        "確認ステータス管理と注釈付きPDF出力",
+        "チェックルールの整備・更新はSparticle専門チームが代行"
       ]
     }
     </script>
@@ -66,7 +66,7 @@
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://onprem.gbase.ai/" },
-        { "@type": "ListItem", "position": 2, "name": "AI議事録作成", "item": "https://ailisonc147.github.io/onprem/ai-minutes.html" }
+        { "@type": "ListItem", "position": 2, "name": "AI-OCR書類チェック", "item": "https://ailisonc147.github.io/onprem/ai-ocr.html" }
       ]
     }
     </script>
@@ -79,50 +79,50 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "どの音声ファイル形式に対応していますか？",
+          "name": "どのような書類をチェックできますか？",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "MP3・WAV・M4A・AAC・FLAC・OGG・WEBMに対応しています。1ファイルあたり最大400MBで、複数ファイルの一括アップロードも可能です。"
+            "text": "様式と審査基準（法令・記入要領等）が文書化されている定型書類に対応します。戸籍・住民異動届、補助金・助成金申請、地籍調査、介護・福祉関連申請、税務関連の届出、入札関連書類など幅広く適用できます。まずは対象業務のご相談から承ります。"
           }
         },
         {
           "@type": "Question",
-          "name": "複数の言語が混ざった会議でも文字起こしできますか？",
+          "name": "手書きの書類も読み取れますか？",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "できます。日本語・英語・中国語など複数の言語を選択でき、1つの音声に複数言語が混在していても認識できます。"
+            "text": "読み取れます。手書き・活字・表形式に対応した高精度OCRで記載内容を読み取ります。"
           }
         },
         {
           "@type": "Question",
-          "name": "話者の区別（誰が話したか）はできますか？",
+          "name": "チェックルールの設定は自分で行う必要がありますか？",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "できます。発言に話者ラベルとタイムスタンプを自動で付与します。参加人数を事前に指定することで、話者分離の精度がさらに向上します。"
+            "text": "ありません。法令・条例・記入要領からのルール抽出・構造化・精度チューニングは、すべてSparticleの専門チームが実施します。導入初日から高精度なチェックをご利用いただけます。"
           }
         },
         {
           "@type": "Question",
-          "name": "会議データが外部に送信されることはありますか？",
+          "name": "法改正や様式変更があった場合の対応は？",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "ありません。議事録の要約は自社・組織内環境で動作するローカルLLMが実行するため、会議データが外部に送信されることはありません。通信・保存データの暗号化、担当者単位のアクセス権限管理、操作ログによる追跡にも対応しています。"
+            "text": "Sparticleが改正・様式改定をキャッチアップし、チェックルールを継続的に更新します。導入後も精度が劣化しない仕組みです。"
           }
         },
         {
           "@type": "Question",
-          "name": "どのような業種で利用できますか？",
+          "name": "指摘の理由は確認できますか？",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "自治体・官公庁、製造業、金融・保険をはじめ、機密性の高い会議を扱うあらゆる組織でご利用いただけます。業種別の活用イメージは自治体・官公庁向けソリューション、製造業向けソリューションをご覧ください。"
+            "text": "できます。問題箇所をPDF上に枠で表示し、根拠文書に基づく指摘理由と修正例をあわせて提示します。注釈付きPDFの出力にも対応しています。"
           }
         },
         {
           "@type": "Question",
-          "name": "自社の議事録様式（フォーマット）は使えますか？",
+          "name": "セキュリティ面の対策は？",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "標準テンプレート（会議概要・議題・決定事項・ToDo）は導入初日からご利用いただけます。お使いの様式（PDF・Word）をアップロードしてテンプレートとして利用できるカスタムテンプレート機能は、今後のアップデートで提供予定です。様式・運用に合わせたテンプレート整備のご相談も承ります。"
+            "text": "通信・保存データの暗号化、部署・担当者単位のアクセス権限管理、操作ログの記録に対応しています。個人情報の取り扱いは、貴社・貴庁のセキュリティポリシーに沿った運用形態をご相談のうえ決定します。"
           }
         },
         {
@@ -130,7 +130,7 @@
           "name": "導入までの流れと期間は？",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "ヒアリング・環境準備（約2週間）、実際の会議音声でのトライアル（約1ヶ月）、運用設計・展開準備（約2週間）を経て本格運用に進みます。文字起こしの精度と要約の品質を実データでご確認いただいたうえで、導入をご判断いただけます。"
+            "text": "ヒアリング・様式収集（約2週間）、ルール抽出・構築（約1〜1.5ヶ月）、試行運用・精度検証（約1ヶ月）を経て本番運用に進みます。最短3ヶ月で本番運用が可能で、実書類でのトライアルにて指摘精度をご確認いただけます。"
           }
         }
       ]
@@ -1697,6 +1697,11 @@
             color: var(--text-gray);
             padding: 6px 12px 2px;
         }
+
+        .scenario-badge-live {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: var(--primary);
+        }
     </style>
 </head>
 <body>
@@ -1794,7 +1799,7 @@
     </div>
 </nav>
 
-<!-- Hero (Feature Intro: centered, gradient bg, product mockup) -->
+<!-- Hero (Feature Intro: centered, light gradient, product mockup) -->
 <section class="hero hero-feature">
     <div class="hero-deco hero-deco-1" aria-hidden="true">
         <svg viewBox="0 0 24 24"><path d="M12 2l1.7 5.3L19 9l-5.3 1.7L12 16l-1.7-5.3L5 9l5.3-1.7L12 2z"/><path d="M19 15l0.9 2.6L22.5 18.5l-2.6 0.9L19 22l-0.9-2.6L15.5 18.5l2.6-0.9L19 15z"/></svg>
@@ -1804,23 +1809,23 @@
     </div>
     <div class="hero-content">
         <div class="hero-inner">
-            <h1>会議音声をアップロードするだけ。<br><span class="accent">議事録ドラフト</span>まで、自動で。</h1>
+            <h1>PDFをアップロードするだけ。<br><span class="accent">書類の不備チェック</span>まで、自動で。</h1>
             <p class="hero-subtitle">
-                文字起こしから要約まで、外部クラウドを使わず自社環境のローカルLLMで完結。<br>
-                会議データを外に出せない組織のための、GBase On-Premises のAI議事録作成機能です。
+                OCRの読み取りから、法令・記入要領に基づく審査チェックまで一気通貫。<br>
+                チェックルールの整備・更新はSparticleの専門チームが担う、GBase On-Premises のAI-OCR書類チェック機能です。
             </p>
             <div class="hero-cta">
                 <a href="https://onprem.gbase.ai/contact" class="btn btn-primary">無料デモ</a>
                 <a href="https://onprem.gbase.ai/contact" class="btn btn-secondary">資料請求申込</a>
             </div>
             <ul class="hero-points">
-                <li>7つの音声形式・最大400MB対応</li>
-                <li>タイムスタンプ・話者ラベル付き</li>
-                <li>要約はローカルLLMで組織内完結</li>
+                <li>複数ファイル・複数様式の一括チェック</li>
+                <li>指摘箇所はPDF上に直接表示</li>
+                <li>ルール設定・保守は不要</li>
             </ul>
             <div class="hero-mockup-wrap">
                 <div class="hero-mockup">
-                    <img src="images/hero-minutes-upload.png" alt="会議の録音ファイルをドラッグ&ドロップし、言語と話者数を選んで文字起こしを開始する画面イメージ" width="1208" height="924" loading="eager" decoding="async" fetchpriority="high">
+                    <img src="images/hero-ocr-upload.png" alt="申請書類のPDFをドラッグ&ドロップし、一括チェックを開始する画面イメージ" width="1208" height="924" loading="eager" decoding="async" fetchpriority="high">
                 </div>
             </div>
         </div>
@@ -1831,35 +1836,35 @@
 <section class="section" id="pain-solution">
     <div class="container">
         <span class="section-eyebrow">CHALLENGES</span>
-        <h2 class="section-title">業種ごとに違う、議事録づくりの悩み</h2>
+        <h2 class="section-title">業種ごとに違う、書類チェックの悩み</h2>
         <p class="section-subtitle">
-            自治体、製造業、金融、そして経営の現場。<br>機密性の高い会議を抱える組織に共通する、4つの構造的な悩み。
+            自治体の窓口審査から、金融の申込書類、企業の経理・総務まで。<br>定型書類の「目視チェック」に共通する、4つの構造的な悩み。
         </p>
         <div class="ps-wrap">
             <div class="ps-row">
                 <div class="ps-pain-card">
                     <h4>自治体・官公庁</h4>
-                    <h3>審議会のたび、聞き起こしに3〜5時間</h3>
-                    <p class="ps-detail">庁議・審議会・住民説明会など会議は毎日。1時間の録音の聞き起こしに3〜5時間かかり、職員の大きな残業要因になっています。</p>
-                </div>
-                <div class="ps-pain-card">
-                    <h4>製造業</h4>
-                    <h3>設計レビューの決定経緯が、後から辿れない</h3>
-                    <p class="ps-detail">設計審査・品質会議の記録が担当者のメモ任せ。「なぜこの仕様にしたか」を監査や不具合調査で遡れず、確認に時間を浪費しています。</p>
+                    <h3>申請件数は増える一方、審査は目視頼み</h3>
+                    <p class="ps-detail">職員数が減少する一方で、申請件数・様式は増加。ベテラン職員の経験に依存した属人的な審査が続いています。</p>
                 </div>
                 <div class="ps-pain-card">
                     <h4>金融・保険</h4>
-                    <h3>顧客情報を含む会議、クラウドAIは使えない</h3>
-                    <p class="ps-detail">商談・審査・監査対応の会議には顧客情報や機微情報が含まれ、セキュリティポリシー上、外部AIサービスの利用は承認されにくいのが実情です。</p>
+                    <h3>申込書類の不備確認と、差戻しの往復</h3>
+                    <p class="ps-detail">フリガナ漏れ・日付や押印の不備・記載の不整合。単純ミスの確認と差戻し対応が、審査部門の大きな負担になっています。</p>
                 </div>
                 <div class="ps-pain-card">
-                    <h4>経営企画・バックオフィス</h4>
-                    <h3>経営会議の議事録共有が、数日〜数週間後</h3>
-                    <p class="ps-detail">役員会・経営会議のドラフト作成が遅れ、決定事項の展開が止まる。作成担当者により品質・形式もばらばらです。</p>
+                    <h4>不動産・建設</h4>
+                    <h3>登記・契約書類の整合チェックが重い</h3>
+                    <p class="ps-detail">様式間の記載整合や添付書類の確認を人手で突き合わせ。確認の抜け漏れが、後工程の手戻りにつながります。</p>
+                </div>
+                <div class="ps-pain-card">
+                    <h4>経理・総務・バックオフィス</h4>
+                    <h3>基準は文書に分散、確認漏れが不安</h3>
+                    <p class="ps-detail">審査基準は法令・要綱・記入要領に分散。改正のたびに読み込み直しが必要で、確認の抜け漏れリスクが常に伴います。</p>
                 </div>
             </div>
 
-            <div class="ps-middle-title">これらの悩みを、<span class="marker">GBase On-Premises のAI議事録</span>が解決</div>
+            <div class="ps-middle-title">これらの悩みを、<span class="marker">GBase On-Premises のAI-OCR書類チェック</span>が解決</div>
 
             <div class="ps-arrow-row" aria-hidden="true">
                 <div class="ps-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="5 12 12 19 19 12"/></svg></div>
@@ -1870,54 +1875,53 @@
 
             <div class="ps-row">
                 <div class="ps-sol-card">
-                    <div class="sol-title">聞き起こし3〜5時間を、確認作業だけに<sup class="cite">※</sup></div>
+                    <div class="sol-title">一次審査の時間を、約70%削減<sup class="cite">※</sup></div>
                     <div class="sol-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
                     </div>
                     <ul class="sol-bullets">
-                        <li>録音のアップロードだけで、話者ラベル付き文字起こしを自動生成。</li>
-                        <li>ドラフトは会議当日〜翌日に共有可能、決定事項の展開を加速。</li>
-                        <li>担当者の作業は「ゼロから書く」から「確認・仕上げ」へ。</li>
+                        <li>PDFのアップロードだけで、目視の形式チェックを自動化。</li>
+                        <li>担当者は指摘箇所の確認と、判断業務に集中。</li>
+                        <li>地籍調査書類チェックでの実運用に基づく導入実績。</li>
                     </ul>
                     <a href="government-solution.html" class="sol-cta">自治体向けの活用法を見る</a>
                 </div>
                 <div class="ps-sol-card">
-                    <div class="sol-title">「なぜその仕様か」を、遡れる記録に</div>
+                    <div class="sol-title">差戻し・再申請を、受付段階で削減</div>
+                    <div class="sol-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <ul class="sol-bullets">
+                        <li>記載漏れ・日付・押印・計算ミスを、受付時に検出。</li>
+                        <li>指摘理由と修正例つきで、申請者への連絡もスムーズに。</li>
+                        <li>申請者とのやり取りの往復回数を削減。</li>
+                    </ul>
+                </div>
+                <div class="ps-sol-card">
+                    <div class="sol-title">様式間の整合チェックを、自動化</div>
                     <div class="sol-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>
                     </div>
                     <ul class="sol-bullets">
-                        <li>決定事項・ToDo・担当をテンプレートで自動整理。</li>
-                        <li>元発言にタイムスタンプで遡れる、監査・不具合調査に強い記録。</li>
-                        <li>会議記録を、検索して使える組織資産として蓄積。</li>
+                        <li>複数様式・添付書類にまたがる記載不整合を検査。</li>
+                        <li>問題箇所はPDF上に枠で直接表示、探す手間なし。</li>
+                        <li>注釈付きPDF出力で、関係者への共有も容易。</li>
                     </ul>
-                    <a href="manufacturing-solution.html" class="sol-cta">製造業向けの活用法を見る</a>
                 </div>
                 <div class="ps-sol-card">
-                    <div class="sol-title">会議データの外部送信ゼロで、AI要約を実現</div>
+                    <div class="sol-title">審査品質を、組織で標準化</div>
                     <div class="sol-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
                     </div>
                     <ul class="sol-bullets">
-                        <li>要約処理は自社環境のローカルLLMで完結、外部クラウドへの送信なし。</li>
-                        <li>通信・保存データの暗号化と、担当者単位のアクセス権限管理。</li>
-                        <li>操作ログで「誰がデータを扱ったか」を追跡可能。</li>
-                    </ul>
-                </div>
-                <div class="ps-sol-card">
-                    <div class="sol-title">経営会議のドラフトを、当日〜翌日に展開<sup class="cite">※</sup></div>
-                    <div class="sol-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L4 14h6l-1 7 9-11h-6z"/></svg>
-                    </div>
-                    <ul class="sol-bullets">
-                        <li>テンプレート出力で、担当者による品質・形式のばらつきを解消。</li>
-                        <li>多言語・複数話者にも対応、海外拠点との会議も一元記録。</li>
-                        <li>決定事項の展開スピードを、組織全体で底上げ。</li>
+                        <li>ベテランのノウハウを、チェックルールとして形式知化。</li>
+                        <li>担当者による審査のばらつきを解消。</li>
+                        <li>確認ステータス管理で、対応漏れを防止。</li>
                     </ul>
                 </div>
             </div>
         </div>
-        <p class="section-note">※ 記載の時間・効果は、一般的な議事録作成業務の工数と提案資料をもとにした推計値です。会議の長さ・運用形態により個別差があります。</p>
+        <p class="section-note">※ 削減効果は導入実績に基づく参考値です。業務内容・書類量により異なります。トライアルにて実書類での効果を検証いただけます。</p>
     </div>
 </section>
 
@@ -1925,72 +1929,71 @@
 <section class="section" id="features">
     <div class="container">
         <span class="section-eyebrow">FEATURES</span>
-        <h2 class="section-title">GBase On-Premises のAI議事録、4つの特長</h2>
+        <h2 class="section-title">GBase On-Premises のAI-OCR書類チェック、4つの特長</h2>
         <p class="section-subtitle">
-            ローカルLLM・高精度文字起こし・テンプレート・多言語対応。<br>議事録づくりの根幹を、4つの柱として組み込みました。
+            ルール整備の代行・PDF上での指摘表示・ハイブリッド判定・履歴管理。<br>書類チェックの根幹を、4つの柱として組み込みました。
         </p>
 
-        <!-- Feature: Local LLM -->
+        <!-- Feature: Rules managed by Sparticle -->
         <div class="feature-row">
             <div class="feature-visual">
-                <img src="images/feature-minutes-local-llm.jpg" alt="議事録の要約を自社環境のローカルLLMで実行し、会議データを外部クラウドに送信しない構成イメージ" width="1200" height="900" loading="lazy" decoding="async">
+                <img src="images/feature-ocr-rules.jpg" alt="法令・様式・記入要領からSparticle専門チームがチェックルールを抽出・構造化する流れの図" width="1200" height="900" loading="lazy" decoding="async">
             </div>
             <div class="feature-content">
-                <h3>要約はローカルLLM。<br>会議データを外部に出さない</h3>
-                <p>議事録の要約は、外部クラウドではなく自社・組織内環境で動作するLLMが実行します。個人情報や意思決定前の機微な情報を含む会議も、外部に送信せずにAIで処理できます。閉域環境でのAI活用については、<a href="https://onprem.gbase.ai/blog/on-premise-security/" class="inline-link">オンプレミスAIのセキュリティ解説</a>もご参照ください。</p>
+                <h3>ルール整備はSparticleが実施。<br>設定・保守は不要</h3>
+                <p>チェック精度を左右する「ルール抽出」は、法令・条例・記入要領を当社専門チームが精査してデータベース化。ご利用者様の事前設定・ルール登録は一切不要で、導入初日から高精度なチェックをご利用いただけます。</p>
                 <ul class="feature-list">
-                    <li>要約処理は自社環境のLLMで完結、外部送信ゼロ</li>
-                    <li>通信・保存データの暗号化と、担当者単位のアクセス権限管理</li>
-                    <li>操作ログにより、誰がデータを扱ったか追跡可能</li>
+                    <li>法令・様式・記入要領からチェックルールを抽出・構造化</li>
+                    <li>実書類でのテストを繰り返し、誤検知・見逃しを最小化</li>
+                    <li>法改正・様式変更には当社が継続追従、精度が劣化しない</li>
                 </ul>
             </div>
         </div>
 
-        <!-- Feature: Upload -->
+        <!-- Feature: PDF highlight -->
         <div class="feature-row reverse">
             <div class="feature-visual">
-                <img src="images/feature-minutes-upload.jpg" alt="会議の録音ファイルをドラッグ&ドロップし、言語と話者数を選んで文字起こしを開始する画面イメージ" width="1200" height="900" loading="lazy" decoding="async">
+                <img src="images/feature-ocr-highlight.jpg" alt="フリガナ未記入の欄をPDF上に枠でハイライトし、指摘理由と修正例を表示する画面イメージ" width="1200" height="900" loading="lazy" decoding="async">
             </div>
             <div class="feature-content">
-                <h3>音声をアップロードするだけで、<br>読めるテキストに</h3>
-                <p>会議の録音ファイルをドラッグ&amp;ドロップするだけで、タイムスタンプ・話者ラベル付きの文字起こしを自動生成。句読点の補正とフィラー（「えー」「あの」等）の除去は標準で適用され、そのまま読める文章として出力します。</p>
+                <h3>指摘箇所をPDF上に直接表示。<br>「なぜ・どう直すか」まで提示</h3>
+                <p>問題のある記載欄をPDF上に枠でハイライトし、指摘理由と修正例をあわせて表示。指摘箇所を探す手間がなく、申請者への差戻し連絡もスムーズです。</p>
                 <ul class="feature-list">
-                    <li>MP3・WAV・M4A・AAC・FLAC・OGG・WEBM の7形式に対応</li>
-                    <li>1ファイル最大400MB、複数ファイルの一括処理も可能</li>
-                    <li>言語と話者数を選ぶだけ、複雑な事前設定は不要</li>
+                    <li>該当箇所をピンポイント表示、指摘理由と修正例つき</li>
+                    <li>指摘ごとの確認ステータス管理で、対応漏れを防止</li>
+                    <li>注釈付きPDFを出力し、組織内共有や説明に活用可能</li>
                 </ul>
             </div>
         </div>
 
-        <!-- Feature: Template -->
+        <!-- Feature: OCR x hybrid -->
         <div class="feature-row">
             <div class="feature-visual">
-                <img src="images/feature-minutes-template.jpg" alt="話者ラベル付き文字起こしをテンプレートに沿って構造化し、決定事項・ToDoが整理された議事録ドラフトを生成するイメージ" width="1200" height="900" loading="lazy" decoding="async">
+                <img src="images/feature-ocr-hybrid.jpg" alt="手書き・活字・表形式を読み取り、ルール判定とAI判定で検査するハイブリッド構成の図" width="1200" height="900" loading="lazy" decoding="async">
             </div>
             <div class="feature-content">
-                <h3>テンプレートで、「読める議事録」まで<br>自動で仕上げる</h3>
-                <p>文字起こし結果をもとに、標準テンプレート（会議概要・議題・決定事項・ToDo）に沿ってLLMが議事録ドラフトを自動生成。担当者は「ゼロから書く」のではなく「確認して仕上げる」だけです。</p>
+                <h3>手書きも表も読み取る高精度OCR。<br>ルール×AIのハイブリッド判定</h3>
+                <p>手書き・活字・表形式の読み取りに対応した高精度OCRで記載内容を取得。形式チェックはルールで確実に、文脈が絡む判断はAIで柔軟に検査します。</p>
                 <ul class="feature-list">
-                    <li>決定事項・ToDo・担当・期限を自動整理</li>
-                    <li>元発言をタイムスタンプで確認・検証可能</li>
-                    <li>会議の種類に応じた標準テンプレートをご用意</li>
+                    <li>手書き・活字・表形式の読み取りに対応</li>
+                    <li>必須項目・日付・押印・計算検算はルールで漏れなく検査</li>
+                    <li>記載不整合や要綱適合性など、文脈判断はAIが補完</li>
                 </ul>
-                <p class="feature-note">※ お使いの議事録様式（PDF・Word）をそのままテンプレートとして利用できるカスタムテンプレート機能は、今後のアップデートで提供予定です。</p>
             </div>
         </div>
 
-        <!-- Feature: Multilang & Diarization -->
+        <!-- Feature: Batch & history -->
         <div class="feature-row reverse">
             <div class="feature-visual">
-                <img src="images/feature-minutes-multilang.jpg" alt="日本語・英語・中国語が混在する会議を話者ごとに分離し、訳文付きで記録する文字起こし画面イメージ" width="1200" height="900" loading="lazy" decoding="async">
+                <img src="images/feature-ocr-history.jpg" alt="検査日時・ファイル数・指摘件数を重要度別に一覧管理する書類チェック履歴画面イメージ" width="1200" height="900" loading="lazy" decoding="async">
             </div>
             <div class="feature-content">
-                <h3>多言語が混ざる会議も、<br>話者ごとに正確に記録</h3>
-                <p>日本語・英語・中国語など複数の言語を選択でき、1つの音声に複数言語が混在していても認識できます。参加人数を事前に指定することで、話者分離（誰が話したか）の精度が向上します。</p>
+                <h3>数十ファイルを一括チェック。<br>結果は重要度別に一元管理</h3>
+                <p>最大数十ファイルの一括アップロードに対応。検査日時・ファイル数・指摘件数を一覧で把握でき、「エラー」「要確認」の色分けで優先順位付けが容易です。</p>
                 <ul class="feature-list">
-                    <li>複数言語が混在する音声にも対応</li>
-                    <li>話者数の事前指定で、話者分離の精度が向上</li>
-                    <li>変換結果は言語・話者数・状況・更新日で一元管理</li>
+                    <li>複数ファイル・複数様式の一括チェックに対応</li>
+                    <li>「エラー」「要確認」の重要度別に指摘を区分表示</li>
+                    <li>チェック履歴の一元管理で、審査の進捗を可視化</li>
                 </ul>
             </div>
         </div>
@@ -2000,32 +2003,32 @@
 <!-- Compare -->
 <section class="section section-gray" id="compare">
     <div class="container">
-        <span class="section-eyebrow">WHY LOCAL LLM</span>
-        <h2 class="section-title">「AIは使いたい。でも、データは外に出せない」を両立</h2>
+        <span class="section-eyebrow">WHY RULE-MANAGED</span>
+        <h2 class="section-title">「読み取るだけ」のOCRと、ここが違います</h2>
         <p class="section-subtitle">
-            この機能の最大の特長は、要約処理を自社環境で完結させるローカルLLMです。
+            この機能の最大の特長は、チェックルールの整備・更新をSparticleが担うことです。
         </p>
         <div class="compare-grid">
             <div class="compare-card compare-ng">
-                <h3>一般的なクラウド型AIサービス</h3>
+                <h3>一般的なAI-OCRサービス</h3>
                 <ul>
-                    <li>会議音声・テキストが外部サーバーに送信される</li>
-                    <li>データの保存場所・利用方針が把握しにくい</li>
-                    <li>個人情報・機微情報を含む会議には利用しづらい</li>
-                    <li>セキュリティポリシー上、導入承認が困難な場合も</li>
+                    <li>読み取り（データ化）が中心で、不備の判定は人の作業のまま</li>
+                    <li>チェックルールや辞書の設定・登録は利用者側の作業</li>
+                    <li>法改正・様式変更のたびに、設定の見直しが必要</li>
+                    <li>指摘の根拠がわかりにくく、確認に時間がかかる</li>
                 </ul>
             </div>
             <div class="compare-card compare-ok">
-                <h3>GBase On-Premises のAI議事録（ローカルLLM）</h3>
+                <h3>GBase On-Premises のAI-OCR書類チェック</h3>
                 <ul>
-                    <li>要約処理は自社環境のLLMで完結、会議データが外部に出ない</li>
-                    <li>個人情報や意思決定前の情報を含む会議も安心して処理可能</li>
-                    <li>セキュリティポリシーに沿った運用形態をご相談のうえ構築</li>
-                    <li>操作ログにより、データの取り扱いを追跡可能</li>
+                    <li>読み取りから審査チェックまで、一気通貫で自動化</li>
+                    <li>ルール整備・更新はSparticle専門チームが代行、設定不要</li>
+                    <li>法改正・様式変更にも継続追従、導入後も精度を維持</li>
+                    <li>根拠文書に基づき、指摘の「理由」まで説明できる透明性</li>
                 </ul>
             </div>
         </div>
-        <p class="section-guide">オンプレミスAI導入の全体像は<a href="https://onprem.gbase.ai/blog/on-premise-ai-guide-2026/" class="inline-link">オンプレミスAI完全ガイド2026</a>をご覧ください。</p>
+        <p class="section-guide">導入形態・セキュリティ要件は、貴社・貴庁のポリシーに沿ってご相談いただけます。オンプレミスAI導入の全体像は<a href="https://onprem.gbase.ai/blog/on-premise-ai-guide-2026/" class="inline-link">オンプレミスAI完全ガイド2026</a>をご覧ください。</p>
     </div>
 </section>
 
@@ -2033,35 +2036,35 @@
 <section class="section" id="flow">
     <div class="container">
         <span class="section-eyebrow">HOW IT WORKS</span>
-        <h2 class="section-title">5ステップで完成する議事録生成フロー</h2>
+        <h2 class="section-title">5ステップで完成する書類チェックフロー</h2>
         <p class="section-subtitle">
-            どのステップも人による確認・調整が可能。全自動と人手のバランスを、運用に合わせて選べます。
+            ご利用者様側の事前設定は不要。アップロードから確認まで、すべて画面上で完結します。
         </p>
         <div class="steps-grid steps-grid-five">
             <div class="step-card">
                 <span class="step-num">STEP 1</span>
                 <h3>アップロード</h3>
-                <p>会議の録音ファイルをドラッグ&amp;ドロップ。7形式・最大400MB・一括処理に対応します。</p>
+                <p>申請書類のPDFをドラッグ&amp;ドロップ。複数ファイル・複数様式の一括チェックに対応します。</p>
             </div>
             <div class="step-card">
                 <span class="step-num">STEP 2</span>
-                <h3>言語・話者数の選択</h3>
-                <p>会議の言語と参加人数を選ぶだけ。複雑な事前設定は不要です。</p>
+                <h3>OCR読み取り</h3>
+                <p>手書き・活字・表形式の記載内容を、高精度OCRで読み取ります。</p>
             </div>
             <div class="step-card">
                 <span class="step-num">STEP 3</span>
-                <h3>文字起こし</h3>
-                <p>タイムスタンプ・話者ラベル付きで自動生成。句読点補正とフィラー除去も標準で適用します。</p>
+                <h3>ルール×AIで自動チェック</h3>
+                <p>法令・記入要領から整備したルールに照らして検査。文脈判断はAIが補完します。</p>
             </div>
             <div class="step-card">
                 <span class="step-num">STEP 4</span>
-                <h3>ローカルLLMで要約</h3>
-                <p>自社環境のLLMがテンプレートに沿って議事録ドラフトを生成。データは外部に出ません。</p>
+                <h3>指摘箇所を確認</h3>
+                <p>問題箇所はPDF上に枠で表示。指摘理由と修正例を確認し、ステータスを記録します。</p>
             </div>
             <div class="step-card">
                 <span class="step-num">STEP 5</span>
-                <h3>確認・共有</h3>
-                <p>元発言をタイムスタンプで確認しながら仕上げ、そのまま組織内で共有できます。</p>
+                <h3>出力・共有</h3>
+                <p>注釈付きPDFをダウンロードし、組織内共有や申請者への説明に活用できます。</p>
             </div>
         </div>
     </div>
@@ -2071,33 +2074,21 @@
 <section class="section section-gray" id="use-cases">
     <div class="container">
         <span class="section-eyebrow">USE CASES</span>
-        <h2 class="section-title">あらゆる会議に適用できます</h2>
+        <h2 class="section-title">定型様式のある業務に幅広く適用できます</h2>
         <p class="section-subtitle">
-            録音さえあれば対象にできます。まずは負担の大きい会議からのスモールスタートがおすすめです。
+            様式と審査基準が文書化されている業務であれば、ルール化のうえ対応可能です。まずは対象業務のご相談から承ります。
         </p>
         <div class="scenarios-grid">
             <div class="scenario-card">
                 <div class="scenario-header">
                     <div class="scenario-icon" aria-hidden="true">
-                        <svg viewBox="0 0 64 64"><rect x="8" y="14" width="48" height="34" rx="4"/><line x1="16" y1="24" x2="48" y2="24"/><line x1="16" y1="32" x2="42" y2="32"/><line x1="16" y1="40" x2="36" y2="40"/><line x1="24" y1="56" x2="40" y2="56"/><line x1="32" y1="48" x2="32" y2="56"/></svg>
+                        <svg viewBox="0 0 64 64"><path d="M14 10h28l8 8v36H14z"/><path d="M42 10v8h8"/><line x1="22" y1="28" x2="42" y2="28"/><line x1="22" y1="36" x2="42" y2="36"/><line x1="22" y1="44" x2="34" y2="44"/></svg>
                     </div>
-                    <span class="scenario-badge">経営層・全業種</span>
-                    <h3>経営会議・役員会</h3>
+                    <span class="scenario-badge">自治体</span>
+                    <h3>戸籍・住民異動届</h3>
                 </div>
                 <div class="scenario-body">
-                    <p>機微な経営情報を外部に出さずに記録。決定事項・ToDoの展開を迅速にします。</p>
-                </div>
-            </div>
-            <div class="scenario-card">
-                <div class="scenario-header">
-                    <div class="scenario-icon" aria-hidden="true">
-                        <svg viewBox="0 0 64 64"><circle cx="22" cy="20" r="6"/><circle cx="42" cy="20" r="6"/><path d="M10 44a12 12 0 0 1 24 0"/><path d="M30 44a12 12 0 0 1 24 0"/><line x1="8" y1="54" x2="56" y2="54"/></svg>
-                    </div>
-                    <span class="scenario-badge">自治体・官公庁</span>
-                    <h3>審議会・委員会</h3>
-                </div>
-                <div class="scenario-body">
-                    <p>外部委員を交えた長時間の議論も、話者ラベル付きで正確に記録します。</p>
+                    <p>転入・転出・転居届等の記載漏れや、添付書類の整合をチェックします。</p>
                 </div>
             </div>
             <div class="scenario-card">
@@ -2105,11 +2096,47 @@
                     <div class="scenario-icon" aria-hidden="true">
                         <svg viewBox="0 0 64 64"><rect x="10" y="16" width="44" height="30" rx="4"/><path d="M22 30l6 6 14-14"/><line x1="26" y1="54" x2="38" y2="54"/><line x1="32" y1="46" x2="32" y2="54"/></svg>
                     </div>
-                    <span class="scenario-badge">製造業</span>
-                    <h3>設計レビュー・品質会議</h3>
+                    <span class="scenario-badge">自治体・企業</span>
+                    <h3>補助金・助成金申請</h3>
                 </div>
                 <div class="scenario-body">
-                    <p>決定の経緯をタイムスタンプ付きで残し、後からの確認・監査に備えます。</p>
+                    <p>申請書・実績報告書の必須項目、金額計算、要綱適合性を確認します。</p>
+                </div>
+            </div>
+            <div class="scenario-card">
+                <div class="scenario-header">
+                    <div class="scenario-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 64"><path d="M32 8L8 20h48L32 8z"/><line x1="12" y1="20" x2="12" y2="48"/><line x1="24" y1="20" x2="24" y2="48"/><line x1="40" y1="20" x2="40" y2="48"/><line x1="52" y1="20" x2="52" y2="48"/><line x1="6" y1="52" x2="58" y2="52"/></svg>
+                    </div>
+                    <span class="scenario-badge scenario-badge-live">導入実績あり</span>
+                    <h3>地籍調査・登記関連</h3>
+                </div>
+                <div class="scenario-body">
+                    <p>地籍調査成果の様式チェックで実運用中。日々の検査を通じて、ルールを継続的に改善しています。</p>
+                </div>
+            </div>
+            <div class="scenario-card">
+                <div class="scenario-header">
+                    <div class="scenario-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 64"><circle cx="22" cy="20" r="6"/><circle cx="42" cy="20" r="6"/><path d="M10 44a12 12 0 0 1 24 0"/><path d="M30 44a12 12 0 0 1 24 0"/><line x1="8" y1="54" x2="56" y2="54"/></svg>
+                    </div>
+                    <span class="scenario-badge">福祉・自治体</span>
+                    <h3>介護・福祉関連申請</h3>
+                </div>
+                <div class="scenario-body">
+                    <p>認定申請・給付申請書類の記載不備や、要件を確認します。</p>
+                </div>
+            </div>
+            <div class="scenario-card">
+                <div class="scenario-header">
+                    <div class="scenario-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 64"><rect x="8" y="14" width="48" height="34" rx="4"/><line x1="16" y1="24" x2="48" y2="24"/><line x1="16" y1="32" x2="42" y2="32"/><line x1="16" y1="40" x2="36" y2="40"/><line x1="24" y1="56" x2="40" y2="56"/><line x1="32" y1="48" x2="32" y2="56"/></svg>
+                    </div>
+                    <span class="scenario-badge">経理・税務</span>
+                    <h3>税務関連の届出</h3>
+                </div>
+                <div class="scenario-body">
+                    <p>各種申告書・届出書の形式チェックと、計算検算に対応します。</p>
                 </div>
             </div>
             <div class="scenario-card">
@@ -2117,35 +2144,11 @@
                     <div class="scenario-icon" aria-hidden="true">
                         <svg viewBox="0 0 64 64"><path d="M12 12h40v26H30l-8 8v-8h-10z"/><line x1="20" y1="22" x2="44" y2="22"/><line x1="20" y1="30" x2="38" y2="30"/><circle cx="46" cy="50" r="8"/><path d="M42 50h8M46 46v8"/></svg>
                     </div>
-                    <span class="scenario-badge">営業・金融</span>
-                    <h3>顧客商談・ヒアリング</h3>
+                    <span class="scenario-badge">全業種</span>
+                    <h3>入札・許認可・その他定型様式</h3>
                 </div>
                 <div class="scenario-body">
-                    <p>顧客情報を含む会話も、自社環境で安全に記録・要約できます。</p>
-                </div>
-            </div>
-            <div class="scenario-card">
-                <div class="scenario-header">
-                    <div class="scenario-icon" aria-hidden="true">
-                        <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="22"/><path d="M10 32h44M32 10c6 6 6 38 0 44M32 10c-6 6-6 38 0 44"/></svg>
-                    </div>
-                    <span class="scenario-badge">全部門・海外拠点</span>
-                    <h3>プロジェクト定例・海外拠点会議</h3>
-                </div>
-                <div class="scenario-body">
-                    <p>日常の打合せメモもAIにお任せ。多言語が混在する会議にも対応します。</p>
-                </div>
-            </div>
-            <div class="scenario-card">
-                <div class="scenario-header">
-                    <div class="scenario-icon" aria-hidden="true">
-                        <svg viewBox="0 0 64 64"><path d="M14 10h28l8 8v36H14z"/><path d="M42 10v8h8"/><line x1="22" y1="28" x2="42" y2="28"/><line x1="22" y1="36" x2="42" y2="36"/><line x1="22" y1="44" x2="34" y2="44"/></svg>
-                    </div>
-                    <span class="scenario-badge">人事・監査</span>
-                    <h3>研修・監査対応の記録</h3>
-                </div>
-                <div class="scenario-body">
-                    <p>研修内容や監査ヒアリングの記録・要約にも幅広く利用できます。</p>
+                    <p>入札関連書類や許認可申請など、様式が定まった業務全般に適用できます。</p>
                 </div>
             </div>
         </div>
@@ -2156,38 +2159,38 @@
 <section class="section" id="faq">
     <div class="container">
         <span class="section-eyebrow">FAQ</span>
-        <h2 class="section-title">AI議事録によくあるご質問</h2>
+        <h2 class="section-title">AI-OCR書類チェックによくあるご質問</h2>
         <p class="section-subtitle">
-            対応形式・多言語・話者分離・セキュリティ・導入の流れなど、ご検討の段階でよくいただくご質問にお答えします。
+            対応書類・手書き対応・ルール整備・セキュリティ・導入の流れなど、ご検討の段階でよくいただくご質問にお答えします。
         </p>
         <div class="faq-list">
             <details>
-                <summary>どの音声ファイル形式に対応していますか？</summary>
-                <p>MP3・WAV・M4A・AAC・FLAC・OGG・WEBMに対応しています。1ファイルあたり最大400MBで、複数ファイルの一括アップロードも可能です。</p>
+                <summary>どのような書類をチェックできますか？</summary>
+                <p>様式と審査基準（法令・記入要領等）が文書化されている定型書類に対応します。戸籍・住民異動届、補助金・助成金申請、地籍調査、介護・福祉関連申請、税務関連の届出、入札関連書類など幅広く適用できます。まずは対象業務のご相談から承ります。</p>
             </details>
             <details>
-                <summary>複数の言語が混ざった会議でも文字起こしできますか？</summary>
-                <p>できます。日本語・英語・中国語など複数の言語を選択でき、1つの音声に複数言語が混在していても認識できます。</p>
+                <summary>手書きの書類も読み取れますか？</summary>
+                <p>読み取れます。手書き・活字・表形式に対応した高精度OCRで記載内容を読み取ります。</p>
             </details>
             <details>
-                <summary>話者の区別（誰が話したか）はできますか？</summary>
-                <p>できます。発言に話者ラベルとタイムスタンプを自動で付与します。参加人数を事前に指定することで、話者分離の精度がさらに向上します。</p>
+                <summary>チェックルールの設定は自分で行う必要がありますか？</summary>
+                <p>ありません。法令・条例・記入要領からのルール抽出・構造化・精度チューニングは、すべてSparticleの専門チームが実施します。導入初日から高精度なチェックをご利用いただけます。</p>
             </details>
             <details>
-                <summary>会議データが外部に送信されることはありますか？</summary>
-                <p>ありません。議事録の要約は自社・組織内環境で動作するローカルLLMが実行するため、会議データが外部に送信されることはありません。通信・保存データの暗号化、担当者単位のアクセス権限管理、操作ログによる追跡にも対応しています。</p>
+                <summary>法改正や様式変更があった場合の対応は？</summary>
+                <p>Sparticleが改正・様式改定をキャッチアップし、チェックルールを継続的に更新します。導入後も精度が劣化しない仕組みです。</p>
             </details>
             <details>
-                <summary>どのような業種で利用できますか？</summary>
-                <p>自治体・官公庁、製造業、金融・保険をはじめ、機密性の高い会議を扱うあらゆる組織でご利用いただけます。業種別の活用イメージは<a href="government-solution.html" class="inline-link">自治体・官公庁向けソリューション</a>、<a href="manufacturing-solution.html" class="inline-link">製造業向けソリューション</a>をご覧ください。</p>
+                <summary>指摘の理由は確認できますか？</summary>
+                <p>できます。問題箇所をPDF上に枠で表示し、根拠文書に基づく指摘理由と修正例をあわせて提示します。注釈付きPDFの出力にも対応しています。</p>
             </details>
             <details>
-                <summary>自社の議事録様式（フォーマット）は使えますか？</summary>
-                <p>標準テンプレート（会議概要・議題・決定事項・ToDo）は導入初日からご利用いただけます。お使いの様式（PDF・Word）をアップロードしてテンプレートとして利用できるカスタムテンプレート機能は、今後のアップデートで提供予定です。様式・運用に合わせたテンプレート整備のご相談も承ります。</p>
+                <summary>セキュリティ面の対策は？</summary>
+                <p>通信・保存データの暗号化、部署・担当者単位のアクセス権限管理、操作ログの記録に対応しています。個人情報の取り扱いは、貴社・貴庁のセキュリティポリシーに沿った運用形態をご相談のうえ決定します。</p>
             </details>
             <details>
                 <summary>導入までの流れと期間は？</summary>
-                <p>ヒアリング・環境準備（約2週間）、実際の会議音声でのトライアル（約1ヶ月）、運用設計・展開準備（約2週間）を経て本格運用に進みます。文字起こしの精度と要約の品質を実データでご確認いただいたうえで、導入をご判断いただけます。</p>
+                <p>ヒアリング・様式収集（約2週間）、ルール抽出・構築（約1〜1.5ヶ月）、試行運用・精度検証（約1ヶ月）を経て本番運用に進みます。最短3ヶ月で本番運用が可能で、実書類でのトライアルにて指摘精度をご確認いただけます。</p>
             </details>
         </div>
     </div>
@@ -2196,8 +2199,8 @@
 <!-- CTA -->
 <section class="cta-section">
     <div class="cta-content">
-        <h2>まずは、実際の会議音声でトライアルを</h2>
-        <p>文字起こしの精度と議事録要約の品質を、貴社の会議音声でご確認いただけます。<br>導入のご判断は、その結果をご覧いただいてからで構いません。</p>
+        <h2>まずは、実際の書類でトライアルを</h2>
+        <p>指摘の精度と使い勝手を、貴社・貴庁の実書類でご確認いただけます。<br>導入のご判断は、その結果をご覧いただいてからで構いません。</p>
         <div class="hero-cta">
             <a href="https://onprem.gbase.ai/contact" class="btn btn-primary">無料デモ</a>
             <a href="https://onprem.gbase.ai/contact" class="btn btn-secondary">資料請求申込</a>
