@@ -1748,6 +1748,48 @@
         @media (max-width: 640px) {
             .effect-stats { grid-template-columns: 1fr; }
         }
+
+        /* SmartRead-style effect infographics */
+        .effect-viz { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+        .ev-card {
+            background: white;
+            border: 1.5px solid var(--border);
+            border-radius: 14px;
+            padding: 1.5rem 1.25rem 1.4rem;
+            text-align: center;
+        }
+        .ev-tag {
+            display: inline-block;
+            border: 1.5px solid var(--primary);
+            color: var(--primary);
+            font-size: 0.78rem;
+            font-weight: 800;
+            padding: 0.28rem 0.9rem;
+            margin-bottom: 1.2rem;
+        }
+        .ev-viz { height: 168px; display: flex; align-items: flex-end; justify-content: center; gap: 2.25rem; margin-bottom: 0.85rem; }
+        .ev-col { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+        .ev-bar-before {
+            width: 68px; height: 136px;
+            background: #C9CDD6;
+            border-radius: 6px 6px 0 0;
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-size: 0.72rem; font-weight: 800; line-height: 1.6;
+        }
+        .ev-num { font-weight: 800; color: var(--text-dark); font-size: 0.95rem; line-height: 1.15; margin-bottom: 0.4rem; }
+        .ev-num b { font-size: 2.1rem; color: #7A8628; letter-spacing: -0.02em; }
+        .ev-num .cite { font-size: 0.6rem; color: var(--text-gray); }
+        .ev-bar-after { width: 68px; height: 41px; background: #9BA832; border-radius: 6px 6px 0 0; }
+        .ev-col > small { margin-top: 0.6rem; font-size: 0.8rem; font-weight: 800; color: var(--text-dark); }
+        .ev-center { height: 168px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; margin-bottom: 0.85rem; }
+        .ev-center svg { width: 76px; height: 58px; }
+        .ev-word { font-size: 2rem; font-weight: 800; color: #7A8628; line-height: 1.2; }
+        .ev-minibars { display: flex; align-items: flex-end; gap: 7px; height: 100%; }
+        .ev-minibars i { display: block; width: 22px; border-radius: 4px 4px 0 0; }
+        .ev-caption { font-size: 0.82rem; font-weight: 700; color: var(--text-gray); line-height: 1.6; }
+        .ev-arrow-mid { align-self: center; color: #9BA832; }
+        .ev-arrow-mid svg { width: 24px; height: 24px; }
+        @media (max-width: 968px) { .effect-viz { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -2047,18 +2089,55 @@
 
         <div class="effects-wrap">
             <h3 class="effects-title">期待される導入効果</h3>
-            <div class="effect-stats">
-                <div class="effect-stat">
-                    <strong>約70%<em>削減</em><sup class="cite">※</sup></strong>
-                    <small>一次審査にかかる時間</small>
+            <div class="effect-viz">
+                <div class="ev-card">
+                    <span class="ev-tag">一次審査にかかる時間</span>
+                    <div class="ev-viz">
+                        <div class="ev-col">
+                            <div class="ev-bar-before">目視<br>チェック</div>
+                            <small>導入前</small>
+                        </div>
+                        <div class="ev-col">
+                            <div class="ev-num">約<b>70</b>%削減<sup class="cite">※</sup></div>
+                            <div class="ev-bar-after"></div>
+                            <small>AI-OCR導入後</small>
+                        </div>
+                    </div>
+                    <p class="ev-caption">形式チェックを自動化し、担当者は判断業務に集中</p>
                 </div>
-                <div class="effect-stat">
-                    <strong>大幅減</strong>
-                    <small>差戻し・再申請の件数</small>
+                <div class="ev-card">
+                    <span class="ev-tag">差戻し・再申請の件数</span>
+                    <div class="ev-center">
+                        <svg viewBox="0 0 76 58" fill="none" stroke="#9BA832" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 8 30 34 44 20 72 48"/><polyline points="72 30 72 48 54 48"/></svg>
+                        <div class="ev-word">大幅減</div>
+                    </div>
+                    <p class="ev-caption">受付段階で不備を検出し、申請者との往復を削減</p>
                 </div>
-                <div class="effect-stat">
-                    <strong>標準化</strong>
-                    <small>審査品質の均一化</small>
+                <div class="ev-card">
+                    <span class="ev-tag">審査品質の均一化</span>
+                    <div class="ev-viz">
+                        <div class="ev-col">
+                            <div class="ev-minibars">
+                                <i style="height:96px;background:#C9CDD6"></i>
+                                <i style="height:52px;background:#C9CDD6"></i>
+                                <i style="height:128px;background:#C9CDD6"></i>
+                            </div>
+                            <small>導入前</small>
+                        </div>
+                        <div class="ev-arrow-mid" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </div>
+                        <div class="ev-col">
+                            <div class="ev-num" style="margin-bottom:0.4rem">標準化</div>
+                            <div class="ev-minibars">
+                                <i style="height:100px;background:#9BA832"></i>
+                                <i style="height:100px;background:#9BA832"></i>
+                                <i style="height:100px;background:#9BA832"></i>
+                            </div>
+                            <small>導入後</small>
+                        </div>
+                    </div>
+                    <p class="ev-caption">ベテランのノウハウをルール化し、担当者間のばらつきを解消</p>
                 </div>
             </div>
             <p class="section-note">※ 約70%は導入実績に基づく参考値です。業務内容・書類量により異なります。トライアルにて実書類での効果を検証いただけます。</p>
