@@ -1724,13 +1724,25 @@
             gap: 0.9rem;
         }
         .flow2-auto-tag {
-            font-size: 0.72rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.75rem;
             font-weight: 800;
-            letter-spacing: 0.05em;
-            color: #fff;
-            background: var(--primary);
-            border-radius: 999px;
-            padding: 0.3rem 1rem;
+            letter-spacing: 0.06em;
+            color: var(--text-gray);
+        }
+        .flow2-auto-tag::before,
+        .flow2-auto-tag::after {
+            content: '';
+            width: 26px;
+            height: 1.5px;
+            background: #C9CDD6;
+        }
+        .flow2-auto-tag svg {
+            width: 14px; height: 14px;
+            fill: #9BA832;
+            flex: none;
         }
         .flow2-chips { display: flex; flex-direction: column; gap: 0.4rem; align-items: center; }
         .flow2-chips span {
@@ -2099,7 +2111,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </div>
             <div class="flow2-auto">
-                <span class="flow2-auto-tag">ここからはAIにおまかせ</span>
+                <span class="flow2-auto-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l1.7 5.3L19 9l-5.3 1.7L12 16l-1.7-5.3L5 9l5.3-1.7L12 2z"/><path d="M19 15l0.9 2.6L22.5 18.5l-2.6 0.9L19 22l-0.9-2.6L15.5 18.5l2.6-0.9L19 15z"/></svg>ここからはAIにおまかせ</span>
                 <div class="flow2-chips">
                     <span>タイムスタンプ・話者ラベル付きで文字起こし</span>
                     <i aria-hidden="true">▼</i>
