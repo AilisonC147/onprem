@@ -103,7 +103,7 @@
           "name": "導入までの期間はどのくらいですか？",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "エンタープライズプランは最短2ヶ月、ライトプランは最短1ヶ月で本番運用が可能です。ヒアリング・要件定義からカスタマイズ・データ投入・テストまで、Sparticleのチームが伴走支援します。"
+            "text": "エンタープライズプランは最短2か月、ライトプランは最短1か月で本番運用が可能です。ヒアリング・要件定義からカスタマイズ・データ投入・テストまで、Sparticleのチームが伴走支援します。"
           }
         }
       ]
@@ -1472,13 +1472,9 @@
         /* ===== feature-intro additions (v2) ===== */
         .hero-feature {
             background:
-                linear-gradient(180deg, rgba(255, 255, 255, 0) 45%, #FFFFFF 88%),
-                repeating-linear-gradient(0deg, rgba(5, 0, 56, 0.022) 0 1px, transparent 1px 72px),
-                repeating-linear-gradient(90deg, rgba(5, 0, 56, 0.022) 0 1px, transparent 1px 72px),
-                radial-gradient(ellipse at 12% 60%, rgba(233, 226, 130, 0.55) 0%, transparent 50%),
-                radial-gradient(ellipse at 88% 10%, rgba(190, 231, 168, 0.5) 0%, transparent 50%),
-                radial-gradient(ellipse at 92% 55%, rgba(220, 233, 114, 0.4) 0%, transparent 45%),
-                linear-gradient(180deg, #FBFCF3 0%, #F3F7E4 100%);
+                url('images/onprem-bg.png') top center / cover no-repeat,
+                url('images/onprem-top_bg.png') top center / cover no-repeat,
+                #FFFFFF;
             color: var(--text-dark);
             min-height: auto;
             padding: 9rem 2rem 5rem;
@@ -1940,6 +1936,50 @@
             .fp-shell { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.5rem; }
             .fp-imgs { min-height: 0; }
         }
+
+        /* implementation procedure */
+        .plan-badges { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
+        .plan-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            background: white;
+            border: 1.5px solid var(--border-lime);
+            border-radius: 999px;
+            padding: 0.55rem 1.4rem 0.55rem 0.55rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        .plan-badge b {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: var(--primary);
+            border-radius: 999px;
+            padding: 0.3rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 800;
+        }
+        .proc-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+        .step-checks { list-style: none; display: grid; gap: 0.5rem; }
+        .step-checks li {
+            font-size: 0.875rem;
+            color: var(--text-gray);
+            line-height: 1.65;
+            padding-left: 1.4rem;
+            position: relative;
+        }
+        .step-checks li::before {
+            content: '✓';
+            position: absolute; left: 0; top: 0;
+            color: #9BA832;
+            font-weight: 800;
+        }
+        .step-note { margin-top: 0.6rem; font-size: 0.74rem; color: var(--text-gray); line-height: 1.6; }
+        @media (max-width: 968px) { .proc-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -2301,33 +2341,58 @@
 <section class="section section-gray" id="implementation-flow">
     <div class="container">
         <span class="section-eyebrow">GETTING STARTED</span>
-        <h2 class="section-title">GBase OnPrem 導入までの流れ</h2>
-        <p class="section-subtitle">
-            ヒアリングから運用開始まで、Sparticleのオンプレミスチームが伴走支援します。
-        </p>
-        <div class="steps-grid">
+        <h2 class="section-title">GBase OnPremの導入までの手続き</h2>
+        <div class="plan-badges">
+            <span class="plan-badge"><b>エンタープライズプラン</b>導入リードタイム最短2か月</span>
+            <span class="plan-badge"><b>ライトプラン</b>導入リードタイム最短1か月</span>
+        </div>
+        <div class="proc-grid">
             <div class="step-card">
                 <span class="step-num">STEP 1</span>
-                <h3>ヒアリング・要件定義</h3>
-                <p>活用目的・対象データ・セキュリティ要件を確認し、最適な構成をご提案します。</p>
+                <h3>ヒアリング</h3>
+                <ul class="step-checks">
+                    <li>GBaseを活用して解決したい課題や、具体的なユースケース、利用イメージ等をヒアリング</li>
+                </ul>
             </div>
             <div class="step-card">
                 <span class="step-num">STEP 2</span>
-                <h3>カスタマイズ・環境構築</h3>
-                <p>既存サーバーの活用も含め、貴社環境に合わせてシステムを構築します。</p>
+                <h3>要件定義</h3>
+                <ul class="step-checks">
+                    <li>技術的実現可能性も加味し、機能や性能の要件を定義</li>
+                    <li>ビジネス面（業務フローへの適合性等）の要件も含む</li>
+                </ul>
             </div>
             <div class="step-card">
                 <span class="step-num">STEP 3</span>
-                <h3>データ投入・テスト</h3>
-                <p>実データでナレッジベースを構築し、検索精度・回答品質を検証します。</p>
+                <h3>UI・API等カスタマイズ</h3>
+                <ul class="step-checks">
+                    <li>ロゴや画面デザイン等、UIを用途に合わせてカスタマイズ</li>
+                    <li>社内システム等とのAPI連携</li>
+                </ul>
             </div>
             <div class="step-card">
                 <span class="step-num">STEP 4</span>
-                <h3>運用開始・継続改善</h3>
-                <p>本番運用を開始。利用状況を踏まえた精度改善を継続的に実施します。</p>
+                <h3>データ投入・チューニング</h3>
+                <ul class="step-checks">
+                    <li>インプットデータをベクターDBに投入し、回答をチューニング</li>
+                </ul>
+                <p class="step-note">※クレンジングが必要な場合、程度に応じ別途料金発生</p>
+            </div>
+            <div class="step-card">
+                <span class="step-num">STEP 5</span>
+                <h3>テスト・パイロット</h3>
+                <ul class="step-checks">
+                    <li>お客さまにテスト環境を開放し、フィードバックや要望を受領</li>
+                </ul>
+            </div>
+            <div class="step-card">
+                <span class="step-num">STEP 6</span>
+                <h3>運用</h3>
+                <ul class="step-checks">
+                    <li>本番環境でリリースし、ユーザ様にて運用</li>
+                </ul>
             </div>
         </div>
-        <p class="section-guide">導入期間の目安：エンタープライズプランは最短2ヶ月、ライトプランは最短1ヶ月で本番運用が可能です。</p>
     </div>
 </section>
 
@@ -2358,7 +2423,7 @@
             </details>
             <details>
                 <summary>導入までの期間はどのくらいですか？</summary>
-                <p>エンタープライズプランは最短2ヶ月、ライトプランは最短1ヶ月で本番運用が可能です。ヒアリング・要件定義からカスタマイズ・データ投入・テストまで、Sparticleのチームが伴走支援します。</p>
+                <p>エンタープライズプランは最短2か月、ライトプランは最短1か月で本番運用が可能です。ヒアリング・要件定義からカスタマイズ・データ投入・テストまで、Sparticleのチームが伴走支援します。</p>
             </details>
         </div>
     </div>
