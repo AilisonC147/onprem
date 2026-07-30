@@ -1868,28 +1868,58 @@
             margin-bottom: 0.4rem;
         }
         .fp-title h3 { font-size: 1.4rem; font-weight: 800; color: var(--text-dark); }
-        .fp-sub {
-            display: grid;
-            grid-template-columns: 5fr 6fr;
-            gap: 2.5rem;
-            align-items: center;
+        .fp-shell {
             background: white;
             border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 2rem 2.25rem;
-            margin-bottom: 1.5rem;
+            border-radius: 16px;
+            padding: 2.5rem;
+            display: grid;
+            grid-template-columns: 5fr 6fr;
+            gap: 2.75rem;
+            align-items: center;
         }
-        .fp-text h4 {
-            font-size: 1.0625rem;
+        .fp-list { display: flex; flex-direction: column; gap: 0.35rem; }
+        .fp-item {
+            display: block;
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            border-left: 3px solid var(--border);
+            padding: 0.9rem 0 0.9rem 1.15rem;
+            cursor: pointer;
+            font-family: inherit;
+            transition: border-color 0.25s, background 0.25s;
+        }
+        .fp-item:hover { border-left-color: var(--accent-light); }
+        .fp-item h4 {
+            font-size: 1rem;
             font-weight: 800;
-            color: var(--text-dark);
+            color: var(--text-gray);
             line-height: 1.55;
-            margin-bottom: 0.7rem;
-            padding-left: 0.9rem;
-            border-left: 3px solid var(--accent);
+            transition: color 0.25s;
         }
-        .fp-text p { font-size: 0.92rem; color: var(--text-gray); line-height: 1.8; }
-        .fp-img img { width: 100%; height: auto; display: block; border: 1px solid var(--border); border-radius: 10px; }
+        .fp-item p {
+            display: none;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            line-height: 1.75;
+            margin-top: 0.5rem;
+        }
+        .fp-item.active { border-left-color: var(--accent); }
+        .fp-item.active h4 { color: var(--text-dark); }
+        .fp-item.active p { display: block; }
+        .fp-imgs { min-height: 340px; display: flex; align-items: center; justify-content: center; }
+        .fp-imgs img {
+            display: none;
+            max-width: 100%;
+            max-height: 440px;
+            width: auto;
+            height: auto;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+        .fp-imgs img.active { display: block; }
         .fp-more-wrap { text-align: center; margin-top: 2rem; }
         .fp-more {
             display: inline-flex;
@@ -1908,7 +1938,8 @@
         .fp-more:hover { filter: brightness(1.05); transform: translateY(-1px); }
         .fp-more:hover::after { transform: translateX(3px); }
         @media (max-width: 968px) {
-            .fp-sub { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.5rem; }
+            .fp-shell { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.5rem; }
+            .fp-imgs { min-height: 0; }
         }
     </style>
 </head>
@@ -2091,141 +2122,115 @@
         </div>
         <div class="fpanel active" id="fpanel-files">
             <div class="fp-title"><span class="fp-num">01</span><h3>AIナレッジベースでドキュメント管理を一元化</h3></div>
-            <div class="fp-sub">
-                <div class="fp-text">
-                    <h4>高精度なファイル解析でナレッジベース構築</h4>
-                    <p>PDF、Word、Excel、PowerPoint、テキストファイル、画像など、業務で頻繁に使用する多様なドキュメント形式をシームレスに処理。データの構造を深く理解し、効率的な知識管理を実現します。</p>
+            <div class="fp-shell">
+                <div class="fp-list">
+                    <button class="fp-item active" type="button" data-idx="0">
+                        <h4>高精度なファイル解析でナレッジベース構築</h4>
+                        <p>PDF、Word、Excel、PowerPoint、テキストファイル、画像など、業務で頻繁に使用する多様なドキュメント形式をシームレスに処理。データの構造を深く理解し、効率的な知識管理を実現します。</p>
+                    </button>
+                    <button class="fp-item" type="button" data-idx="1">
+                        <h4>手軽にナレッジベースを構築し、知識管理を一元化</h4>
+                        <p>直感的なインターフェースで社内に散在する情報、マニュアル、FAQ、ベストプラクティスなどをナレッジベースに集約します。</p>
+                    </button>
+                    <button class="fp-item" type="button" data-idx="2">
+                        <h4>生成AI × 独自の解析アルゴリズムで学習の最適化</h4>
+                        <p>業務ニーズに応じて処理速度と精度のトレードオフを柔軟にコントロールし、最適なパフォーマンスを提供します。</p>
+                    </button>
                 </div>
-                <div class="fp-img">
-                    <img src="images/onprem-first_img_01.png" alt="PDFやWord等の多様なファイルを解析してナレッジベースを構築する画面" width="1160" height="1046" loading="lazy" decoding="async">
-                </div>
-            </div>
-            <div class="fp-sub">
-                <div class="fp-text">
-                    <h4>手軽にナレッジベースを構築し、知識管理を一元化</h4>
-                    <p>直感的なインターフェースで社内に散在する情報、マニュアル、FAQ、ベストプラクティスなどをナレッジベースに集約します。</p>
-                </div>
-                <div class="fp-img">
+                <div class="fp-imgs">
+                    <img class="active" src="images/onprem-first_img_01.png" alt="PDFやWord等の多様なファイルを解析してナレッジベースを構築する画面" width="1160" height="1046" loading="lazy" decoding="async">
                     <img src="images/onprem-first_img_02.png" alt="社内に散在する情報をナレッジベースに集約する管理画面" width="968" height="593" loading="lazy" decoding="async">
-                </div>
-            </div>
-            <div class="fp-sub">
-                <div class="fp-text">
-                    <h4>生成AI × 独自の解析アルゴリズムで学習の最適化</h4>
-                    <p>業務ニーズに応じて処理速度と精度のトレードオフを柔軟にコントロールし、最適なパフォーマンスを提供します。</p>
-                </div>
-                <div class="fp-img">
                     <img src="images/onprem-first_img_03.png" alt="処理速度と精度のバランスを設定する学習最適化画面" width="867" height="612" loading="lazy" decoding="async">
                 </div>
             </div>
         </div>
         <div class="fpanel" id="fpanel-agent">
             <div class="fp-title"><span class="fp-num">02</span><h3>AIエージェント・スキルで定型業務を自動化</h3></div>
-            <div class="fp-sub">
-                <div class="fp-text">
-                    <h4>業務テンプレート「スキル」を選んで実行</h4>
-                    <p>文書要約・調査レポート・資料ドラフトなど、業務に合わせたスキルを選ぶだけで、AIエージェントが定型業務を実行します。</p>
+            <div class="fp-shell">
+                <div class="fp-list">
+                    <button class="fp-item active" type="button" data-idx="0">
+                        <h4>業務テンプレート「スキル」を選んで実行</h4>
+                        <p>文書要約・調査レポート・資料ドラフトなど、業務に合わせたスキルを選ぶだけで、AIエージェントが定型業務を実行します。</p>
+                    </button>
+                    <button class="fp-item" type="button" data-idx="1">
+                        <h4>社内ナレッジと連携し、参照元を明示</h4>
+                        <p>エージェントはナレッジベースを参照しながらタスクを処理。出力には参照元を付与し、内容の確認・修正が容易です。</p>
+                    </button>
                 </div>
-                <div class="fp-img">
-                    <img src="images/feature-agent-skills.jpg" alt="文書要約や調査レポートなどのスキルを選んで実行する画面イメージ" width="1200" height="900" loading="lazy" decoding="async">
-                </div>
-            </div>
-            <div class="fp-sub">
-                <div class="fp-text">
-                    <h4>社内ナレッジと連携し、参照元を明示</h4>
-                    <p>エージェントはナレッジベースを参照しながらタスクを処理。出力には参照元を付与し、内容の確認・修正が容易です。</p>
-                </div>
-                <div class="fp-img">
+                <div class="fp-imgs">
+                    <img class="active" src="images/feature-agent-skills.jpg" alt="文書要約や調査レポートなどのスキルを選んで実行する画面イメージ" width="1200" height="900" loading="lazy" decoding="async">
                     <img src="images/feature-agent-run.jpg" alt="エージェントがナレッジを参照しながらタスクを実行する進捗画面イメージ" width="1200" height="900" loading="lazy" decoding="async">
                 </div>
             </div>
         </div>
         <div class="fpanel" id="fpanel-chatbot">
             <div class="fp-title"><span class="fp-num">03</span><h3>高精度RAG検索を搭載したAIチャットボット</h3></div>
-            <div class="fp-sub">
-                <div class="fp-text">
-                    <h4>独自開発LLMで最高性能を実現するFAQシステム</h4>
-                    <p>独自のエージェントで文脈を深く理解しながら膨大なナレッジベースを活用し、人間らしい自然な対話を実現。日本語の敬語体系への対応を含む多言語処理機能と、多様なニーズに応える汎用的なタスク実行能力により、幅広いビジネスシーンでご活用いただけます。</p>
+            <div class="fp-shell">
+                <div class="fp-list">
+                    <button class="fp-item active" type="button" data-idx="0">
+                        <h4>独自開発LLMで最高性能を実現するFAQシステム</h4>
+                        <p>独自のエージェントで文脈を深く理解しながら膨大なナレッジベースを活用し、人間らしい自然な対話を実現。日本語の敬語体系への対応を含む多言語処理機能と、多様なニーズに応える汎用的なタスク実行能力により、幅広いビジネスシーンでご活用いただけます。</p>
+                    </button>
+                    <button class="fp-item" type="button" data-idx="1">
+                        <h4>見やすいハイライト表示で参照元を明示</h4>
+                        <p>参照箇所にハイライトや色付けを施すことで、情報の出典を容易に確認でき、回答の信頼性と透明性が向上します。</p>
+                    </button>
+                    <button class="fp-item" type="button" data-idx="2">
+                        <h4>Q&amp;Aを作成することでノウハウをさらに蓄積・拡充</h4>
+                        <p>実際の業務で発生した問題とその解決方法をリアルタイムに記録し、業務効率の向上と問題解決の迅速化を実現します。</p>
+                    </button>
                 </div>
-                <div class="fp-img">
-                    <img src="images/onprem-second_img_01.svg" alt="ナレッジベースを参照して自然な対話を行うAIチャットボットの画面" width="580" height="300" loading="lazy" decoding="async">
-                </div>
-            </div>
-            <div class="fp-sub">
-                <div class="fp-text">
-                    <h4>見やすいハイライト表示で参照元を明示</h4>
-                    <p>参照箇所にハイライトや色付けを施すことで、情報の出典を容易に確認でき、回答の信頼性と透明性が向上します。</p>
-                </div>
-                <div class="fp-img">
+                <div class="fp-imgs">
+                    <img class="active" src="images/onprem-second_img_01.svg" alt="ナレッジベースを参照して自然な対話を行うAIチャットボットの画面" width="580" height="300" loading="lazy" decoding="async">
                     <img src="images/onprem-second_img_02.png" alt="回答の参照元をハイライト表示するチャット画面" width="968" height="593" loading="lazy" decoding="async">
-                </div>
-            </div>
-            <div class="fp-sub">
-                <div class="fp-text">
-                    <h4>Q&amp;Aを作成することでノウハウをさらに蓄積・拡充</h4>
-                    <p>実際の業務で発生した問題とその解決方法をリアルタイムに記録し、業務効率の向上と問題解決の迅速化を実現します。</p>
-                </div>
-                <div class="fp-img">
                     <img src="images/onprem-second_img_03.png" alt="Q&Aを作成してノウハウを蓄積する管理画面" width="867" height="612" loading="lazy" decoding="async">
                 </div>
             </div>
         </div>
         <div class="fpanel" id="fpanel-security">
             <div class="fp-title"><span class="fp-num">04</span><h3>オンプレミスセキュリティとアクセス権限管理</h3></div>
-            <div class="fp-sub">
-                <div class="fp-text">
-                    <h4>オンプレミス環境で情報漏洩を防止</h4>
-                    <p>オンプレミス環境への社外からの不正アクセスを完全に遮断することで、企業の重要なデータやシステムを外部の脅威から保護。データ漏洩やサイバー攻撃のリスクを最小限に抑え、企業の情報資産の安全性を確保します。</p>
+            <div class="fp-shell">
+                <div class="fp-list">
+                    <button class="fp-item active" type="button" data-idx="0">
+                        <h4>オンプレミス環境で情報漏洩を防止</h4>
+                        <p>オンプレミス環境への社外からの不正アクセスを完全に遮断することで、企業の重要なデータやシステムを外部の脅威から保護。データ漏洩やサイバー攻撃のリスクを最小限に抑え、企業の情報資産の安全性を確保します。</p>
+                    </button>
+                    <button class="fp-item" type="button" data-idx="1">
+                        <h4>権限管理システムでチャットボットの公開範囲を制御</h4>
+                        <p>権限管理システムにより、チャットボットにアクセスできるユーザーやグループを細かく設定し、部門や役職レベルに応じた公開範囲の制御を実現します。</p>
+                    </button>
+                    <button class="fp-item" type="button" data-idx="2">
+                        <h4>全ての利用履歴ログを自動記録・長期保管</h4>
+                        <p>利用履歴ログを自動で記録・長期保管し、利用状況の確認・分析や監査対応にご活用いただけます。</p>
+                    </button>
                 </div>
-                <div class="fp-img">
-                    <img src="images/onprem-third_img_01.png" alt="外部脅威から企業データを保護するオンプレミス構成図" width="1184" height="546" loading="lazy" decoding="async">
-                </div>
-            </div>
-            <div class="fp-sub">
-                <div class="fp-text">
-                    <h4>権限管理システムでチャットボットの公開範囲を制御</h4>
-                    <p>権限管理システムにより、チャットボットにアクセスできるユーザーやグループを細かく設定し、部門や役職レベルに応じた公開範囲の制御を実現します。</p>
-                </div>
-                <div class="fp-img">
+                <div class="fp-imgs">
+                    <img class="active" src="images/onprem-third_img_01.png" alt="外部脅威から企業データを保護するオンプレミス構成図" width="1184" height="546" loading="lazy" decoding="async">
                     <img src="images/onprem-third_img_02.png" alt="部門・役職に応じてチャットボットの公開範囲を設定する権限管理画面" width="968" height="420" loading="lazy" decoding="async">
-                </div>
-            </div>
-            <div class="fp-sub">
-                <div class="fp-text">
-                    <h4>全ての利用履歴ログを自動記録・長期保管</h4>
-                    <p>利用履歴ログを自動で記録・長期保管し、利用状況の確認・分析や監査対応にご活用いただけます。</p>
-                </div>
-                <div class="fp-img">
                     <img src="images/onprem-third_img_03.png" alt="利用履歴ログを一覧で確認する管理画面" width="968" height="520" loading="lazy" decoding="async">
                 </div>
             </div>
         </div>
         <div class="fpanel" id="fpanel-ocr">
             <div class="fp-title"><span class="fp-num">05</span><h3>AI-OCR書類チェックで申請書類の不備を自動検出</h3></div>
-            <div class="fp-sub">
-                <div class="fp-text">
-                    <h4>ルール整備はSparticleが実施。設定・保守は不要</h4>
-                    <p>チェック精度を左右するルール抽出は、法令・記入要領を当社専門チームが精査してデータベース化。導入初日から高精度なチェックをご利用いただけます。</p>
+            <div class="fp-shell">
+                <div class="fp-list">
+                    <button class="fp-item active" type="button" data-idx="0">
+                        <h4>ルール整備はSparticleが実施。設定・保守は不要</h4>
+                        <p>チェック精度を左右するルール抽出は、法令・記入要領を当社専門チームが精査してデータベース化。導入初日から高精度なチェックをご利用いただけます。</p>
+                    </button>
+                    <button class="fp-item" type="button" data-idx="1">
+                        <h4>指摘箇所をPDF上に直接表示</h4>
+                        <p>問題のある記載欄を枠でハイライトし、指摘理由と修正例をあわせて提示。確認ステータスの管理や注釈付きPDFの出力にも対応します。</p>
+                    </button>
+                    <button class="fp-item" type="button" data-idx="2">
+                        <h4>数十ファイルを一括チェック、重要度別に一元管理</h4>
+                        <p>検査日時・ファイル数・指摘件数を一覧で把握。「エラー」「要確認」の色分けで優先順位付けが容易です。</p>
+                    </button>
                 </div>
-                <div class="fp-img">
-                    <img src="images/feature-ocr-rules.jpg" alt="法令・記入要領からチェックルールを整備する流れの図" width="1200" height="900" loading="lazy" decoding="async">
-                </div>
-            </div>
-            <div class="fp-sub">
-                <div class="fp-text">
-                    <h4>指摘箇所をPDF上に直接表示</h4>
-                    <p>問題のある記載欄を枠でハイライトし、指摘理由と修正例をあわせて提示。確認ステータスの管理や注釈付きPDFの出力にも対応します。</p>
-                </div>
-                <div class="fp-img">
+                <div class="fp-imgs">
+                    <img class="active" src="images/feature-ocr-rules.jpg" alt="法令・記入要領からチェックルールを整備する流れの図" width="1200" height="900" loading="lazy" decoding="async">
                     <img src="images/feature-ocr-highlight.jpg" alt="フリガナ未記入の欄をPDF上にハイライトし修正例を表示する画面" width="1200" height="900" loading="lazy" decoding="async">
-                </div>
-            </div>
-            <div class="fp-sub">
-                <div class="fp-text">
-                    <h4>数十ファイルを一括チェック、重要度別に一元管理</h4>
-                    <p>検査日時・ファイル数・指摘件数を一覧で把握。「エラー」「要確認」の色分けで優先順位付けが容易です。</p>
-                </div>
-                <div class="fp-img">
                     <img src="images/feature-ocr-history.jpg" alt="書類チェック履歴を重要度別に一覧管理する画面" width="1200" height="900" loading="lazy" decoding="async">
                 </div>
             </div>
@@ -2233,30 +2238,24 @@
         </div>
         <div class="fpanel" id="fpanel-minutes">
             <div class="fp-title"><span class="fp-num">06</span><h3>音声アップロードだけで議事録ドラフトを自動生成</h3></div>
-            <div class="fp-sub">
-                <div class="fp-text">
-                    <h4>音声をアップロードするだけで、読めるテキストに</h4>
-                    <p>録音ファイルをドラッグ&amp;ドロップするだけで、タイムスタンプ・話者ラベル付きの文字起こしを自動生成します。</p>
+            <div class="fp-shell">
+                <div class="fp-list">
+                    <button class="fp-item active" type="button" data-idx="0">
+                        <h4>音声をアップロードするだけで、読めるテキストに</h4>
+                        <p>録音ファイルをドラッグ&amp;ドロップするだけで、タイムスタンプ・話者ラベル付きの文字起こしを自動生成します。</p>
+                    </button>
+                    <button class="fp-item" type="button" data-idx="1">
+                        <h4>要約はローカルLLM。会議データを外部に出さない</h4>
+                        <p>議事録の要約は自社・組織内環境で動作するLLMが実行。機微な会議情報も外部に送信せずに処理できます。</p>
+                    </button>
+                    <button class="fp-item" type="button" data-idx="2">
+                        <h4>テンプレートで「読める議事録」まで自動で仕上げる</h4>
+                        <p>会議概要・議題・決定事項・ToDoのテンプレートに沿ってドラフトを生成。担当者は確認して仕上げるだけです。</p>
+                    </button>
                 </div>
-                <div class="fp-img">
-                    <img src="images/feature-minutes-upload.jpg" alt="会議の録音ファイルをアップロードして文字起こしを開始する画面" width="1200" height="900" loading="lazy" decoding="async">
-                </div>
-            </div>
-            <div class="fp-sub">
-                <div class="fp-text">
-                    <h4>要約はローカルLLM。会議データを外部に出さない</h4>
-                    <p>議事録の要約は自社・組織内環境で動作するLLMが実行。機微な会議情報も外部に送信せずに処理できます。</p>
-                </div>
-                <div class="fp-img">
+                <div class="fp-imgs">
+                    <img class="active" src="images/feature-minutes-upload.jpg" alt="会議の録音ファイルをアップロードして文字起こしを開始する画面" width="1200" height="900" loading="lazy" decoding="async">
                     <img src="images/feature-minutes-local-llm.jpg" alt="要約を自社環境のローカルLLMで実行する構成イメージ" width="1200" height="900" loading="lazy" decoding="async">
-                </div>
-            </div>
-            <div class="fp-sub">
-                <div class="fp-text">
-                    <h4>テンプレートで「読める議事録」まで自動で仕上げる</h4>
-                    <p>会議概要・議題・決定事項・ToDoのテンプレートに沿ってドラフトを生成。担当者は確認して仕上げるだけです。</p>
-                </div>
-                <div class="fp-img">
                     <img src="images/feature-minutes-template.jpg" alt="テンプレートに沿って議事録ドラフトを生成する画面" width="1200" height="900" loading="lazy" decoding="async">
                 </div>
             </div>
@@ -2465,6 +2464,16 @@ document.querySelectorAll('.ftab').forEach(function (btn) {
         document.querySelectorAll('.fpanel').forEach(function (p) { p.classList.remove('active'); });
         btn.classList.add('active');
         document.getElementById('fpanel-' + btn.dataset.tab).classList.add('active');
+    });
+});
+document.querySelectorAll('.fp-item').forEach(function (item) {
+    item.addEventListener('click', function () {
+        var panel = item.closest('.fpanel');
+        panel.querySelectorAll('.fp-item').forEach(function (i) { i.classList.remove('active'); });
+        panel.querySelectorAll('.fp-imgs img').forEach(function (img) { img.classList.remove('active'); });
+        item.classList.add('active');
+        var imgs = panel.querySelectorAll('.fp-imgs img');
+        if (imgs[item.dataset.idx]) { imgs[item.dataset.idx].classList.add('active'); }
     });
 });
 </script>
