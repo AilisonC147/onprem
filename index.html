@@ -1472,22 +1472,27 @@
         /* ===== feature-intro additions (v2) ===== */
         .hero-feature {
             background:
-                url('images/onprem-bg.png') top center / cover no-repeat,
-                url('images/onprem-top_bg.png') top center / cover no-repeat,
+                url('images/onprem-bg.png') top center / 100% 100% no-repeat,
+                url('images/onprem-top_bg.png') top center / 100% 100% no-repeat,
                 #FFFFFF;
             color: var(--text-dark);
             min-height: auto;
             padding: 9rem 2rem 5rem;
             text-align: center;
         }
-        .hero-feature h1 { color: var(--text-dark); text-shadow: none; }
-        .hero-feature h1 .accent {
-            color: inherit;
-            background: linear-gradient(transparent 62%, var(--accent) 0);
-            padding: 0 0.1em;
+        .hero-feature h1 {
+            color: #0D0D0F;
+            text-shadow: none;
+            font-size: 3.6rem;
+            font-weight: 800;
+            line-height: 1.4;
+            letter-spacing: 0.01em;
+        }
+        @media (max-width: 968px) {
+            .hero-feature h1 { font-size: 2.2rem; }
         }
         .hero-feature .hero-subtitle { color: rgba(5, 0, 56, 0.72); }
-        .hero-feature .hero-inner { max-width: 860px; margin: 0 auto; }
+        .hero-feature .hero-inner { max-width: 1000px; margin: 0 auto; }
         .hero-feature .hero-cta { justify-content: center; }
         .hero-feature .hero-points { justify-content: center; }
         .hero-feature .hero-points li { color: rgba(5, 0, 56, 0.75); }
@@ -1733,11 +1738,11 @@
 
         /* homepage additions */
         .hero-eyebrow {
-            font-size: 0.95rem;
-            font-weight: 800;
-            color: #7A8628;
-            letter-spacing: 0.04em;
-            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0D0D0F;
+            letter-spacing: 0.02em;
+            margin-bottom: 1.25rem;
         }
         .fn-grid {
             display: grid;
@@ -2088,7 +2093,7 @@
     <div class="hero-content">
         <div class="hero-inner">
             <p class="hero-eyebrow">オンプレ環境で社内ノウハウを活用！</p>
-            <h1>オンプレミス型AIで<br>企業向け<span class="accent">セキュアなナレッジ検索</span>を実現</h1>
+            <h1>オンプレミス型AIで企業向け<br>セキュアなナレッジ検索を実現</h1>
             <p class="hero-subtitle">
                 ファイル解析・チャットボットから、AIエージェント・議事録・書類チェックまで。<br>
                 社内データを外部に出さずに、組織全体でAIを活用できます。
