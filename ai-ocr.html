@@ -150,6 +150,7 @@
             --gradient-from: #DDDD44;
             --gradient-to: #AFFBF8;
             --text-dark: #050038;
+            --text-black: #0D0D0F;
             --text-gray: #808080;
             --text-light: #F7F8F5;
             --bg-light: #FFFFFF;
@@ -167,7 +168,7 @@
         body {
             font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', 'Yu Gothic UI', 'Hiragino Sans', 'Noto Sans JP', Meiryo, sans-serif;
             line-height: 1.7;
-            color: var(--text-dark);
+            color: var(--text-black);
             background: var(--bg-light);
         }
 
@@ -205,20 +206,20 @@
             list-style: none;
         }
         .nav-links a {
-            color: var(--text-gray);
+            color: #5E6278;
             text-decoration: none;
             font-weight: 500;
             font-size: 0.95rem;
             transition: color 0.3s;
         }
-        .nav-links a:hover { color: var(--primary); }
+        .nav-links a:hover { color: #9BA832; }
         .nav-links > li { position: relative; }
         .nav-dropdown { position: relative; }
         .nav-btn {
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            color: var(--text-gray);
+            color: #5E6278;
             font-size: 0.95rem;
             font-weight: 500;
             background: none;
@@ -229,7 +230,7 @@
             transition: color 0.3s;
         }
         .nav-btn svg { width: 14px; height: 14px; }
-        .nav-btn:hover, .nav-dropdown:hover .nav-btn { color: var(--primary); }
+        .nav-btn:hover, .nav-dropdown:hover .nav-btn { color: #9BA832; }
         .nav-dropdown-menu {
             display: none;
             position: absolute;
@@ -259,7 +260,7 @@
             padding: 8px 12px;
             border-radius: 6px;
             text-decoration: none;
-            color: var(--text-dark);
+            color: var(--text-black);
             transition: background 0.15s;
         }
         .nav-dropdown-item:hover { background: var(--bg-cream, #F7F8F5); }
@@ -417,7 +418,7 @@
             font-weight: 800;
             text-align: center;
             margin-bottom: 1rem;
-            color: var(--text-dark);
+            color: var(--text-black);
             line-height: 1.45;
             letter-spacing: normal;
         }
@@ -478,7 +479,7 @@
             font-size: 1.25rem;
             font-weight: 800;
             margin-bottom: 0.625rem;
-            color: var(--text-dark);
+            color: var(--text-black);
         }
         .pain-card p {
             color: var(--text-gray);
@@ -536,7 +537,7 @@
             font-weight: 800;
             margin-bottom: 1rem;
             line-height: 1.4;
-            color: var(--text-dark);
+            color: var(--text-black);
         }
         .feature-content p {
             color: var(--text-gray);
@@ -629,7 +630,7 @@
             font-weight: 800;
             margin-bottom: 0.75rem;
             line-height: 1.4;
-            color: var(--text-dark);
+            color: var(--text-black);
         }
         .pillar-card p {
             color: var(--text-gray);
@@ -660,7 +661,7 @@
         .scenario-header {
             position: relative;
             min-height: 170px;
-            color: var(--text-dark);
+            color: var(--text-black);
             padding: 1.75rem;
             overflow: hidden;
             display: flex;
@@ -705,7 +706,7 @@
             z-index: 2;
         }
         .scenario-header h3 {
-            color: var(--text-dark);
+            color: var(--text-black);
         }
         .scenario-badge {
             display: inline-block;
@@ -824,7 +825,7 @@
             font-weight: 800;
             margin-bottom: 0.875rem;
             line-height: 1.45;
-            color: var(--text-dark);
+            color: var(--text-black);
         }
         .case-card p {
             color: var(--text-gray);
@@ -838,7 +839,7 @@
             padding: 1rem 1.25rem;
             border-radius: 8px;
             font-style: italic;
-            color: var(--text-dark);
+            color: var(--text-black);
             font-size: 0.9rem;
             margin-top: 0.75rem;
         }
@@ -957,7 +958,7 @@
         .faq-list summary {
             font-size: 1.25rem;
             font-weight: 700;
-            color: var(--text-dark);
+            color: var(--text-black);
             list-style: none;
             display: flex;
             justify-content: space-between;
@@ -1400,7 +1401,7 @@
             margin-bottom: 1rem;
             padding-bottom: 0.75rem;
             border-bottom: 1px solid var(--border);
-            color: var(--text-dark);
+            color: var(--text-black);
         }
         .compare-card ul { list-style: none; display: grid; gap: 0.8rem; }
         .compare-card li {
@@ -1474,7 +1475,7 @@
             font-size: 1.25rem;
             font-weight: 800;
             margin-bottom: 0.5rem;
-            color: var(--text-dark);
+            color: var(--text-black);
         }
         .step-card p {
             font-size: 0.875rem;
@@ -1507,12 +1508,12 @@
                 radial-gradient(ellipse at 88% 10%, rgba(190, 231, 168, 0.5) 0%, transparent 50%),
                 radial-gradient(ellipse at 92% 55%, rgba(220, 233, 114, 0.4) 0%, transparent 45%),
                 linear-gradient(180deg, #FBFCF3 0%, #F3F7E4 100%);
-            color: var(--text-dark);
+            color: var(--text-black);
             min-height: auto;
             padding: 9rem 2rem 5rem;
             text-align: center;
         }
-        .hero-feature h1 { color: var(--text-dark); text-shadow: none; }
+        .hero-feature h1 { color: var(--text-black); text-shadow: none; }
         .hero-feature h1 .accent {
             color: inherit;
             background: linear-gradient(transparent 62%, var(--accent) 0);
@@ -1576,7 +1577,7 @@
         XX            font-size: 1.25rem;
             font-weight: 800;
             line-height: 1.5;
-            color: var(--text-dark);
+            color: var(--text-black);
             margin-bottom: 0.6rem;
         }
         .ps-detail { font-size: 1rem; color: var(--text-gray); line-height: 1.65; }
@@ -1584,7 +1585,7 @@
             text-align: center;
             font-size: 1.875rem;
             font-weight: 800;
-            color: var(--text-dark);
+            color: var(--text-black);
             margin: 2.75rem 0 1rem;
         }
         .marker { background: linear-gradient(transparent 62%, var(--accent-light) 0); padding: 0 0.15em; }
@@ -1604,7 +1605,7 @@
             display: flex;
             flex-direction: column;
         }
-        .sol-title { font-size: 1.25rem; font-weight: 800; line-height: 1.5; color: var(--text-dark); margin-bottom: 0.75rem; }
+        .sol-title { font-size: 1.25rem; font-weight: 800; line-height: 1.5; color: var(--text-black); margin-bottom: 0.75rem; }
         .sol-title .cite { font-size: 0.55em; font-weight: 600; color: var(--text-gray); margin-left: 0.15em; }
         .sol-icon {
             width: 44px; height: 44px;
@@ -1710,7 +1711,7 @@
             text-align: center;
             font-size: 1.875rem;
             font-weight: 800;
-            color: var(--text-dark);
+            color: var(--text-black);
             margin-bottom: 1.5rem;
         }
         .effect-stats {
@@ -1729,7 +1730,7 @@
             display: block;
             font-size: 2.25rem;
             font-weight: 800;
-            color: var(--text-dark);
+            color: var(--text-black);
             line-height: 1.2;
         }
         .effect-stat strong em { font-style: normal; font-size: 1.15rem; margin-left: 0.1em; }
@@ -1777,11 +1778,11 @@
             display: flex; align-items: center; justify-content: center;
             color: #fff; font-size: 0.72rem; font-weight: 800; line-height: 1.6;
         }
-        .ev-num { font-weight: 800; color: var(--text-dark); font-size: 0.95rem; line-height: 1.15; margin-bottom: 0.4rem; }
+        .ev-num { font-weight: 800; color: var(--text-black); font-size: 0.95rem; line-height: 1.15; margin-bottom: 0.4rem; }
         .ev-num b { font-size: 2.1rem; color: #7A8628; letter-spacing: -0.02em; }
         .ev-num .cite { font-size: 0.6rem; color: var(--text-gray); }
         .ev-bar-after { width: 68px; height: 41px; background: #9BA832; border-radius: 6px 6px 0 0; }
-        .ev-col > small { margin-top: 0.6rem; font-size: 0.8rem; font-weight: 800; color: var(--text-dark); }
+        .ev-col > small { margin-top: 0.6rem; font-size: 0.8rem; font-weight: 800; color: var(--text-black); }
         .ev-center { height: 168px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; margin-bottom: 0.85rem; }
         .ev-center svg { width: 76px; height: 58px; }
         .ev-word { font-size: 2rem; font-weight: 800; color: #7A8628; line-height: 1.2; }
@@ -1801,7 +1802,7 @@
             background: #FAFBF3;
             padding: 1.75rem 1.5rem;
         }
-        .flow2-user h3 { font-size: 1.25rem; font-weight: 800; color: var(--text-dark); margin: 0.6rem 0 0.5rem; }
+        .flow2-user h3 { font-size: 1.25rem; font-weight: 800; color: var(--text-black); margin: 0.6rem 0 0.5rem; }
         .flow2-user p { font-size: 0.875rem; color: var(--text-gray); line-height: 1.65; }
         .flow2-arrow { display: flex; align-items: center; color: #9BA832; flex: none; }
         .flow2-arrow svg { width: 26px; height: 26px; }
