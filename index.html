@@ -1942,50 +1942,60 @@
             .fp-imgs { min-height: 0; }
         }
 
-        /* implementation procedure */
-        .plan-lines {
+        /* implementation procedure (production-faithful) */
+        .plan-lines { text-align: center; margin-bottom: 3rem; }
+        .plan-lines p { font-size: 0.875rem; color: #808080; line-height: 1.9; }
+        .proc-scroll { overflow-x: auto; padding-bottom: 0.5rem; }
+        .proc-steps {
             display: flex;
-            gap: 0.6rem 3rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 2.5rem;
+            list-style: none;
+            min-width: 1136px;
+            width: max-content;
+            margin: 0 auto;
         }
-        .plan-lines p {
-            font-size: 0.95rem;
-            color: var(--text-gray);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-        .plan-lines p::before {
-            content: '';
-            width: 9px; height: 9px;
-            border-radius: 50%;
-            background: #9BA832;
+        .proc-steps li {
             flex: none;
-        }
-        .plan-lines b { color: var(--text-dark); font-weight: 800; }
-        .proc-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-        }
-        .step-checks { list-style: none; display: grid; gap: 0.5rem; }
-        .step-checks li {
-            font-size: 0.875rem;
-            color: var(--text-gray);
-            line-height: 1.65;
-            padding-left: 1.4rem;
-            position: relative;
-        }
-        .step-checks li::before {
-            content: '✓';
-            position: absolute; left: 0; top: 0;
-            color: #9BA832;
+            width: 192px;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 13px;
             font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.35;
+            padding: 0 28px;
+            background: url('images/onprem-step.svg') center / 100% 100% no-repeat;
         }
-        .step-note { margin-top: 0.6rem; font-size: 0.74rem; color: var(--text-gray); line-height: 1.6; }
-        @media (max-width: 968px) { .proc-grid { grid-template-columns: 1fr; } }
+        .proc-steps li:first-child {
+            width: 176px;
+            background-image: url('images/onprem-step_01.svg');
+        }
+        .proc-cards {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+            margin: 12px auto 0;
+            min-width: 1136px;
+            width: max-content;
+        }
+        .proc-cards li {
+            flex: none;
+            width: 177px;
+            background: white;
+            border: 1px solid #E8F0A3;
+            border-radius: 12px;
+            padding: 16px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .proc-cards li:first-child { width: 161px; }
+        .pc-item { display: flex; gap: 6px; align-items: flex-start; }
+        .pc-item img { margin-top: 3px; flex: none; }
+        .pc-item p { font-size: 13px; color: var(--text-dark); line-height: 1.6; }
+        .pc-note { margin-top: 8px; color: #808080 !important; font-size: 12px !important; }
     </style>
 </head>
 <body>
@@ -2349,55 +2359,40 @@
         <span class="section-eyebrow">GETTING STARTED</span>
         <h2 class="section-title">GBase OnPremの導入までの手続き</h2>
         <div class="plan-lines">
-            <p><b>エンタープライズプラン</b>：導入リードタイム最短2か月</p>
-            <p><b>ライトプラン</b>：導入リードタイム最短1か月</p>
+            <p>エンタープライズプラン：導入リードタイム最短2か月</p>
+            <p>ライトプラン：導入リードタイム最短1か月</p>
         </div>
-        <div class="proc-grid">
-            <div class="step-card">
-                <span class="step-num">STEP 1</span>
-                <h3>ヒアリング</h3>
-                <ul class="step-checks">
-                    <li>GBaseを活用して解決したい課題や、具体的なユースケース、利用イメージ等をヒアリング</li>
-                </ul>
-            </div>
-            <div class="step-card">
-                <span class="step-num">STEP 2</span>
-                <h3>要件定義</h3>
-                <ul class="step-checks">
-                    <li>技術的実現可能性も加味し、機能や性能の要件を定義</li>
-                    <li>ビジネス面（業務フローへの適合性等）の要件も含む</li>
-                </ul>
-            </div>
-            <div class="step-card">
-                <span class="step-num">STEP 3</span>
-                <h3>UI・API等カスタマイズ</h3>
-                <ul class="step-checks">
-                    <li>ロゴや画面デザイン等、UIを用途に合わせてカスタマイズ</li>
-                    <li>社内システム等とのAPI連携</li>
-                </ul>
-            </div>
-            <div class="step-card">
-                <span class="step-num">STEP 4</span>
-                <h3>データ投入・チューニング</h3>
-                <ul class="step-checks">
-                    <li>インプットデータをベクターDBに投入し、回答をチューニング</li>
-                </ul>
-                <p class="step-note">※クレンジングが必要な場合、程度に応じ別途料金発生</p>
-            </div>
-            <div class="step-card">
-                <span class="step-num">STEP 5</span>
-                <h3>テスト・パイロット</h3>
-                <ul class="step-checks">
-                    <li>お客さまにテスト環境を開放し、フィードバックや要望を受領</li>
-                </ul>
-            </div>
-            <div class="step-card">
-                <span class="step-num">STEP 6</span>
-                <h3>運用</h3>
-                <ul class="step-checks">
-                    <li>本番環境でリリースし、ユーザ様にて運用</li>
-                </ul>
-            </div>
+        <div class="proc-scroll">
+            <ul class="proc-steps">
+                <li>ヒアリング</li>
+                <li>要件定義</li>
+                <li>UI・API等カスタマイズ</li>
+                <li>データ投入・チューニング</li>
+                <li>テスト・パイロット</li>
+                <li>運用</li>
+            </ul>
+            <ul class="proc-cards">
+                <li>
+                    <div class="pc-item"><img src="images/onprem-check.svg" alt="" width="16" height="16" loading="lazy" decoding="async"><p>GBaseを活用して解決したい課題や、具体的なユースケース、利用イメージ等をヒアリング</p></div>
+                </li>
+                <li>
+                    <div class="pc-item"><img src="images/onprem-check.svg" alt="" width="16" height="16" loading="lazy" decoding="async"><p>ビジネス面（業務フローへの適合性等）の要件も含む</p></div>
+                    <div class="pc-item"><img src="images/onprem-check.svg" alt="" width="16" height="16" loading="lazy" decoding="async"><p>技術的実現可能性も加味し、機能や性能の要件を定義</p></div>
+                </li>
+                <li>
+                    <div class="pc-item"><img src="images/onprem-check.svg" alt="" width="16" height="16" loading="lazy" decoding="async"><p>ロゴや画面デザイン等、UIを用途に合わせてカスタマイズ</p></div>
+                    <div class="pc-item"><img src="images/onprem-check.svg" alt="" width="16" height="16" loading="lazy" decoding="async"><p>社内システム等とのAPI連携</p></div>
+                </li>
+                <li>
+                    <div class="pc-item"><img src="images/onprem-check.svg" alt="" width="16" height="16" loading="lazy" decoding="async"><div><p>インプットデータをベクターDBに投入し、回答をチューニング</p><p class="pc-note">※クレンジングが必要な場合、程度に応じ別途料金発生</p></div></div>
+                </li>
+                <li>
+                    <div class="pc-item"><img src="images/onprem-check.svg" alt="" width="16" height="16" loading="lazy" decoding="async"><div><p>お客さまにテスト環境を開放し、フィードバックや要望を受領</p><p class="pc-note">※クレンジングが必要な場合、程度に応じ別途料金発生</p></div></div>
+                </li>
+                <li>
+                    <div class="pc-item"><img src="images/onprem-check.svg" alt="" width="16" height="16" loading="lazy" decoding="async"><p>本番環境でリリースし、ユーザ様にて運用</p></div>
+                </li>
+            </ul>
         </div>
     </div>
 </section>
