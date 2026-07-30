@@ -1943,27 +1943,28 @@
         }
 
         /* implementation procedure */
-        .plan-badges { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
-        .plan-badge {
+        .plan-lines {
+            display: flex;
+            gap: 0.6rem 3rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+        .plan-lines p {
+            font-size: 0.95rem;
+            color: var(--text-gray);
             display: inline-flex;
             align-items: center;
-            gap: 0.7rem;
-            background: white;
-            border: 1.5px solid var(--border-lime);
-            border-radius: 999px;
-            padding: 0.55rem 1.4rem 0.55rem 0.55rem;
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--text-dark);
+            gap: 0.6rem;
         }
-        .plan-badge b {
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            color: var(--primary);
-            border-radius: 999px;
-            padding: 0.3rem 1rem;
-            font-size: 0.85rem;
-            font-weight: 800;
+        .plan-lines p::before {
+            content: '';
+            width: 9px; height: 9px;
+            border-radius: 50%;
+            background: #9BA832;
+            flex: none;
         }
+        .plan-lines b { color: var(--text-dark); font-weight: 800; }
         .proc-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -2347,9 +2348,9 @@
     <div class="container">
         <span class="section-eyebrow">GETTING STARTED</span>
         <h2 class="section-title">GBase OnPremの導入までの手続き</h2>
-        <div class="plan-badges">
-            <span class="plan-badge"><b>エンタープライズプラン</b>導入リードタイム最短2か月</span>
-            <span class="plan-badge"><b>ライトプラン</b>導入リードタイム最短1か月</span>
+        <div class="plan-lines">
+            <p><b>エンタープライズプラン</b>：導入リードタイム最短2か月</p>
+            <p><b>ライトプラン</b>：導入リードタイム最短1か月</p>
         </div>
         <div class="proc-grid">
             <div class="step-card">
