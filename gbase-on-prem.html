@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>オンプレミス型AIナレッジベース GBase OnPrem｜社内データを外に出さないAI活用</title>
-    <meta name="description" content="オンプレミス型AIで企業向けセキュアなナレッジ検索を実現。ファイル解析・AIエージェント・チャットボット・権限管理・AI-OCR書類チェック・AI議事録まで、社内データを外部に出さずに組織全体でAIを活用できます。">
+    <title>GBase on Prem｜大規模組織向けオンプレミスAIナレッジ基盤</title>
+    <meta name="description" content="GBase on Prem は、1万人規模の全社利用に対応する大規模組織向けオンプレミスAIナレッジ基盤。ファイル解析・AIエージェント・チャットボット・権限管理・AI-OCR・AI議事録を、社内データを外部に出さずに利用できます。">
     <meta name="robots" content="noindex,follow">
-    <meta property="og:title" content="オンプレミス型AIナレッジベース GBase OnPrem">
-    <meta property="og:description" content="オンプレ環境で社内ノウハウを活用。ファイル解析からAIエージェント・議事録・書類チェックまで、社内データを外に出さないAI基盤です。">
+    <meta property="og:title" content="GBase on Prem｜大規模組織向けオンプレミスAIナレッジ基盤">
+    <meta property="og:description" content="1万人規模の全社利用に対応する完全オンプレミスのAIナレッジ基盤。買い切り型・閉域運用対応。">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ailisonc147.github.io/onprem/index.html">
-    <meta property="og:image" content="https://ailisonc147.github.io/onprem/images/hero-government.jpg">
+    <meta property="og:url" content="https://ailisonc147.github.io/onprem/gbase-on-prem.html">
+    <meta property="og:image" content="https://ailisonc147.github.io/onprem/images/onprem-first_img_01.png">
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="canonical" href="https://onprem.gbase.ai/">
@@ -23,24 +23,12 @@
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      "name": "GBase OnPrem",
+      "name": "GBase on Prem",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "On-Premises (Linux)",
-      "description": "オンプレミス型AIナレッジベース。ファイル解析・AIエージェント・RAGチャットボット・権限管理・AI-OCR書類チェック・AI議事録を、社内データを外部に出さずに利用できる。",
+      "description": "1万人規模の全社利用に対応する大規模組織向けオンプレミスAIナレッジ基盤。独自LLM GBase-gemma-4-31B-it を搭載し、買い切り型・閉域運用に対応。",
       "url": "https://onprem.gbase.ai/",
-      "offers": {
-        "@type": "Offer",
-        "priceCurrency": "JPY",
-        "availability": "https://schema.org/InStock"
-      },
-      "featureList": [
-        "多形式ファイル解析とナレッジ一元化",
-        "AIエージェント・スキルによる定型業務支援",
-        "高精度RAG検索チャットボット（参照元ハイライト表示）",
-        "部門・役職単位のアクセス権限管理と利用ログ長期保管",
-        "AI-OCR書類チェック（ルール整備はSparticleが代行）",
-        "音声からのAI議事録作成（ローカルLLM要約）"
-      ]
+      "offers": { "@type": "Offer", "priceCurrency": "JPY", "availability": "https://schema.org/InStock" }
     }
     </script>
 
@@ -68,14 +56,6 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "クラウド型のAIサービスとの違いは何ですか？",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "GBase OnPremは完全オンプレミス運用のため、社内データが外部に送信されることはありません。また買い切り型のため、クラウド型のような従量課金がなく、利用量が増えても追加課金は発生しません。全社展開でも予算を立てやすいのが特長です。"
-          }
-        },
-        {
-          "@type": "Question",
           "name": "導入費用はどのくらいかかりますか？",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -84,10 +64,10 @@
         },
         {
           "@type": "Question",
-          "name": "どのような業務で活用できますか？",
+          "name": "既存サーバーは活用できますか？",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "社内規程・技術文書のナレッジ検索、問い合わせ対応のチャットボット、会議の議事録作成、申請書類の不備チェックなど、幅広い業務でご活用いただけます。AI議事録・AI-OCR書類チェックの詳細は各機能ページをご覧ください。"
+            "text": "活用可能です。主要サーバー・GPU構成での動作検証を実施済みのため、既存資産の有効活用も視野に入れた構成をご提案します。"
           }
         },
         {
@@ -2073,6 +2053,42 @@
                 margin-bottom: 8px;
             }
         }
+
+        /* product page */
+        .hero-product { min-height: auto; padding: 9rem 2rem 5rem; }
+        .hero-product h1 { font-size: 4rem; letter-spacing: 0.01em; }
+        .spec-table {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .spec-row {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            border-bottom: 1px solid var(--border);
+        }
+        .spec-row:last-child { border-bottom: none; }
+        .spec-key {
+            background: var(--bg-gray);
+            padding: 1.1rem 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--text-black);
+        }
+        .spec-val {
+            padding: 1.1rem 1.5rem;
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+        @media (max-width: 640px) {
+            .spec-row { grid-template-columns: 1fr; }
+            .spec-key { padding-bottom: 0.4rem; }
+            .spec-val { padding-top: 0.4rem; }
+        }
     </style>
 </head>
 <body>
@@ -2185,21 +2201,15 @@
     </div>
 </nav>
 
-<!-- Hero (light, official homepage copy) -->
-<section class="hero hero-feature">
-    <div class="hero-deco hero-deco-1" aria-hidden="true">
-        <img src="images/onprem-icon_left.png" alt="" width="144" height="144" loading="lazy" decoding="async">
-    </div>
-    <div class="hero-deco hero-deco-2" aria-hidden="true">
-        <img src="images/onprem-icon_right.png" alt="" width="125" height="125" loading="lazy" decoding="async">
-    </div>
+<!-- Hero (product) -->
+<section class="hero hero-feature hero-product">
     <div class="hero-content">
         <div class="hero-inner">
-            <p class="hero-eyebrow">オンプレ環境で社内ノウハウを活用！</p>
-            <h1>オンプレミス型AIで企業向け<br>セキュアなナレッジ検索を実現</h1>
+            <p class="hero-eyebrow">大規模組織向けオンプレミスAI</p>
+            <h1>GBase on Prem</h1>
             <p class="hero-subtitle">
-                ファイル解析・チャットボットから、AIエージェント・書類チェック・議事録まで。<br>
-                社内データを外部に出さずに、組織全体でAIを活用できます。
+                1万人規模の全社利用に対応する、完全オンプレミスのAIナレッジ基盤。<br>
+                ファイル解析からAIエージェント・議事録・書類チェックまで、社内データを外部に出さずに活用できます。
             </p>
             <div class="hero-cta">
                 <a href="https://onprem.gbase.ai/contact" class="btn btn-primary">無料デモ</a>
@@ -2209,75 +2219,9 @@
     </div>
 </section>
 
-<!-- Merits -->
-<section class="section" id="merits">
-    <div class="container">
-        <span class="section-eyebrow">WHY ON-PREMISES</span>
-        <h2 class="section-title">オンプレミスAIナレッジベース導入のメリット</h2>
-        <div class="merit-wrap">
-            <div class="merit-panel merit-left">
-                <div class="m-head">
-                    <img src="images/onprem-question.svg" alt="" width="44" height="44" loading="lazy" decoding="async">
-                    <h3>ナレッジ管理の課題</h3>
-                </div>
-                <div class="m-item">
-                    <strong>資料が多すぎて、探すのに時間がかかる</strong>
-                    <p>大量の資料ファイルのどこから探せばいいのか、わからないことが多い</p>
-                </div>
-                <div class="m-item">
-                    <strong>時間外の問い合わせができなくて困っている</strong>
-                    <p>情報を得るには毎回人に聞く必要があるが、業務時間外にはお願いできない</p>
-                </div>
-                <div class="m-item">
-                    <strong>検索が微妙</strong>
-                    <p>既存ソフトの検索機能が弱く、意図した結果が出てこない。結果、諦めてしまう</p>
-                </div>
-                <div class="m-item">
-                    <strong>複数の資料をまとめるのは難しい</strong>
-                    <p>複数のファイルに散らばった情報を、横断して整理するのは手間がかかる</p>
-                </div>
-                <div class="m-item">
-                    <strong>機密情報を外部に漏らしたくない</strong>
-                    <p>クラウドサービスに機密資料を預けることには不安が残る</p>
-                </div>
-            </div>
-            <div class="merit-panel merit-right">
-                <div class="m-head">
-                    <img src="images/onprem-check.svg" alt="" width="44" height="44" loading="lazy" decoding="async">
-                    <h3>AIナレッジベースで実現する<br>FAQチャットボット</h3>
-                </div>
-                <div class="m-item">
-                    <span class="m-tag">知識ベース</span>
-                    <strong>ナレッジベースで資料を一元管理</strong>
-                    <p>資料ファイルをナレッジベースに投入。探したい内容は、チャットボットとの会話でわかる</p>
-                </div>
-                <div class="m-item">
-                    <span class="m-tag">24時間</span>
-                    <strong>24時間働くチャットボット</strong>
-                    <p>管理職やチームメンバーの時間を奪わず、365日いつでもチャットボットが対応してくれる</p>
-                </div>
-                <div class="m-item">
-                    <span class="m-tag">AI検索</span>
-                    <strong>AI検索技術が精度を保証</strong>
-                    <p>独自のファイル解析技術と優れたRAGアルゴリズムで、常に欲しい結果に辿り着く</p>
-                </div>
-                <div class="m-item">
-                    <span class="m-tag">高性能LLM</span>
-                    <strong>GBase-gemma-4-31B-itが解決してくれる</strong>
-                    <p>Sparticleで量子化・日本語化・コンテキストサイズ拡張をしたLLMを利用した、1万人規模の全社員利用ができるEnterprise RAG</p>
-                </div>
-                <div class="m-item">
-                    <span class="m-tag">セキュリティ</span>
-                    <strong>オンプレミスデプロイで安心</strong>
-                    <p>完全オンプレミス運用で、機密データを外部に出さずに利用できる</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- Main features (6) -->
-<section class="section section-gray" id="features">
+<section class="section" id="features">
     <div class="container">
         <span class="section-eyebrow">FEATURES</span>
         <h2 class="section-title">企業向けAIナレッジベース GBase OnPrem の主要機能</h2>
@@ -2436,42 +2380,43 @@
     </div>
 </section>
 
-<!-- Solutions -->
-<section class="section" id="solutions">
+<!-- Product specs -->
+<section class="section section-gray" id="specs">
     <div class="container">
-        <span class="section-eyebrow">SOLUTIONS</span>
-        <h2 class="section-title">業種別ソリューション</h2>
-        <p class="section-subtitle">
-            業種ごとの課題に合わせた、オンプレミスAIの活用イメージをご紹介します。
-        </p>
-        <div class="sol2-grid">
-            <a href="government-solution.html" class="sol2-card">
-                <div class="sol2-img">
-                    <img src="images/hero-government.jpg" alt="庁舎内で職員がAIナレッジ検索を利用するイメージ" width="1200" height="675" loading="lazy" decoding="async">
-                </div>
-                <div class="sol2-body">
-                    <h3>自治体・官公庁</h3>
-                    <p>LGWAN対応の閉域AIで、庁内ナレッジと住民対応を支援。出典明示で説明責任にも対応します。</p>
-                    <span class="sol2-cta">詳しく見る</span>
-                </div>
-            </a>
-            <a href="manufacturing-solution.html" class="sol2-card">
-                <div class="sol2-img">
-                    <img src="images/hero-manufacturing.jpg" alt="製造現場で技術文書をAIで検索するイメージ" width="1200" height="675" loading="lazy" decoding="async">
-                </div>
-                <div class="sol2-body">
-                    <h3>製造業</h3>
-                    <p>技術文書・設計ノウハウを社外に出さずにAI活用。設計レビューや品質対応、技能継承を支援します。</p>
-                    <span class="sol2-cta">詳しく見る</span>
-                </div>
-            </a>
+        <span class="section-eyebrow">SPECIFICATIONS</span>
+        <h2 class="section-title">製品仕様</h2>
+        <div class="spec-table">
+            <div class="spec-row">
+                <div class="spec-key">搭載LLM</div>
+                <div class="spec-val">独自LLM「GBase-gemma-4-31B-it」。Sparticleが量子化・日本語化・コンテキストサイズ拡張を実施</div>
+            </div>
+            <div class="spec-row">
+                <div class="spec-key">利用規模</div>
+                <div class="spec-val">1万人規模の全社員利用に対応するエンタープライズRAG</div>
+            </div>
+            <div class="spec-row">
+                <div class="spec-key">運用形態</div>
+                <div class="spec-val">完全オンプレミス。閉域網（LGWAN等）での運用に対応</div>
+            </div>
+            <div class="spec-row">
+                <div class="spec-key">ライセンス</div>
+                <div class="spec-val">買い切り型。従量課金なしで、利用量が増えても追加課金は発生しません</div>
+            </div>
+            <div class="spec-row">
+                <div class="spec-key">導入プラン</div>
+                <div class="spec-val">エンタープライズプラン（導入リードタイム最短2か月）／ライトプラン（同 最短1か月）</div>
+            </div>
+            <div class="spec-row">
+                <div class="spec-key">サーバー構成</div>
+                <div class="spec-val">主要サーバー・GPU構成での動作検証済み。既存サーバーの活用も含めて個別にご提案</div>
+            </div>
         </div>
-        <p class="section-guide">金融・医療など、その他の業種でのご活用も<a href="https://onprem.gbase.ai/contact" class="inline-link">お気軽にご相談ください</a>。</p>
     </div>
 </section>
 
+
 <!-- Implementation flow -->
-<section class="section section-gray" id="implementation-flow">
+<section class="section" id="implementation-flow">
     <div class="container">
         <span class="section-eyebrow">GETTING STARTED</span>
         <h2 class="section-title">GBase OnPremの導入までの手続き</h2>
@@ -2515,25 +2460,18 @@
 </section>
 
 <!-- FAQ -->
-<section class="section" id="faq">
+<section class="section section-gray" id="faq">
     <div class="container">
         <span class="section-eyebrow">FAQ</span>
         <h2 class="section-title">よくあるご質問</h2>
-        <p class="section-subtitle">
-            クラウド型との違い・費用・活用シーンなど、ご検討の段階でよくいただくご質問にお答えします。
-        </p>
         <div class="faq-list">
-            <details>
-                <summary>クラウド型のAIサービスとの違いは何ですか？</summary>
-                <p>GBase OnPremは完全オンプレミス運用のため、社内データが外部に送信されることはありません。また買い切り型のため、クラウド型のような従量課金がなく、利用量が増えても追加課金は発生しません。全社展開でも予算を立てやすいのが特長です。</p>
-            </details>
             <details>
                 <summary>導入費用はどのくらいかかりますか？</summary>
                 <p>ご利用になる機能・構成・規模により個別にお見積もりします。独自のハイブリッド量子化技術によりGPU使用量を最大75%削減できるため、初期投資・運用コストを抑えた構成が可能です。既存サーバーの活用も含めてご提案します。</p>
             </details>
             <details>
-                <summary>どのような業務で活用できますか？</summary>
-                <p>社内規程・技術文書のナレッジ検索、問い合わせ対応のチャットボット、会議の議事録作成、申請書類の不備チェックなど、幅広い業務でご活用いただけます。<a href="ai-minutes.html" class="inline-link">AI議事録</a>・<a href="ai-ocr.html" class="inline-link">AI-OCR書類チェック</a>の詳細は各機能ページをご覧ください。</p>
+                <summary>既存サーバーは活用できますか？</summary>
+                <p>活用可能です。主要サーバー・GPU構成での動作検証を実施済みのため、既存資産の有効活用も視野に入れた構成をご提案します。</p>
             </details>
             <details>
                 <summary>アカウントや権限の管理はできますか？</summary>
